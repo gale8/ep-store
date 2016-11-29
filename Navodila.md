@@ -7,17 +7,18 @@ Trenutna različica navodil nosi oznako 1.0 in je bila nazadnje posodobljena 28.
 Vloge uporabnikov
 
 V seminarski nalogi izdelajte model spletne prodajalne z uporabo tehnologij Linux, Apache, SUPB MySQL, PHP, SSL, certifikatov X.509 in mobilne platforme Android.
-
+----------------------------------------------------------------------------------------------------------------------------
 Spletna prodajalna naj ima naslednje uporabnike, pri katerih hranite spodaj navedene atribute.
 
     Administrator: Ime, Priimek, Elektronski naslov in geslo.
     Prodajalec: Ime, Priimek, Elektronski naslov in geslo.
     Stranka: Ime, Priimek, Elektronski naslov, Naslov, Telefonska številka, geslo.
     Anonimni odjemalec, pri katerem ne hranite atributov.
-
+----------------------------------------------------------------------------------------------------------------------------
 Osnovne storitve
 
 Osnovne storitve prodajalne naj podpirajo naslednje operacije pri vsaki vlogi.
+----------------------------------------------------------------------------------------------------------------------------
 Spletni vmesnik vloge Administrator
 
 Vmesnik naj omogoča:
@@ -27,6 +28,7 @@ Vmesnik naj omogoča:
     Ustvarjanje, aktiviranje in deaktiviranje uporabniškega računa Prodajalec ter posodobitev njegovih atributov.
 
 V vlogi administratorja imate lahko zgolj enega uporabnika, ki ga lahko kreirate ročno, denimo z uporabo določene skripte, vmesnika phpmyadmin in podobno.
+----------------------------------------------------------------------------------------------------------------------------
 Spletni vmesnik vloge Prodajalec
 
 Vmesnik naj omogoča:
@@ -39,7 +41,7 @@ Vmesnik naj omogoča:
         Ogled zgodovine potrjenih naročil in možnost storniranja potrjenih naročil.
     Ustvarjanje, aktiviranje in deaktiviranje artiklov in posodabljanje njihovih atributov. Pri obravnavi artiklov lahko upravljanje z zalogami izpustite. Z drugimi besedami -- v aplikaciji lahko vedno predpostavite, da je na zalogi dovolj artiklov;
     Ustvarjanje, aktiviranje in deaktiviranje uporabniških računov tipa Stranka in posodabljanje njegovih atributov.
-
+----------------------------------------------------------------------------------------------------------------------------
 Spletni vmesnik vloge Stranka
 
 Vmesnik naj omogoča:
@@ -52,7 +54,7 @@ Vmesnik naj omogoča:
         Zaključka nakupa. Tu se naj stranki prikaže povzetek kupljenih izdelkov s predračunom. Ko stranka naročilo potrdi, se to doda v čakalno vrsto neobdelanih naročil, kjer ga lahko v obravnavo prevzame Prodajalec.
     Dostop do seznama preteklih nakupov. Uporabnik lahko vidi vsa svoja pretekla naročila: oddana, potrjena in stornirana.
     Uporaba vmesnika Stranka je dovoljena le preko zavarovanega kanala. Odjemalca overite z uporabniškim imenom in geslom, ki naj bosta shranjena v SUPB.
-
+----------------------------------------------------------------------------------------------------------------------------
 Spletni vmesnik anonimnega odjemalca
 
 Vmesnik naj omogoča:
@@ -60,7 +62,7 @@ Vmesnik naj omogoča:
     Pregledovanje artiklov preko spletnega vmesnika;
     Registracijo preko spletnega vmesnika;
     Uporaba vmesnika anonimnega odjemalca je dovoljena preko javnega in zavarovanega kanala, pri registraciji pa nujno preklopite na zavarovan kanal. V splošnem poskrbite za ustrezno preklapljanje med omenjenima kanaloma.
-
+----------------------------------------------------------------------------------------------------------------------------
 Vmesnik mobilne aplikacije (platforma Android)
 
 Izdelajte Android aplikacijo, ki bo omogočala preprosto pregledovanje artiklov v vaši trgovini.
@@ -69,7 +71,7 @@ Izdelajte Android aplikacijo, ki bo omogočala preprosto pregledovanje artiklov 
     Implementirajte funkcionalnost brskanja po artiklih. Implementirajte vsaj dva zaslona:
         Prvi zaslon naj prikaže seznam vseh artiklov v trgovini;
         Če uporabnik izbere artikel s zgornjega seznama, naj aplikacija prikaže drug zaslon, kjer se izpišejo podrobnosti artikla.
-
+----------------------------------------------------------------------------------------------------------------------------
 Ostale zahteve
 
 Vaša rešitev naj zadosti še omenjenim zahtevam:
