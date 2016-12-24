@@ -1,3 +1,6 @@
+Uporabi nov projekt -> epStore
+mvc-rest -> samo še za primerjavo kode
+
 # ep-store
 Seminarska naloga pri EP - spletna trgovina
 
