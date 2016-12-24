@@ -21,6 +21,14 @@ $urls = [
         }
     },
     
+    "/^artikli\/dodaj/" => function ($method) {
+        if ($method == "POST") {
+            ItemController::add();
+        } else {
+            ItemController::addForm();
+        }
+    },
+            
     "/^$/" => function () {
         ViewHelper::redirect(BASE_URL . "artikli");
     }
