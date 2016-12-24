@@ -1,4 +1,4 @@
-Uporabi nov projekt -> epStore
+Uporabi nov projekt -> epStore |/\\|
 mvc-rest -> samo še za primerjavo kode
 
 # ep-store
