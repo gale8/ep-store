@@ -1,5 +1,4 @@
-#Uporabi nov projekt -> epStore
-#mvc-rest -> samo še za primerjavo kode
+#Android, podatkovni model, mvc-rest (za "šablono") so v dropbox mapi.
 
 # ep-store
 Seminarska naloga pri EP - spletna trgovina
