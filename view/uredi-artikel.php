@@ -16,8 +16,8 @@
     <p><label>Ime artikla: <input type="text" name="ime_artikla" value="<?= $ime_artikla ?>" autofocus /></label></p>
     <p><label>Cena: <input type="number" name="cena" value="<?= $cena ?>" /></label></p>
     <p><label>Opis artikla: <br/><textarea name="opis_artikla" cols="70" rows="10"><?= $opis_artikla ?></textarea></label></p>
-    <input type="hidden" name="artikel_aktiviran" value="<?= $artikel_aktiviran ?>"/>
-    <p><label>Aktiviram artikel? <input type="checkbox" name="artikel_aktiviran" checked="<?= $artikel_aktiviran==1 ? 'checked' : 'unchecked';?>" value="1"/></label>
+    <input type="hidden" name="artikel_aktiviran" value="2"/>
+    <p><label>Aktiviram artikel? <input type="checkbox" name="artikel_aktiviran" <?= $artikel_aktiviran==1 ? 'checked' : '';?> value="1"/></label>
     <p><button>Uredi</button></p>
 </form>
 

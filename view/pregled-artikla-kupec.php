@@ -15,10 +15,10 @@
     <li>Ime artikla: <b><?= $ime_artikla ?></b></li>
     <li>Cena: <b><?= $cena ?> EUR</b></li>
     <li>Opis artikla: <b><?= $opis_artikla ?></b></li>
-    <!--
-    To vrstico se doda v pregled-artikla-zaposleni.php
+    <!-- zakomentiraj spodnjo vrstico !!
+    To vrstico se doda v pregled-artikla-zaposleni.php -->
     <li>Artikel aktiviran? <i><?= $artikel_aktiviran==1 ? 'DA' : 'NE'?></i></li>
-    -->
+    
 </ul>
 
 <!--

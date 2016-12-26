@@ -1,2 +1,3 @@
 Dodajanje, brisanje, urejanje, pregled artiklov (v izdelavi)- Tilen
-    Iz ItemDB -> getAll -> izbriši OR artikel_aktiviran = 2 (sam za test)
+    Iz ItemDB -> getAll -> izbriši OR artikel_aktiviran = 2 (sam za test. Artikli, ki niso aktivirani, ne smejo bit vidni kupcem)
+    V pregled-artikla-kupec.php zakomentiraj vrstico za vidnost aktiviranosti artikla
