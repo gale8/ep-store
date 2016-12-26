@@ -21,8 +21,8 @@ class ItemController {
 
     public static function add() {
         $data = filter_input_array(INPUT_POST, self::getRules());
-        var_dump(INPUT_POST);
-        var_dump($data);
+        #var_dump(INPUT_POST);
+        #var_dump($data);
         if (self::checkValues($data)) {
             $id = ItemDB::insert($data);
             echo ViewHelper::redirect(BASE_URL . "artikli/" . $id);
