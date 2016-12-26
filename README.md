@@ -1,3 +1,5 @@
+[a relative link](TODO.txt)
+
 #Android, podatkovni model, mvc-rest (za "šablono") so v dropbox mapi.
 
 # ep-store
