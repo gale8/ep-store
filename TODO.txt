@@ -1,1 +1,2 @@
-Dodajanje artiklov (v izdelavi)- Tilen
+Dodajanje, brisanje, urejanje, pregled artiklov (v izdelavi)- Tilen
+    Iz ItemDB -> getAll -> izbriši OR artikel_aktiviran = 2 (sam za test)
