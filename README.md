@@ -1,4 +1,4 @@
-[a relative link](TODO.txt)
+[Spisek stvari, ki so za nardit](TODO.txt)
 
 #Android, podatkovni model, mvc-rest (za "šablono") so v dropbox mapi.
 
