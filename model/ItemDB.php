@@ -4,24 +4,27 @@ require_once 'model/AbstractDB.php';
 
 class ItemDB extends AbstractDB {
     
+    
+    #getAll vrne samo aktivirane artikle (pogled za kupce) IZBRIŠI OR artikel_aktiviran = 2 (sam za test)
     public static function getAll() {
         return parent::query("SELECT id_artikla, ime_artikla, cena, opis_artikla, artikel_aktiviran"
                         . " FROM artikel"
+                        . " WHERE artikel_aktiviran = 1 OR artikel_aktiviran = 2"
                         . " ORDER BY id_artikla ASC");
     }
     
     
     
     public static function insert(array $params) {
-        return parent::modify("INSERT INTO book (author, title, description, price, year) "
-                        . " VALUES (:author, :title, :description, :price, :year)", $params);
+        return parent::modify("INSERT INTO artikel (ime_artikla, cena, opis_artikla, artikel_aktiviran) "
+                        . " VALUES (:ime_artikla, :cena, :opis_artikla, :artikel_aktiviran)", $params);
     }
     
     
     public static function update(array $params) {
-        return parent::modify("UPDATE book SET author = :author, title = :title, "
-                        . "description = :description, price = :price, year = :year"
-                        . " WHERE id = :id", $params);
+        return parent::modify("UPDATE artikel SET ime_artikla = :ime_artikla, cena = :cena, "
+                        . "opis_artikla = :opis_artikla, artikel_aktiviran = :artikel_aktiviran"
+                        . " WHERE id_artikla = :id_artikla", $params);
     }
 
     public static function delete(array $id) {
@@ -29,14 +32,13 @@ class ItemDB extends AbstractDB {
     }
 
     public static function get(array $id) {
-        $books = parent::query("SELECT id, author, title, description, price, year"
-                        . " FROM book"
-                        . " WHERE id = :id", $id);
-
-        if (count($books) == 1) {
-            return $books[0];
+        $artikli = parent::query("SELECT id_artikla, ime_artikla, cena, opis_artikla, artikel_aktiviran"
+                        . " FROM artikel"
+                        . " WHERE id_artikla = :id_artikla", $id);
+        if (count($artikli) == 1) {
+            return $artikli[0];
         } else {
-            throw new InvalidArgumentException("No such book");
+            throw new InvalidArgumentException("Ni tega artikla!");
         }
     }
     

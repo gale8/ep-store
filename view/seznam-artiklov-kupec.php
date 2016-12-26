@@ -9,7 +9,7 @@
 
 <ul>
     <?php foreach ($artikli as $atikel): ?>
-    <li><a href="<?= BASE_URL . "artikli/" . $atikel["id_artikla"] ?>"><?= $atikel["ime_artikla"] ?>:
-            <?= $atikel["cena"] ?> (<?= $atikel["opis_artikla"] ?>)<a/></li>
+    <li><a href="<?= BASE_URL . "artikli/" . $atikel["id_artikla"] ?>">ime artikla: <?= $atikel["ime_artikla"] ?><br>
+            cena: <?= $atikel["cena"] ?> <br> opis: <?= $atikel["opis_artikla"] ?><a/></li>
     <?php endforeach; ?>
 </ul>

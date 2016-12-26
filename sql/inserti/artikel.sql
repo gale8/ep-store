@@ -1,0 +1,1 @@
+INSERT INTO `artikel` (ime_artikla, cena, artikel_aktiviran, opis_artikla) VALUES ('Nogavice',5,1,'st. 46')

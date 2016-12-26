@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     13. 12. 2016 20:10:55                        */
+/* Created on:     26. 12. 2016 18:44:00                        */
 /*==============================================================*/
 
 
@@ -9,8 +9,6 @@ drop table if exists posta;
 drop table if exists administrator;
 
 drop table if exists artikel;
-
-drop table if exists kosarica;
 
 drop table if exists narocilo;
 
@@ -49,21 +47,12 @@ create table administrator
 /*==============================================================*/
 create table artikel
 (
-   id_artikla           int not null,
+   id_artikla           int NOT NULL AUTO_INCREMENT,
    ime_artikla          varchar(45) not null,
    cena                 float(5) not null,
-   opis_artikla         varchar(45) not null,
-   artikel_aktiviran    bool not null,
+   artikel_aktiviran    bool not null default 0,
+   opis_artikla			varchar(45) not null,
    primary key (id_artikla)
-);
-
-/*==============================================================*/
-/* Table: kosarica                                              */
-/*==============================================================*/
-create table kosarica
-(
-   email                varchar(45) not null,
-   primary key (email)
 );
 
 /*==============================================================*/
@@ -71,11 +60,11 @@ create table kosarica
 /*==============================================================*/
 create table narocilo
 (
-   id_narocila          int not null,
+   id_narocila          int not null AUTO_INCREMENT,
    email                varchar(45) not null,
-   narocilo_potrjeno    bool not null,
-   narocilo_preklicano  bool not null,
-   narocilo_stornirano  bool not null,
+   narocilo_potrjeno    bool not null default 0,
+   narocilo_preklicano  bool not null default 0,
+   narocilo_stornirano  bool not null default 0,
    primary key (id_narocila)
 );
 
@@ -96,7 +85,7 @@ create table naslov
 (
    ulica                varchar(45) not null,
    hisna_st             varchar(45) not null,
-   id_naslova           int not null,
+   id_naslova           int not null AUTO_INCREMENT,
    postna_st            int not null,
    primary key (id_naslova)
 );
@@ -107,7 +96,7 @@ create table naslov
 create table prodajalec
 (
    email                varchar(45) not null,
-   prodajalec_aktiviran bool not null,
+   prodajalec_aktiviran bool not null default 0,
    ime                  varchar(45) not null,
    priimek              varchar(45) not null,
    geslo                varchar(45) not null,
@@ -125,15 +114,12 @@ create table stranka
    priimek              varchar(45) not null,
    geslo                varchar(45) not null,
    tel_st               int not null,
-   uporabnik_aktiviran  bool not null,
+   uporabnik_aktiviran  bool not null default 1,
    primary key (email)
 );
 
-alter table kosarica add constraint FK_kosarica_stranka foreign key (email)
+alter table narocilo add constraint FK_je_narocil foreign key (email)
       references stranka (email) on delete restrict on update restrict;
-
-alter table narocilo add constraint FK_kosarica_narocilo foreign key (email)
-      references kosarica (email) on delete restrict on update restrict;
 
 alter table narocilo_artikel add constraint FK_narocilo_artikel foreign key (id_narocila)
       references narocilo (id_narocila) on delete restrict on update restrict;

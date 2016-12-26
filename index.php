@@ -13,7 +13,6 @@ $path = isset($_SERVER["PATH_INFO"]) ? trim($_SERVER["PATH_INFO"], "/") : "";
 $urls = [
     "/^artikli\/?(\d+)?$/" => function ($method, $id = null) {
         if ($id == null) {
-            #echo("NEKI");
             ItemController::index();
             
         } else {
@@ -26,6 +25,14 @@ $urls = [
             ItemController::add();
         } else {
             ItemController::addForm();
+        }
+    },
+            
+    "/^artikli\/uredi\/(\d+)$/" => function ($method, $id) {
+        if ($method == "POST") {
+            ItemController::edit($id);
+        } else {
+            ItemController::editForm($id);
         }
     },
             
