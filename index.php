@@ -36,6 +36,12 @@ $urls = [
         }
     },
             
+    "/^artikli\/izbrisi\/(\d+)$/" => function ($method, $id) {
+        if ($method == "POST") {
+            ItemController::delete($id);
+        }
+    },
+            
     "/^$/" => function () {
         ViewHelper::redirect(BASE_URL . "artikli");
     }

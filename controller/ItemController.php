@@ -60,6 +60,21 @@ class ItemController {
         echo ViewHelper::render("view/uredi-artikel.php", $values);
     }
     
+    public static function delete($id) {
+        $data = filter_input_array(INPUT_POST, [
+            'delete_confirmation' => FILTER_REQUIRE_SCALAR
+        ]);
+
+        if (self::checkValues($data)) {
+            ItemDB::delete(["id_artikla" => $id]);
+            $url = BASE_URL . "artikli";
+        } else {
+            $url = BASE_URL . "artikli/uredi/" . $id;
+        }
+
+        ViewHelper::redirect($url);
+    }
+    
     
     /**
      * Returns an array of filtering rules for manipulation books

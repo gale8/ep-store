@@ -11,6 +11,7 @@
     <a href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>
     ]</p>
 
+
 <form action="<?= BASE_URL . "artikli/uredi/" . $id_artikla ?>" method="post">
     <input type="hidden" name="id" value="<?= $id_artikla ?>"  />
     <p><label>Ime artikla: <input type="text" name="ime_artikla" value="<?= $ime_artikla ?>" autofocus /></label></p>
@@ -21,7 +22,11 @@
     <p><button>Uredi</button></p>
 </form>
 
-<form action="<?= BASE_URL . "books/delete/" . $id ?>" method="post">
-    <label>Delete? <input type="checkbox" name="delete_confirmation" /></label>
-    <button type="submit" class="important">Delete record</button>
+
+<form action="<?= BASE_URL . "artikli/izbrisi/" . $id_artikla ?>" method="post">
+    <p><label>Izbrišem? <input type="checkbox" name="delete_confirmation" /></label></p>
+    <p><button type="submit" class="important">Izbriši artikel</button></p>
 </form>
+
+
+

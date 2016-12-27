@@ -28,7 +28,7 @@ class ItemDB extends AbstractDB {
     }
 
     public static function delete(array $id) {
-        return parent::modify("DELETE FROM book WHERE id = :id", $id);
+        return parent::modify("DELETE FROM artikel WHERE id_artikla = :id_artikla", $id);
     }
 
     public static function get(array $id) {

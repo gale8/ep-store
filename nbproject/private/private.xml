@@ -3,7 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/ep/NetBeansProjects/ep-store/ViewHelper.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/pregled-artikla-kupec.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/static/css/style.css</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/TODO.txt</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/uredi-artikel.php</file>
             <file>file:/home/ep/NetBeansProjects/ep-store/index.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/dodaj-artikel.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/sql/inserti/artikel.sql</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/model/AbstractDB.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/seznam-artiklov-kupec.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/controller/ItemController.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/model/DB.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/model/ItemDB.php</file>
         </group>
     </open-files>
 </project-private>
