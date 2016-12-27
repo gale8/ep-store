@@ -6,10 +6,10 @@
 
 <h1>Artikel: <?= $ime_artikla ?></h1>
 
-<p>[
-    <a href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a>]<!-- IZBRISI SPODNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->
-    [<a href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>]
-    [<a href="<?= BASE_URL . "artikli/uredi/" . $id_artikla ?>">Uredi</a>]
+<p>
+    <a href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a><!-- IZBRISI SPODNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->
+    <a href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>
+    <a href="<?= BASE_URL . "artikli/uredi/" . $id_artikla ?>">Uredi</a>
 </p>
 
 <p>

@@ -6,10 +6,10 @@
 
 <h1>Dodaj nov artikel</h1>
 
-<p>[
-<a href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a> |
+<p>
+<a href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a> 
 <a href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>
-]</p>
+</p>
 
 <form action="<?= BASE_URL . "artikli/dodaj" ?>" method="post">
     <p><label>Ime artikla: <input type="text" name="ime_artikla" value="<?= $ime_artikla ?>" autofocus /></label></p>

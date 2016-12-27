@@ -8,7 +8,7 @@
 
 <p style="text-align: center;">
 <!-- IZBRISI SPODNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->
-    [<a href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>]
+    <a href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>
 </p>
 
 

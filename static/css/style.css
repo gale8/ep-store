@@ -4,6 +4,34 @@
     text-align: center;
 }
 
+html { 
+  background: url(../images/paper2.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.89;
+  
+}
+
+a:link, a:visited {
+    color: #000000;
+    background-color: #f44336;
+    color: white;
+    padding: 25px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 15px 50px;
+}
+
+a:hover {
+    color: #000000;
+    background-color: #f44336;
+    opacity:1;
+    
+}
+
 .center {
     text-align: center;
 }
@@ -26,8 +54,8 @@ ul {
     width: 18%;
     padding-bottom: 10%;
     margin: 1%;
-    background-color: grey;
     overflow: hidden;
+    border-radius: 15px 50px;
 }
 
 .content {
