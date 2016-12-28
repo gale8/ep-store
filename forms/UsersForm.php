@@ -5,7 +5,11 @@ require_once 'HTML/QuickForm2/Container/Fieldset.php';
 require_once 'HTML/QuickForm2/Element/InputSubmit.php';
 require_once 'HTML/QuickForm2/Element/InputText.php';
 require_once 'HTML/QuickForm2/Element/Textarea.php';
+require_once 'HTML/QuickForm2/Element/Select.php';
 require_once 'HTML/QuickForm2/Element/InputCheckbox.php';
+require_once 'HTML/QuickForm2/Element/InputPassword.php';
+
+require_once 'model/PostaDB.php';
 
 abstract class UsersAbstractForm extends HTML_QuickForm2 {
 
@@ -13,9 +17,9 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
     public $ime_stranke;
     public $priimek_stranke;
     public $geslo_stranke;
+    public $geslo_stranke2;
     public $naslov_stevilka;
     public $id_poste;
-    #public $tel_st_stranke;
     public $stranka_aktivirana;
     public $button;
 
@@ -27,7 +31,10 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
         $this->email_stranke->setLabel('Elektronski naslov:');
         $this->email_stranke->addRule('maxlength', 'Email je predolg (do 45 znakov).', 45);
         $this->email_stranke->addRule('required', 'Vpišite email.');
-        $this->email_stranke->addRule('regex', 'Email ni veljaven.', '/^[a-z]+[@][a-z]+[.]+[a-z]+$/');
+        $this->email_stranke->addRule('callback', 'Vnesite veljaven elektronski naslov.', array(
+            'callback' => 'filter_var',
+            'arguments' => [FILTER_VALIDATE_EMAIL])
+        );
         $this->addElement($this->email_stranke);
 
         $this->ime_stranke = new HTML_QuickForm2_Element_InputText('ime_stranke');
@@ -49,37 +56,34 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
         $this->naslov_stevilka = new HTML_QuickForm2_Element_InputText('naslov_stevilka');
         $this->naslov_stevilka->setAttribute('size', 45);
         $this->naslov_stevilka->addRule('maxlength', 'Naslov je predolg (do 45 znakov).', 45);
-        $this->naslov_stevilka->setLabel('Naslov');
-        $this->naslov_stevilka->addRule('required', 'Vpišite naslov.');
-        $this->naslov_stevilka->addRule('regex', 'Samo črke.', '/^[a-zA-ZščćžŠČĆŽ ]+$/');
+        $this->naslov_stevilka->setLabel('Ulica in hišna številka:');
+        $this->naslov_stevilka->addRule('required', 'Vpišite ulico in hišno številko.');
+        $this->naslov_stevilka->addRule('regex', 'Uporabiti smete le črke, številke in presledek.', '/^[a-zA-ZščćžŠČĆŽ 0-9]+$/');
         $this->addElement($this->naslov_stevilka);
         
-        $this->geslo_stranke = new HTML_QuickForm2_Element_InputText('geslo_stranke');
-        $this->geslo_stranke->setAttribute('size', 45);
+        $this->geslo_stranke = new HTML_QuickForm2_Element_InputPassword('geslo_stranke');
+        $this->geslo_stranke->setAttribute('size', 15);
+        $this->geslo_stranke->setLabel('Vnesite geslo:');
         $this->geslo_stranke->addRule('maxlength', 'Geslo je predolgo (do 45 znakov).', 45);
-        $this->geslo_stranke->setLabel('Geslo');
-        $this->geslo_stranke->addRule('regex', 'Samo črke.', '/^[a-zA-ZščćžŠČĆŽ ]+$/');
-        $this->geslo_stranke->addRule('required', 'Vpišite geslo.');
+        $this->geslo_stranke->addRule('required', 'Vnesite geslo.');
+        $this->geslo_stranke->addRule('minlength', 'Geslo naj vsebuje vsaj 6 znakov.', 6);
+        $this->geslo_stranke->addRule('regex', 'V geslu uporabite vsaj 1 številko.', '/[0-9]+/');
+        $this->geslo_stranke->addRule('regex', 'V geslu uporabite vsaj 1 veliko črko.', '/[A-Z]+/');
+        $this->geslo_stranke->addRule('regex', 'V geslu uporabite vsaj 1 malo črko.', '/[a-z]+/');
         $this->addElement($this->geslo_stranke);
         
-        /*
-        $this->tel_st_stranke = new HTML_QuickForm2_Element_InputText('tel_st_stranke');
-        $this->tel_st_stranke->setAttribute('size', 30);
-        $this->tel_st_stranke->addRule('maxlength', 'Opis je predolg (do 45 znakov).', 45);
-        $this->tel_st_stranke->setLabel('Tel_st');
-        $this->tel_st_stranke->addRule('required', 'Vpišite opis artikla.');
-        $this->addElement($this->tel_st_stranke);
-        */
+        $this->geslo_stranke2 = new HTML_QuickForm2_Element_InputPassword('geslo_stranke2');
+        $this->geslo_stranke2->setLabel('Ponovite geslo:');
+        $this->geslo_stranke2->setAttribute('size', 15);
+        $this->geslo_stranke2->addRule('required', 'Ponovno vpišite izbrano geslo.');
+        $this->geslo_stranke2->addRule('eq', 'Gesli nista enaki.', $this->geslo_stranke);
+        $this->addElement($this->geslo_stranke2);
         
-        $this->id_poste = new HTML_QuickForm2_Element_InputText('id_poste');
-        $this->id_poste->setAttribute('size', 4);
+        $this->id_poste = new HTML_QuickForm2_Element_Select('id_poste');
+        #$this->id_poste->setAttribute('size', 4);
         $this->id_poste->setLabel('Vpišite id poste');
-        $this->id_poste->addRule('required', 'Vpišite id poste.');
-        $this->id_poste->addRule('callback', 'Vpišite številčno vrednost.', array(
-            'callback' => 'filter_var',
-            'arguments' => [FILTER_VALIDATE_INT]
-                )
-        );
+        $this->id_poste->loadOptions(PostaDB::sifrant());
+        $this->id_poste->addRule('required', 'Izberite pošto.');
         $this->addElement($this->id_poste);
         
         $this->stranka_aktivirana = new HTML_QuickForm2_Element_InputText('stranka_aktivirana');

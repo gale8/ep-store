@@ -15,5 +15,10 @@
     
         Ime: <b><?= $ime_stranke ?></b><br>
         Priimek: <b><?= $priimek_stranke ?></b><br>
+        Email: <b><?= $email_stranke ?></b><br>
+        Geslo: <b><?= $geslo_stranke ?></b><br>
+        Ulica in hišna številka: <b><?= $naslov_stevilka ?></b><br>
+        ID pošte: <b><?= $id_poste ?></b><br>
+        
 </p>
 
