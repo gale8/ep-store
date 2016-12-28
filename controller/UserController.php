@@ -7,10 +7,10 @@ require_once("forms/UsersForm.php");
 class UserController {
     
     public static function index() {
-        #echo ViewHelper::render("view/zacetna.php", [
-        #   "artikli" => ItemDB::getAll() 
-        #]);
-        ViewHelper::redirect(BASE_URL . "artikli");
+        echo ViewHelper::render("view/vse-stranke.php", [
+           "stranke" => UserDB::getAll() 
+        ]);
+        #ViewHelper::redirect(BASE_URL . "artikli");
     }
     /*
     public static function addForm($values = [

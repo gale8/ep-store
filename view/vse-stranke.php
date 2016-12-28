@@ -2,9 +2,9 @@
 
 <link rel="stylesheet" type="text/css" href="<?= CSS_URL . "style.css" ?>">
 <meta charset="UTF-8" />
-<title>Spletna trgovina</title>
+<title>Vse stranke</title>
 
-<h1>Spletna trgovina</h1>
+<h1>Vse stranke</h1>
 
 <p>
     <a class="nav" href="<?= BASE_URL . "registracija" ?>">Registracija</a>
@@ -19,14 +19,14 @@
 </p>
 
 
-<?php foreach ($artikli as $artikel): ?>
+<?php foreach ($stranke as $stranka): ?>
     <div class="square">
         <div class="content">
             <div class="table">
                 <div class="table-cell">
                     
-                    <a href="<?= BASE_URL . "artikli/" . $artikel["id_artikla"] ?>"> <b><span style="text-transform: uppercase"><?= $artikel["ime_artikla"] ?></span></b>
-                        <br>cena: <?= $artikel["cena"] ?> € </a>
+                    <a href="<?= BASE_URL . "stranka/" . $stranka["id_stranke"] ?>"> <b><span style="text-transform: uppercase"><?= $stranka["email_stranke"] ?></span></b>
+                        <br>Ime in priimek: <?= $stranka["ime_stranke"] . ' ' . $stranka["priimek_stranke"]?> </a>
                     
                 </div> 
             </div>
