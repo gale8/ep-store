@@ -26,17 +26,7 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
     public function __construct($id_stranke) {
         parent::__construct($id_stranke);
 
-        $this->email_stranke = new HTML_QuickForm2_Element_InputText('email_stranke');
-        $this->email_stranke->setAttribute('size', 45);
-        $this->email_stranke->setLabel('Elektronski naslov:');
-        $this->email_stranke->addRule('maxlength', 'Email je predolg (do 45 znakov).', 45);
-        $this->email_stranke->addRule('required', 'Vpišite email.');
-        $this->email_stranke->addRule('callback', 'Vnesite veljaven elektronski naslov.', array(
-            'callback' => 'filter_var',
-            'arguments' => [FILTER_VALIDATE_EMAIL])
-        );
-        $this->addElement($this->email_stranke);
-
+        
         $this->ime_stranke = new HTML_QuickForm2_Element_InputText('ime_stranke');
         $this->ime_stranke->setAttribute('size', 45);
         $this->ime_stranke->addRule('maxlength', 'Ime je predolgo (do 45 znakov).', 45);
@@ -61,6 +51,24 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
         $this->naslov_stevilka->addRule('regex', 'Uporabiti smete le črke, številke in presledek.', '/^[a-zA-ZščćžŠČĆŽ 0-9]+$/');
         $this->addElement($this->naslov_stevilka);
         
+        $this->id_poste = new HTML_QuickForm2_Element_Select('id_poste');
+        #$this->id_poste->setAttribute('size', 4);
+        $this->id_poste->setLabel('Izberite pošto:');
+        $this->id_poste->loadOptions(PostaDB::sifrant());
+        $this->id_poste->addRule('required', 'Izberite pošto.');
+        $this->addElement($this->id_poste);
+        
+        $this->email_stranke = new HTML_QuickForm2_Element_InputText('email_stranke');
+        $this->email_stranke->setAttribute('size', 45);
+        $this->email_stranke->setLabel('Elektronski naslov:');
+        $this->email_stranke->addRule('maxlength', 'Email je predolg (do 45 znakov).', 45);
+        $this->email_stranke->addRule('required', 'Vpišite email.');
+        $this->email_stranke->addRule('callback', 'Vnesite veljaven elektronski naslov.', array(
+            'callback' => 'filter_var',
+            'arguments' => [FILTER_VALIDATE_EMAIL])
+        );
+        $this->addElement($this->email_stranke);
+        
         $this->geslo_stranke = new HTML_QuickForm2_Element_InputPassword('geslo_stranke');
         $this->geslo_stranke->setAttribute('size', 15);
         $this->geslo_stranke->setLabel('Vnesite geslo:');
@@ -78,13 +86,7 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
         $this->geslo_stranke2->addRule('required', 'Ponovno vpišite izbrano geslo.');
         $this->geslo_stranke2->addRule('eq', 'Gesli nista enaki.', $this->geslo_stranke);
         $this->addElement($this->geslo_stranke2);
-        
-        $this->id_poste = new HTML_QuickForm2_Element_Select('id_poste');
-        #$this->id_poste->setAttribute('size', 4);
-        $this->id_poste->setLabel('Vpišite id poste');
-        $this->id_poste->loadOptions(PostaDB::sifrant());
-        $this->id_poste->addRule('required', 'Izberite pošto.');
-        $this->addElement($this->id_poste);
+       
         
         $this->stranka_aktivirana = new HTML_QuickForm2_Element_InputText('stranka_aktivirana');
         $this->stranka_aktivirana->setAttribute('size', 1);

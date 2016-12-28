@@ -12,7 +12,7 @@
     <a class="nav" href="<?= BASE_URL . "vpisStranke" ?>">Vpis stranke</a>
     <a class="nav" href="<?= BASE_URL . "vpisProdajalca" ?>">Vpis prodajalca</a>
     <a class="nav" href="<?= BASE_URL . "vpisAdministratorja" ?>">Vpis administratorja</a>
-    <a class="nav" href="<?= BASE_URL . "stranka" ?>">Vse stranke</a>
+    <a class="nav" href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a>
     <a class="nav" href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>
     
     <!-- IZBRISI ZGORNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->
