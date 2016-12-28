@@ -36,7 +36,7 @@ abstract class ItemsAbstractForm extends HTML_QuickForm2 {
 
         $this->cena = new HTML_QuickForm2_Element_InputText('cena');
         $this->cena->setAttribute('size', 10);
-        $this->cena->setLabel('Cena:');
+        $this->cena->setLabel('Cena (€):');
         $this->cena->addRule('required', 'Vpišite ceno.');
         $this->cena->addRule('callback', 'Vpišite številčno vrednost.', array(
             'callback' => 'filter_var',
@@ -47,15 +47,11 @@ abstract class ItemsAbstractForm extends HTML_QuickForm2 {
         
         $this->artikel_aktiviran = new HTML_QuickForm2_Element_InputText('artikel_aktiviran');
         $this->artikel_aktiviran->setAttribute('size', 1);
-        $this->artikel_aktiviran->setLabel('Aktiviram artikel? (1:aktiviran  2:neaktiviran)');
-        $this->artikel_aktiviran->addRule('required', 'Vpišite ceno.');
-        $this->artikel_aktiviran->addRule('gte', 'Številka mora biti => 1.', 1);
-        $this->artikel_aktiviran->addRule('lte', 'Številka mora biti <=2.', 2);
-        $this->artikel_aktiviran->addRule('callback', 'Vpišite številčno vrednost.', array(
-            'callback' => 'filter_var',
-            'arguments' => [FILTER_VALIDATE_INT]
-                )
-        );
+        $this->artikel_aktiviran->setLabel('Aktiviram artikel? (1:aktiviran  0:neaktiviran)');
+        $this->artikel_aktiviran->addRule('required', 'Vpišite 0 ali 1.');
+        #$this->artikel_aktiviran->addRule('gte', 'Številka mora biti => 0.', 0);
+        #$this->artikel_aktiviran->addRule('lte', 'Številka mora biti <=1.', 1);
+        $this->artikel_aktiviran->addRule('regex', 'Vpišete lahko samo 0 ali 1.', '/^[01]{1}$/');
         $this->addElement($this->artikel_aktiviran);
         
         $this->button = new HTML_QuickForm2_Element_InputSubmit(null);
@@ -87,6 +83,7 @@ class ItemsEditForm extends ItemsAbstractForm {
     }
 }
 
+/*
 class ItemsDeleteForm extends HTML_QuickForm2 {
     public $id_artikla;
 
@@ -106,4 +103,5 @@ class ItemsDeleteForm extends HTML_QuickForm2 {
         $this->addElement($this->button);
     }
 }
+ */
 

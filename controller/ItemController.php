@@ -7,7 +7,7 @@ require_once("forms/ItemsForm.php");
 class ItemController {
     
     public static function index() {
-        echo ViewHelper::render("view/seznam-artiklov-kupec.php", [
+        echo ViewHelper::render("view/zacetna.php", [
            "artikli" => ItemDB::getAll() 
         ]);
     }

@@ -16,14 +16,14 @@
 </p>
 
 
-<?php foreach ($artikli as $atikel): ?>
+<?php foreach ($artikli as $artikel): ?>
     <div class="square">
         <div class="content">
             <div class="table">
                 <div class="table-cell">
                     
-                    <a href="<?= BASE_URL . "artikli/" . $atikel["id_artikla"] ?>"> <b><span style="text-transform: uppercase"><?= $atikel["ime_artikla"] ?></span></b>
-                        <br>cena: <?= $atikel["cena"] ?> EUR <br> opis: <?= $atikel["opis_artikla"] ?><a/>
+                    <a href="<?= BASE_URL . "artikli/" . $artikel["id_artikla"] ?>"> <b><span style="text-transform: uppercase"><?= $artikel["ime_artikla"] ?></span></b>
+                        <br>cena: <?= $artikel["cena"] ?> € </a>
                     
                 </div> 
             </div>

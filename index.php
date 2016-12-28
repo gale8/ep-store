@@ -3,6 +3,7 @@
 session_start();
 
 require_once("controller/ItemController.php");
+require_once("controller/UserController.php");
 
 define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php"));
 define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "/static/images/");
@@ -19,14 +20,6 @@ $urls = [
             ItemController::get($id);
         }
     },
-    
-    #"/^artikli\/dodaj/" => function ($method) {
-    #    if ($method == "POST") {
-    #        ItemController::add();
-    #    } else {
-    #        ItemController::addForm();
-    #    }
-    #},
             
     "/^artikli\/dodaj/" => function () {
         ItemController::add();
@@ -40,17 +33,16 @@ $urls = [
         }
     },
             
-    "/^artikli\/izbrisi\/(\d+)$/" => function ($method, $id) {
-        if ($method == "POST") {
-            ItemController::delete($id);
-        }
+    "/^registracija\/?(\d+)?$/" => function () {
+        UserController::add();
     },
             
-    "/^registracija\/?(\d+)?$/" => function ($method) {
-        if ($method == "POST") {
-            UserController::add();
+    "/^stranka\/?(\d+)?$/" => function ($method, $id = null) {
+        if ($id == null) {
+            UsersController::index();
+            
         } else {
-            UserController::addForm();
+            UsersController::get($id);
         }
     },
             

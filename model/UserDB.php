@@ -6,17 +6,16 @@ class UserDB extends AbstractDB {
     
    #getAll vrne samo aktivirane artikle (pogled za kupce) IZBRIŠI OR artikel_aktiviran = 2 (sam za test)
     public static function getAll() {
-        return parent::query("SELECT id_artikla, ime_artikla, cena, opis_artikla, artikel_aktiviran"
-                        . " FROM artikel"
-                        . " WHERE artikel_aktiviran = 1 OR artikel_aktiviran = 2"
-                        . " ORDER BY id_artikla ASC");
+        return parent::query("SELECT email_stranke, id_naslova, ime_stranke, priimek_stranke, geslo_stranke, stranka_aktivirana, id_stranke"
+                        . " FROM stranka"
+                        . " ORDER BY id_stanke ASC");
     }
     
     
     
     public static function insert(array $params) {
-        return parent::modify("INSERT INTO artikel (ime_artikla, cena, opis_artikla, artikel_aktiviran) "
-                        . " VALUES (:ime_artikla, :cena, :opis_artikla, :artikel_aktiviran)", $params);
+        return parent::modify("INSERT INTO stranka (email_stranke, ime_stranke, priimek_stranke, geslo_stranke) "
+                        . " VALUES (:email_stranke, :ime_stranke, :priimek_stranke, :geslo_stranke)", $params);
     }
     
     
@@ -31,13 +30,13 @@ class UserDB extends AbstractDB {
     }
 
     public static function get(array $id) {
-        $artikli = parent::query("SELECT id_artikla, ime_artikla, cena, opis_artikla, artikel_aktiviran"
-                        . " FROM artikel"
-                        . " WHERE id_artikla = :id_artikla", $id);
-        if (count($artikli) == 1) {
-            return $artikli[0];
+        $stranke = parent::query("SELECT email_stranke, id_naslova, ime_stranke, priimek_stranke, geslo_stranke, stranka_aktivirana, id_stranke"
+                        . " FROM stranka"
+                        . " WHERE id_stranke = :id_stranke", $id);
+        if (count($stranke) == 1) {
+            return $stranke[0];
         } else {
-            throw new InvalidArgumentException("Ni tega artikla!");
+            throw new InvalidArgumentException("Stranka ne obstaja!");
         }
     } 
     
