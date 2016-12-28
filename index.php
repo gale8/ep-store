@@ -20,12 +20,16 @@ $urls = [
         }
     },
     
-    "/^artikli\/dodaj/" => function ($method) {
-        if ($method == "POST") {
-            ItemController::add();
-        } else {
-            ItemController::addForm();
-        }
+    #"/^artikli\/dodaj/" => function ($method) {
+    #    if ($method == "POST") {
+    #        ItemController::add();
+    #    } else {
+    #        ItemController::addForm();
+    #    }
+    #},
+            
+    "/^artikli\/dodaj/" => function () {
+        ItemController::add();
     },
             
     "/^artikli\/uredi\/(\d+)$/" => function ($method, $id) {
@@ -39,6 +43,14 @@ $urls = [
     "/^artikli\/izbrisi\/(\d+)$/" => function ($method, $id) {
         if ($method == "POST") {
             ItemController::delete($id);
+        }
+    },
+            
+    "/^registracija\/?(\d+)?$/" => function ($method) {
+        if ($method == "POST") {
+            UserController::add();
+        } else {
+            UserController::addForm();
         }
     },
             

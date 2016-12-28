@@ -2,6 +2,7 @@
     margin-right: auto;
     width: 75%;
     text-align: center;
+    
 }
 
 html { 
@@ -11,14 +12,17 @@ html {
   -o-background-size: cover;
   background-size: cover;
   opacity: 0.89;
-  
+  font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
+}
+
+* {
+    text-align: center;
 }
 
 a:link, a:visited {
-    color: #000000;
     background-color: #f44336;
     color: white;
-    padding: 25px 35px;
+    padding: 45px 55px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -28,6 +32,24 @@ a:link, a:visited {
 a:hover {
     color: #000000;
     background-color: #f44336;
+    opacity:1;
+    
+}
+
+a.nav:link, a.nav:visited{
+    color: cornflowerblue;
+    background-color: #999999;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 15px 50px;
+}
+
+a.nav:hover {
+    color: red;
+    background-color: #999999;
     opacity:1;
     
 }

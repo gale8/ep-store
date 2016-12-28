@@ -2,6 +2,7 @@
 
 require_once("ViewHelper.php");
 require_once("model/ItemDB.php");
+require_once("forms/ItemsForm.php");
 
 class ItemController {
     
@@ -11,23 +12,25 @@ class ItemController {
         ]);
     }
     
-    public static function addForm($values = [
-        "ime_artikla" => "",
-        "cena" => "",
-        "opis_artikla" => ""
-    ]) {
-        echo ViewHelper::render("view/dodaj-artikel.php", $values);
-    }
+    #public static function addForm($values = [
+    #    "ime_artikla" => "",
+    #    "cena" => "",
+    #    "opis_artikla" => ""
+    #]) {
+    #    echo ViewHelper::render("view/dodaj-artikel.php", $values);
+    #}
 
     public static function add() {
-        $data = filter_input_array(INPUT_POST, self::getRules());
-        #var_dump(INPUT_POST);
-        #var_dump($data);
-        if (self::checkValues($data)) {
-            $id = ItemDB::insert($data);
-            echo ViewHelper::redirect(BASE_URL . "artikli/" . $id);
+        $form = new ItemsInsertForm("add_form");
+
+        if ($form->validate()) {
+            $id = ItemDB::insert($form->getValue());
+            ViewHelper::redirect(BASE_URL . "artikli/" . $id);
         } else {
-            self::addForm($data);
+            echo ViewHelper::render("view/artikel-form.php", [
+                "title" => "Dodaj artikel",
+                "form" => $form
+            ]);
         }
     }
     
@@ -36,50 +39,60 @@ class ItemController {
     }
     
     
-    public static function edit($id) {
-        $data = filter_input_array(INPUT_POST, self::getRules());
+    public static function edit() {
+        
+        $editForm = new ItemsEditForm("edit_form");
 
-        if (self::checkValues($data)) {
-            $data["id_artikla"] = $id;
-            ItemDB::update($data);
-            ViewHelper::redirect(BASE_URL . "artikli/" . $data["id_artikla"]);
-        } else {
-            self::editForm($data);
+        if ($editForm->isSubmitted()) {
+            if ($editForm->validate()) {
+                $data = $editForm->getValue();
+                ItemDB::update($data);
+                ViewHelper::redirect(BASE_URL . "artikli/" . $data["id_artikla"]);
+            } else {
+                echo ViewHelper::render("view/artikel-form.php", [
+                    "title" => "Uredi artikel",
+                    "form" => $editForm
+                ]);
+            }
         }
     }
     
     public static function editForm($params) {
-        if (is_array($params)) {
-            $values = $params;
-        } else if (is_numeric($params)) {
-            $values = ItemDB::get(["id_artikla" => $params]);
-        } else {
-            throw new InvalidArgumentException("Obrazca za urejanje artikla ni mogoce prikazati.");
-        }
-
-        echo ViewHelper::render("view/uredi-artikel.php", $values);
+        $artikel = ItemDB::get(["id_artikla" => $params]);
+        $editForm = new ItemsEditForm("edit_form");
+        
+        $dataSource = new HTML_QuickForm2_DataSource_Array($artikel);
+        
+        $editForm->addDataSource($dataSource);
+        
+        echo ViewHelper::render("view/artikel-form.php", [
+                    "title" => "Uredi artikel",
+                    "form" => $editForm
+  
+        ]);
     }
     
-    public static function delete($id) {
-        $data = filter_input_array(INPUT_POST, [
-            'delete_confirmation' => FILTER_REQUIRE_SCALAR
-        ]);
+    #public static function delete($id) {
+    #    $data = filter_input_array(INPUT_POST, [
+    #        'delete_confirmation' => FILTER_REQUIRE_SCALAR
+    #    ]);
+    #    var_dump($data);
 
-        if (self::checkValues($data)) {
-            ItemDB::delete(["id_artikla" => $id]);
-            $url = BASE_URL . "artikli";
-        } else {
-            $url = BASE_URL . "artikli/uredi/" . $id;
-        }
+    #       if (self::checkValues($data)) {
+    #       ItemDB::delete(["id_artikla" => $id]);
+    #        $url = BASE_URL . "artikli";
+    #    } else {
+    #        $url = BASE_URL . "artikli/uredi/" . $id;
+    #    }
 
-        ViewHelper::redirect($url);
-    }
+    #       ViewHelper::redirect($url);
+    #}
     
     
     /**
      * Returns an array of filtering rules for manipulation books
      * @return type
-     */
+     
     public static function getRules() {
         return [
             'ime_artikla' => FILTER_SANITIZE_SPECIAL_CHARS,
@@ -88,12 +101,13 @@ class ItemController {
             'artikel_aktiviran' => FILTER_SANITIZE_SPECIAL_CHARS
         ];
     }
-    
+    */
     /**
      * Returns TRUE if given $input array contains no FALSE values
      * @param type $input
      * @return type
-     */
+     
+
     public static function checkValues($input) {
         if (empty($input)) {
             return FALSE;
@@ -106,6 +120,6 @@ class ItemController {
 
         return $result;
     }
-            
+     */       
  
 }

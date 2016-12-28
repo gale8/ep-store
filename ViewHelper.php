@@ -16,10 +16,6 @@ class ViewHelper {
     
     
     
-    
-    
-    
-    
     // Displays a simple 404 message
     public static function error404() {
         header('This is not the page you are looking for', true, 404);

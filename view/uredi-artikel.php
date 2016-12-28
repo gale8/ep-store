@@ -15,7 +15,7 @@
 <form action="<?= BASE_URL . "artikli/uredi/" . $id_artikla ?>" method="post">
     <input type="hidden" name="id" value="<?= $id_artikla ?>"  />
     <p><label>Ime artikla: <input type="text" name="ime_artikla" value="<?= $ime_artikla ?>" autofocus /></label></p>
-    <p><label>Cena: <input type="number" name="cena" value="<?= $cena ?>" /></label></p>
+    <p><label>Cena: <input type="number" step="0.01" min="0" name="cena" value="<?= $cena ?>" /> EUR</label></p>
     <p><label>Opis artikla: <br/><textarea name="opis_artikla" cols="70" rows="10"><?= $opis_artikla ?></textarea></label></p>
     <input type="hidden" name="artikel_aktiviran" value="2"/>
     <p><label>Aktiviram artikel? <input type="checkbox" name="artikel_aktiviran" <?= $artikel_aktiviran==1 ? 'checked' : '';?> value="1"/></label>

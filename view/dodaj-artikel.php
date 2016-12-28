@@ -13,7 +13,7 @@
 
 <form action="<?= BASE_URL . "artikli/dodaj" ?>" method="post">
     <p><label>Ime artikla: <input type="text" name="ime_artikla" value="<?= $ime_artikla ?>" autofocus /></label></p>
-    <p><label>Cena: <input type="number" name="cena" value="<?= $cena ?>" /></label></p>
+    <p><label>Cena: <input type="number" step="0.01" min="0" name="cena" value="<?= $cena ?>" /></label></p>
     <p><label>Opis artikla: <br/><textarea name="opis_artikla" cols="70" rows="10"><?= $opis_artikla ?></textarea></label></p>
     <input type="hidden" name="artikel_aktiviran" value="2"/>
     <p><label>Aktiviram artikel? <input type="checkbox" name="artikel_aktiviran" value="1"/></label>
