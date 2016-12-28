@@ -14,6 +14,13 @@ class UserDB extends AbstractDB {
     
     
     public static function insert(array $params) {
+        
+        #echo("<script>console.log('PHP: ".json_encode($params)."');</script>");
+        #za hashiranje gesla - preverjanje se izvaja s funkcijo password_verify($password, $hash)
+        $geslo = $params["geslo_stranke"];
+        $hash = password_hash($geslo, PASSWORD_DEFAULT);
+        $params["geslo_stranke"] = $hash;
+        
         return parent::modify("INSERT INTO stranka (email_stranke, ime_stranke, priimek_stranke, geslo_stranke, naslov_stevilka, id_poste, stranka_aktivirana) "
                         . " VALUES (:email_stranke, :ime_stranke, :priimek_stranke, :geslo_stranke, :naslov_stevilka, :id_poste, :stranka_aktivirana)", $params);
     }
@@ -30,6 +37,7 @@ class UserDB extends AbstractDB {
     }
 
     public static function get(array $id) {
+        
         $stranke = parent::query("SELECT email_stranke, ime_stranke, priimek_stranke, geslo_stranke, stranka_aktivirana, id_stranke, naslov_stevilka, id_poste"
                         . " FROM stranka"
                         . " WHERE id_stranke = :id_stranke", $id);
