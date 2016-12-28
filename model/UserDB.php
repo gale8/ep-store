@@ -6,16 +6,16 @@ class UserDB extends AbstractDB {
     
    #getAll vrne samo aktivirane artikle (pogled za kupce) IZBRIŠI OR artikel_aktiviran = 2 (sam za test)
     public static function getAll() {
-        return parent::query("SELECT email_stranke, id_naslova, ime_stranke, priimek_stranke, geslo_stranke, stranka_aktivirana, id_stranke"
+        return parent::query("SELECT email_stranke, ime_stranke, priimek_stranke, geslo_stranke, stranka_aktivirana, id_stranke, naslov_stevilka, id_poste"
                         . " FROM stranka"
-                        . " ORDER BY id_stanke ASC");
+                        . " ORDER BY id_stranke ASC");
     }
     
     
     
     public static function insert(array $params) {
-        return parent::modify("INSERT INTO stranka (email_stranke, ime_stranke, priimek_stranke, geslo_stranke) "
-                        . " VALUES (:email_stranke, :ime_stranke, :priimek_stranke, :geslo_stranke)", $params);
+        return parent::modify("INSERT INTO stranka (email_stranke, ime_stranke, priimek_stranke, geslo_stranke, naslov_stevilka, id_poste, stranka_aktivirana) "
+                        . " VALUES (:email_stranke, :ime_stranke, :priimek_stranke, :geslo_stranke, :naslov_stevilka, :id_poste, :stranka_aktivirana)", $params);
     }
     
     
@@ -30,7 +30,7 @@ class UserDB extends AbstractDB {
     }
 
     public static function get(array $id) {
-        $stranke = parent::query("SELECT email_stranke, id_naslova, ime_stranke, priimek_stranke, geslo_stranke, stranka_aktivirana, id_stranke"
+        $stranke = parent::query("SELECT email_stranke, ime_stranke, priimek_stranke, geslo_stranke, stranka_aktivirana, id_stranke, naslov_stevilka, id_poste"
                         . " FROM stranka"
                         . " WHERE id_stranke = :id_stranke", $id);
         if (count($stranke) == 1) {

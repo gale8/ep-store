@@ -13,9 +13,10 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
     public $ime_stranke;
     public $priimek_stranke;
     public $geslo_stranke;
-    public $id_naslova;
+    public $naslov_stevilka;
+    public $id_poste;
     #public $tel_st_stranke;
-    public $uporabnik_aktiviran;
+    public $stranka_aktivirana;
     public $button;
 
     public function __construct($id_stranke) {
@@ -45,6 +46,14 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
         $this->priimek_stranke->addRule('regex', 'Samo črke.', '/^[a-zA-ZščćžŠČĆŽ ]+$/');
         $this->addElement($this->priimek_stranke);
         
+        $this->naslov_stevilka = new HTML_QuickForm2_Element_InputText('naslov_stevilka');
+        $this->naslov_stevilka->setAttribute('size', 45);
+        $this->naslov_stevilka->addRule('maxlength', 'Naslov je predolg (do 45 znakov).', 45);
+        $this->naslov_stevilka->setLabel('Naslov');
+        $this->naslov_stevilka->addRule('required', 'Vpišite naslov.');
+        $this->naslov_stevilka->addRule('regex', 'Samo črke.', '/^[a-zA-ZščćžŠČĆŽ ]+$/');
+        $this->addElement($this->naslov_stevilka);
+        
         $this->geslo_stranke = new HTML_QuickForm2_Element_InputText('geslo_stranke');
         $this->geslo_stranke->setAttribute('size', 45);
         $this->geslo_stranke->addRule('maxlength', 'Geslo je predolgo (do 45 znakov).', 45);
@@ -62,29 +71,29 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
         $this->addElement($this->tel_st_stranke);
         */
         
-        $this->id_naslova = new HTML_QuickForm2_Element_InputText('id_naslova');
-        $this->id_naslova->setAttribute('size', 4);
-        $this->id_naslova->setLabel('Vpišite id naslova');
-        $this->id_naslova->addRule('required', 'Vpišite id naslova.');
-        $this->id_naslova->addRule('callback', 'Vpišite številčno vrednost.', array(
+        $this->id_poste = new HTML_QuickForm2_Element_InputText('id_poste');
+        $this->id_poste->setAttribute('size', 4);
+        $this->id_poste->setLabel('Vpišite id poste');
+        $this->id_poste->addRule('required', 'Vpišite id poste.');
+        $this->id_poste->addRule('callback', 'Vpišite številčno vrednost.', array(
             'callback' => 'filter_var',
             'arguments' => [FILTER_VALIDATE_INT]
                 )
         );
-        $this->addElement($this->id_naslova);
+        $this->addElement($this->id_poste);
         
-        $this->uporabnik_aktiviran = new HTML_QuickForm2_Element_InputText('uporabnik_aktiviran');
-        $this->uporabnik_aktiviran->setAttribute('size', 1);
-        $this->uporabnik_aktiviran->setLabel('Aktiviram profil? (1:aktiviran  0:neaktiviran)');
-        $this->uporabnik_aktiviran->addRule('required', 'Vpišite 0 ali 1.');
-        $this->uporabnik_aktiviran->addRule('gte', 'Številka mora biti => 0.', 0);
-        $this->uporabnik_aktiviran->addRule('lte', 'Številka mora biti <=1.', 1);
-        $this->uporabnik_aktiviran->addRule('callback', 'Vpišite številčno vrednost.', array(
+        $this->stranka_aktivirana = new HTML_QuickForm2_Element_InputText('stranka_aktivirana');
+        $this->stranka_aktivirana->setAttribute('size', 1);
+        $this->stranka_aktivirana->setLabel('Aktiviram profil? (1:aktiviran  0:neaktiviran)');
+        $this->stranka_aktivirana->addRule('required', 'Vpišite 0 ali 1.');
+        $this->stranka_aktivirana->addRule('gte', 'Številka mora biti => 0.', 0);
+        $this->stranka_aktivirana->addRule('lte', 'Številka mora biti <=1.', 1);
+        $this->stranka_aktivirana->addRule('callback', 'Vpišite številčno vrednost.', array(
             'callback' => 'filter_var',
             'arguments' => [FILTER_VALIDATE_INT]
                 )
         );
-        $this->addElement($this->uporabnik_aktiviran);
+        $this->addElement($this->stranka_aktivirana);
         
         $this->button = new HTML_QuickForm2_Element_InputSubmit(null);
         $this->addElement($this->button);

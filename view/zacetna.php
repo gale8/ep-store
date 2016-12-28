@@ -8,6 +8,7 @@
 
 <p>
     <a class="nav" href="<?= BASE_URL . "registracija" ?>">Registracija</a>
+    <a class="nav" href="<?= BASE_URL . "registracijaProdajalca" ?>">Registracija prodajalca</a>
     <a class="nav" href="<?= BASE_URL . "vpisStranke" ?>">Vpis stranke</a>
     <a class="nav" href="<?= BASE_URL . "vpisProdajalca" ?>">Vpis prodajalca</a>
     <a class="nav" href="<?= BASE_URL . "vpisAdministratorja" ?>">Vpis administratorja</a>

@@ -37,12 +37,15 @@ $urls = [
         UserController::add();
     },
             
+    "/^registracija\/?(\d+)?$/" => function () {
+        UserController::add();
+    },        
+            
     "/^stranka\/?(\d+)?$/" => function ($method, $id = null) {
         if ($id == null) {
-            UsersController::index();
-            
+            UserController::index();
         } else {
-            UsersController::get($id);
+            UserController::get($id);
         }
     },
             

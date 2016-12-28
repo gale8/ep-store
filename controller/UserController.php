@@ -7,9 +7,10 @@ require_once("forms/UsersForm.php");
 class UserController {
     
     public static function index() {
-        echo ViewHelper::render("view/zacetna.php", [
-           "artikli" => UserDB::getAll() 
-        ]);
+        #echo ViewHelper::render("view/zacetna.php", [
+        #   "artikli" => ItemDB::getAll() 
+        #]);
+        ViewHelper::redirect(BASE_URL . "artikli");
     }
     /*
     public static function addForm($values = [
@@ -33,6 +34,10 @@ class UserController {
                 "form" => $form
             ]);
         }
+    }
+    
+    public static function get($id) {
+        echo ViewHelper::render("view/stranka-podrobnosti.php", UserDB::get(["id_stranke" => $id]));
     }
     
     
