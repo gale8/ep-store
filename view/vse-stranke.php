@@ -8,11 +8,12 @@
 
 <p>
     <a class="nav" href="<?= BASE_URL . "registracija" ?>">Registracija</a>
-    <a class="nav" href="<?= BASE_URL . "registracijaProdajalca" ?>">Registracija prodajalca</a>
+    <a class="nav" href="<?= BASE_URL . "registracijaZaposlenca" ?>">Registracija prodajalca</a>
     <a class="nav" href="<?= BASE_URL . "vpisStranke" ?>">Vpis stranke</a>
     <a class="nav" href="<?= BASE_URL . "vpisProdajalca" ?>">Vpis prodajalca</a>
     <a class="nav" href="<?= BASE_URL . "vpisAdministratorja" ?>">Vpis administratorja</a>
-    <a class="nav" href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a>
+    <a class="nav" href="<?= BASE_URL . "stranke" ?>">Vse stranke</a>
+    <a class="nav" href="<?= BASE_URL . "zaposlenci" ?>">Vsi zaposlenci</a>
     <a class="nav" href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>
     
     <!-- IZBRISI ZGORNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->
@@ -25,8 +26,8 @@
             <div class="table">
                 <div class="table-cell">
                     
-                    <a href="<?= BASE_URL . "stranka/" . $stranka["id_stranke"] ?>"> <b><span style="text-transform: uppercase"><?= $stranka["email_stranke"] ?></span></b>
-                        <br>Ime in priimek: <?= $stranka["ime_stranke"] . ' ' . $stranka["priimek_stranke"]?> </a>
+                    <a href="<?= BASE_URL . "stranke/" . $stranka["id_stranke"] ?>"> <b><span style="text-transform: uppercase"><?= $stranka["email_stranke"] ?></span></b>
+                        <br>Ime in priimek: <br><?= $stranka["ime_stranke"] . ' ' . $stranka["priimek_stranke"]?> </a>
                     
                 </div> 
             </div>

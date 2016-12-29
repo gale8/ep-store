@@ -18,6 +18,23 @@ drop table if exists prodajalec;
 
 drop table if exists stranka;
 
+drop table if exists zaposlenec;
+
+/*==============================================================*/
+/* Table: zaposlenec                                            */
+/*==============================================================*/
+create table zaposlenec
+(
+   email_zaposlenca        varchar(45) not null,
+   ime_zaposlenca          varchar(45) not null,
+   priimek_zaposlenca      varchar(45) not null,
+   geslo_zaposlenca        varchar(160) not null,
+   id_zaposlenca           int not null AUTO_INCREMENT,
+   zaposlenec_aktiviran    bool not null default 1,
+   je_admin                bool not null default 0,
+   primary key (id_zaposlenca)
+);
+
 /*==============================================================*/
 /* Table: administrator                                         */
 /*==============================================================*/
@@ -105,6 +122,7 @@ create table stranka
    id_stranke           int not null AUTO_INCREMENT,
    id_poste             int,
    naslov_stevilka      varchar(80) not null,
+   tel_st               varchar(45) not null,
    primary key (id_stranke)
 );
 

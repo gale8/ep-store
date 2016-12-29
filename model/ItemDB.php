@@ -27,10 +27,6 @@ class ItemDB extends AbstractDB {
                         . " WHERE id_artikla = :id_artikla", $params);
     }
 
-    public static function delete(array $id) {
-        return parent::modify("DELETE FROM artikel WHERE id_artikla = :id_artikla", $id);
-    }
-
     public static function get(array $id) {
         $artikli = parent::query("SELECT id_artikla, ime_artikla, cena, opis_artikla, artikel_aktiviran"
                         . " FROM artikel"

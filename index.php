@@ -4,6 +4,7 @@ session_start();
 
 require_once("controller/ItemController.php");
 require_once("controller/UserController.php");
+require_once("controller/EmployeeController.php");
 
 define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php"));
 define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "/static/images/");
@@ -36,16 +37,41 @@ $urls = [
     "/^registracija\/?(\d+)?$/" => function () {
         UserController::add();
     },
+              
             
-    "/^registracija\/?(\d+)?$/" => function () {
-        UserController::add();
-    },        
-            
-    "/^stranka\/?(\d+)?$/" => function ($method, $id = null) {
+    "/^stranke\/?(\d+)?$/" => function ($method, $id = null) {
         if ($id == null) {
             UserController::index();
         } else {
             UserController::get($id);
+        }
+    },
+            
+    "/^stranke\/uredi\/(\d+)$/" => function ($method, $id) {
+        if ($method == "POST") {
+            UserController::edit($id);
+        } else {
+            UserController::editForm($id);
+        }
+    },
+            
+    "/^registracijaZaposlenca\/?(\d+)?$/" => function () {
+        EmployeeController::add();
+    },
+            
+    "/^zaposlenci\/?(\d+)?$/" => function ($method, $id = null) {
+        if ($id == null) {
+            EmployeeController::index();
+        } else {
+            EmployeeController::get($id);
+        }
+    },
+            
+    "/^zaposlenci\/uredi\/(\d+)$/" => function ($method, $id) {
+        if ($method == "POST") {
+            EmployeeController::edit($id);
+        } else {
+            EmployeeController::editForm($id);
         }
     },
             

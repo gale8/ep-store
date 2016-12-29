@@ -8,7 +8,7 @@
 
 <p>
     <a class="nav" href="<?= BASE_URL . "artikli" ?>">Nazaj na artikle</a><!-- IZBRISI SPODNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->
-    <a class="nav" href="<?= BASE_URL . "stranka/uredi/" . $id_stranke ?>">Uredi profil</a>
+    <a class="nav" href="<?= BASE_URL . "stranke/uredi/" . $id_stranke ?>">Uredi profil</a>
 </p>
 
 <p>
@@ -18,6 +18,7 @@
         Email: <b><?= $email_stranke ?></b><br>
         Geslo: <b><?= $geslo_stranke ?></b><br>
         Ulica in hišna številka: <b><?= $naslov_stevilka ?></b><br>
+        Telefonska številka: <b><?= $tel_st ?></b><br>
         ID pošte: <b><?= $id_poste ?></b><br>
         
 </p>

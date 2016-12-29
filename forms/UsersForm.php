@@ -21,6 +21,7 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
     public $naslov_stevilka;
     public $id_poste;
     public $stranka_aktivirana;
+    public $tel_st;
     public $button;
 
     public function __construct($id_stranke) {
@@ -50,6 +51,15 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
         $this->naslov_stevilka->addRule('required', 'Vpišite ulico in hišno številko.');
         $this->naslov_stevilka->addRule('regex', 'Uporabiti smete le črke, številke in presledek.', '/^[a-zA-ZščćžŠČĆŽ 0-9]+$/');
         $this->addElement($this->naslov_stevilka);
+        
+        $this->tel_st = new HTML_QuickForm2_Element_InputText('tel_st');
+        $this->tel_st->setAttribute('size', 10);
+        $this->tel_st->setLabel('Telefonska številka:');
+        $this->tel_st->addRule('minlength', 'Popravite telefonsko številko (9 številk).', 9);
+        $this->tel_st->addRule('maxlength', 'Popravite telefonsko številko (9 številk).', 9);
+        $this->tel_st->addRule('required', 'Vpišite telefonsko številko.');
+        $this->tel_st->addRule('regex', 'Uporabiti smete le številke (brez presledkov).', '/^[0-9]+$/');
+        $this->addElement($this->tel_st);
         
         $this->id_poste = new HTML_QuickForm2_Element_Select('id_poste');
         #$this->id_poste->setAttribute('size', 4);
@@ -119,14 +129,14 @@ class UsersInsertForm extends UsersAbstractForm {
 }
 
 class UsersEditForm extends UsersAbstractForm {
-    public $id_artikla;
+    public $id_stranke;
 
-    public function __construct($id_artikla) {
-        parent::__construct($id_artikla);
+    public function __construct($id_stranke) {
+        parent::__construct($id_stranke);
 
-        $this->button->setAttribute('value', 'Uredi artikel');
-        $this->id_artikla = new HTML_QuickForm2_Element_InputHidden("id_artikla");
-        $this->addElement($this->id_artikla);
+        $this->button->setAttribute('value', 'Uredi profil');
+        $this->id_stranke = new HTML_QuickForm2_Element_InputHidden("id_stranke");
+        $this->addElement($this->id_stranke);
     }
 }
 

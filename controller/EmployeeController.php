@@ -1,49 +1,49 @@
 <?php
 
 require_once("ViewHelper.php");
-require_once("model/UserDB.php");
-require_once("forms/UsersForm.php");
+require_once("model/EmployeeDB.php");
+require_once("forms/EmployeesForm.php");
 
-class UserController {
+class EmployeeController {
     
     public static function index() {
-        echo ViewHelper::render("view/vse-stranke.php", [
-           "stranke" => UserDB::getAll() 
+        echo ViewHelper::render("view/vsi-zaposlenci.php", [
+           "zaposlenci" => EmployeeDB::getAll() 
         ]);
         #ViewHelper::redirect(BASE_URL . "artikli");
     }
 
     public static function add() {
-        $form = new UsersInsertForm("add_form");
+        $form = new EmployeesInsertForm("add_form");
         
         if ($form->validate()) {
-            $id = UserDB::insert($form->getValue());
-            ViewHelper::redirect(BASE_URL . "stranke/" . $id);
+            $id = EmployeeDB::insert($form->getValue());
+            ViewHelper::redirect(BASE_URL . "zaposlenci/" . $id);
         } else {
-            echo ViewHelper::render("view/user-form.php", [
-                "title" => "Registracija stranke",
+            echo ViewHelper::render("view/employee-form.php", [
+                "title" => "Registracija zaposlenca",
                 "form" => $form
             ]);
         }
     }
     
     public static function get($id) {
-        echo ViewHelper::render("view/stranka-podrobnosti.php", UserDB::get(["id_stranke" => $id]));
+        echo ViewHelper::render("view/zaposlenec-podrobnosti.php", EmployeeDB::get(["id_zaposlenca" => $id]));
     }
     
     
     public static function edit() {
         
-        $editForm = new UsersEditForm("edit_form");
+        $editForm = new EmployeesEditForm("edit_form");
 
         if ($editForm->isSubmitted()) {
             if ($editForm->validate()) {
                 $data = $editForm->getValue();
-                UserDB::update($data);
-                ViewHelper::redirect(BASE_URL . "stranke/" . $data["id_stranke"]);
+                EmployeeDB::update($data);
+                ViewHelper::redirect(BASE_URL . "zaposlenci/" . $data["id_zaposlenca"]);
             } else {
-                echo ViewHelper::render("view/user-form.php", [
-                    "title" => "Urejanje profila stranke",
+                echo ViewHelper::render("view/employee-form.php", [
+                    "title" => "Urejanje profila zaposlenca",
                     "form" => $editForm
                 ]);
             }
@@ -51,15 +51,15 @@ class UserController {
     }
     
     public static function editForm($params) {
-        $stranka = UserDB::get(["id_stranke" => $params]);
-        $editForm = new UsersEditForm("edit_form");
+        $zaposlenec = EmployeeDB::get(["id_zaposlenca" => $params]);
+        $editForm = new EmployeesEditForm("edit_form");
         
-        $dataSource = new HTML_QuickForm2_DataSource_Array($stranka);
+        $dataSource = new HTML_QuickForm2_DataSource_Array($zaposlenec);
         
         $editForm->addDataSource($dataSource);
         
-        echo ViewHelper::render("view/user-form.php", [
-                    "title" => "Urejanje profila stranke",
+        echo ViewHelper::render("view/employee-form.php", [
+                    "title" => "Urejanje profila zaposlenca",
                     "form" => $editForm
   
         ]);
