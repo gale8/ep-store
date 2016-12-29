@@ -21,7 +21,7 @@ class EmployeeController {
             ViewHelper::redirect(BASE_URL . "zaposlenci/" . $id);
         } else {
             echo ViewHelper::render("view/employee-form.php", [
-                "title" => "Registracija zaposlenca",
+                "title" => "Registracija prodajalca",
                 "form" => $form
             ]);
         }
@@ -43,7 +43,7 @@ class EmployeeController {
                 ViewHelper::redirect(BASE_URL . "zaposlenci/" . $data["id_zaposlenca"]);
             } else {
                 echo ViewHelper::render("view/employee-form.php", [
-                    "title" => "Urejanje profila zaposlenca",
+                    "title" => "Urejanje profila prodajalca",
                     "form" => $editForm
                 ]);
             }
