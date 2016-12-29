@@ -34,7 +34,7 @@ $urls = [
         }
     },
             
-    "/^registracija\/?(\d+)?$/" => function () {
+    "/^stranke\/registracija\/?(\d+)?$/" => function () {
         UserController::add();
     },
               
@@ -55,7 +55,7 @@ $urls = [
         }
     },
             
-    "/^registracijaZaposlenca\/?(\d+)?$/" => function () {
+    "/^zaposlenci\/registracija\/?(\d+)?$/" => function () {
         EmployeeController::add();
     },
             

@@ -7,8 +7,7 @@
 <h1>Spletna trgovina</h1>
 
 <p>
-    <a class="nav" href="<?= BASE_URL . "registracija" ?>">Registracija</a>
-    <a class="nav" href="<?= BASE_URL . "registracijaZaposlenca" ?>">Registracija prodajalca</a>
+    <a class="nav" href="<?= BASE_URL . "zaposlenci/stranke/registracija" ?>">Registracija prodajalca</a>
     <a class="nav" href="<?= BASE_URL . "vpisStranke" ?>">Vpis stranke</a>
     <a class="nav" href="<?= BASE_URL . "vpisProdajalca" ?>">Vpis prodajalca</a>
     <a class="nav" href="<?= BASE_URL . "vpisAdministratorja" ?>">Vpis administratorja</a>
