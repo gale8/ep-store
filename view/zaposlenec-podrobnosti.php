@@ -7,7 +7,7 @@
 <h1>Stranka: <?= $ime_zaposlenca ?></h1>
 
 <p>
-    <a class="nav" href="<?= BASE_URL . "artikli" ?>">Nazaj na artikle</a><!-- IZBRISI SPODNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->
+    <a class="nav" href="<?= BASE_URL . "artikli" ?>">Vsi artikle</a><!-- IZBRISI SPODNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->
     <a class="nav" href="<?= BASE_URL . "zaposlenci/uredi/" . $id_zaposlenca ?>">Uredi profil</a>
 </p>
 
