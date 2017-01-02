@@ -67,6 +67,12 @@ $urls = [
         }
     },
             
+            
+    "/^vpisStranke\/?(\d+)?$/" => function () {      
+        UserController::login();
+        
+    },            
+            
     "/^zaposlenci\/uredi\/(\d+)$/" => function ($method, $id) {
         if ($method == "POST") {
             EmployeeController::edit($id);
@@ -77,6 +83,10 @@ $urls = [
             
     "/^$/" => function () {
         ViewHelper::redirect(BASE_URL . "artikli");
+    },
+            
+    "/^izpis\/?(\d+)?$/" => function () {
+        UserController::logout();
     }
 ];
 

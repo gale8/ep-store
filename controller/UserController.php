@@ -3,6 +3,9 @@
 require_once("ViewHelper.php");
 require_once("model/UserDB.php");
 require_once("forms/UsersForm.php");
+require_once("forms/LoginForm.php");
+
+
 
 class UserController {
     
@@ -65,7 +68,38 @@ class UserController {
         ]);
     }
     
+    public static function login() {
+        $form = new LoginInsertForm("add_form");
+
+        if ($form->validate()) {
+            $data = $form->getValue();
+            UserDB::login($data);
+            if(isset($_SESSION['user_id'])){
+                ViewHelper::redirect(BASE_URL . "artikli");
+            }
+                      
+        } else {
+
+        echo ViewHelper::render("view/login-form.php", [
+                "title" => "Prijava",
+                "form" => $form
+            ]);
+        }
+
+    }
     
+    public static function logout(){
+        session_start();
+        setcookie(session_name(), '', 100);
+        session_unset();
+        session_destroy();
+        $_SESSION = array();
+        header("Location: index.php");
+    }
+
+
+
+
     /**
      * Returns an array of filtering rules for manipulation books
      * @return type
