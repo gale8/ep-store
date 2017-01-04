@@ -5,6 +5,7 @@ session_start();
 require_once("controller/ItemController.php");
 require_once("controller/UserController.php");
 require_once("controller/EmployeeController.php");
+require_once("controller/ItemRESTController.php");
 
 define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php"));
 define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "/static/images/");
@@ -87,7 +88,16 @@ $urls = [
             
     "/^izpis\/?(\d+)?$/" => function () {
         UserController::logout();
-    }
+    },
+    
+    # REST API
+    "/^api\/artikli\/(\d+)$/" => function ($method, $id) {
+        ItemRESTController::get($id);
+    },
+            
+    "/^api\/artikli$/" => function ($method, $id = null) {
+        ItemRESTController::index();
+    },
 ];
 
 foreach ($urls as $pattern => $controller) {
