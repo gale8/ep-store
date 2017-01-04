@@ -38,5 +38,12 @@ class ItemDB extends AbstractDB {
         }
     }
     
+    public static function getAllwithURI(array $prefix) {
+        return parent::query("SELECT id_artikla, ime_artikla, cena, opis_artikla, "
+                        . "          CONCAT(:prefix, id_artikla) as uri "
+                        . "FROM artikel "
+                        . "ORDER BY id_artikla ASC", $prefix);
+    }
+    
 }
 
