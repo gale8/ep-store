@@ -59,9 +59,10 @@ class UserDB extends AbstractDB {
         $stranke = parent::query("SELECT email_stranke, geslo_stranke, stranka_aktivirana, id_stranke"
                         . " FROM stranka"
                         . " WHERE email_stranke = :email_stranke", $params);        
-        
+        echo("<script>console.log('PHP: ".json_encode($stranke)."');</script>");
         if (count($stranke) == 1) {
             $data = $stranke[0];
+
             if(password_verify($params['geslo_stranke'], $data['geslo_stranke']) && $data['stranka_aktivirana'] == 1){
                 $_SESSION["user_id"] = $data['id_stranke'];
             } else {
