@@ -54,3 +54,10 @@ class ViewHelper {
     
 }
 
+class ResponseType {
+
+    const HTML = 0;
+    const JSON = 1;
+
+}
+
