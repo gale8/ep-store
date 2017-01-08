@@ -1,9 +1,9 @@
-+Dodajanje, brisanje, urejanje, pregled artiklov (delam na tem - Tilen)
+~~+Dodajanje, brisanje, urejanje, pregled artiklov (delam na tem - Tilen)
     +Dokoncaj brisanje artiklov
 
     +Iz ItemDB -> getAll -> izbriši OR artikel_aktiviran = 2 (sam za test. Artikli, ki niso aktivirani, ne smejo bit vidni kupcem)
     +V pregled-artikla-kupec.php zakomentiraj vrstico za vidnost aktiviranosti artikla + odstrani urejanje in dodajnje!!
-    +v seznam-artiklov-kupec.php zakomentiraj vrstico za vidnost dodajanja artiklov!
+    +v seznam-artiklov-kupec.php zakomentiraj vrstico za vidnost dodajanja artiklov!~~
 
 
 
