@@ -1,5 +1,5 @@
 
-### TODO
+## TODO
 
 - funkcije ki so narejene obkljukaj ✓
 - pri funkcijah na katerih delaš trenutno, v oklepaj dopiši svoje ime
