@@ -1,22 +1,20 @@
 
-## TODO
+# TODO #
 
-//funkcije ki so narejene obkljukaj ✓
-//funkcije na katerih delaš trenutno v oklepaj dopiši svoje ime
-//dodaj kar se še spomniš
+- funkcije ki so narejene obkljukaj ✓
+- funkcije na katerih delaš trenutno v oklepaj dopiši svoje ime
+- dodaj kar se še spomniš
 
 ** Avtorizacija **
-- za omejit strani, ki jih lahko vidi:
-                    -stranka
-                    -prodajalec
-                    -admin
+- za omejit strani, ki jih lahko vidi stranka, prodajalec, admin
+
 ** Košarica **
--dodajanje artiklov v košarico (shranjevanje v sejo?). Gumb za dodajo pri podrobnostih artiklov
--implementacija izvedbe nakupa/naročila
+- dodajanje artiklov v košarico (shranjevanje v sejo?). Gumb za dodajo pri podrobnostih artiklov
+- implementacija izvedbe nakupa/naročila
 
 ** Pregled naročil **
--Pregled vseh naročil
--Spreminjanje statusa naročilom (potrjen, preklican?(ali gre to k stranki?), storniran)
+- Pregled vseh naročil
+- Spreminjanje statusa naročilom (potrjen, preklican?(ali gre to k stranki?), storniran)
 ---------------------------------------------------------------------------------------------
 # ep-store (navodila iz učilnice)
 Seminarska naloga pri EP - spletna trgovina
