@@ -1,8 +1,8 @@
 
-# TODO #
+### TODO
 
 - funkcije ki so narejene obkljukaj ✓
-- funkcije na katerih delaš trenutno v oklepaj dopiši svoje ime
+- pri funkcijah na katerih delaš trenutno, v oklepaj dopiši svoje ime
 - dodaj kar se še spomniš
 
 ***Avtorizacija***
@@ -15,7 +15,9 @@
 ***Pregled naročil***
 - Pregled vseh naročil
 - Spreminjanje statusa naročilom (potrjen, preklican?(ali gre to k stranki?), storniran)
+
 ---------------------------------------------------------------------------------------------
+
 # ep-store (navodila iz učilnice)
 Seminarska naloga pri EP - spletna trgovina
 
