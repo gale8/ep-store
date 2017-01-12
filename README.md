@@ -5,14 +5,14 @@
 - funkcije na katerih delaš trenutno v oklepaj dopiši svoje ime
 - dodaj kar se še spomniš
 
-** Avtorizacija **
+***Avtorizacija***
 - za omejit strani, ki jih lahko vidi stranka, prodajalec, admin
 
-** Košarica **
+***Košarica***
 - dodajanje artiklov v košarico (shranjevanje v sejo?). Gumb za dodajo pri podrobnostih artiklov
 - implementacija izvedbe nakupa/naročila
 
-** Pregled naročil **
+***Pregled naročil***
 - Pregled vseh naročil
 - Spreminjanje statusa naročilom (potrjen, preklican?(ali gre to k stranki?), storniran)
 ---------------------------------------------------------------------------------------------
