@@ -1,8 +1,30 @@
-#[Spisek stvari, ki so za nardit!](TODO.txt)
 
-#Android, podatkovni model, mvc-rest (za "šablono") so v dropbox mapi.
+## TODO
 
-# ep-store
+- funkcije ki so narejene obkljukaj ✓
+- pri funkcijah na katerih delaš trenutno, v oklepaj dopiši svoje ime
+- dodaj kar se še spomniš
+
+***Avtorizacija***
+- za omejit strani, ki jih lahko vidi stranka, prodajalec, admin
+
+***Košarica***
+- dodajanje artiklov v košarico (shranjevanje v sejo?). Gumb za dodajo pri podrobnostih artiklov
+- implementacija izvedbe nakupa/naročila
+
+***Pregled naročil***
+- Pregled vseh naročil
+- Spreminjanje statusa naročilom (potrjen, preklican?(ali gre to k stranki?), storniran)
+
+***Vpis za zaposlence***
+- vpis za prodajalca in admina (najbolj praktično združeno, ker je v bazi atribut, ki določa ker zaposlenec je/ni admin)
+
+***Preverjanje z orodjem OWASP ZAP***
+- za preveriti, če je spletišče odporno proti SQL Injection in XSS
+
+---------------------------------------------------------------------------------------------
+
+# ep-store (navodila iz učilnice)
 Seminarska naloga pri EP - spletna trgovina
 
 Navodila za izdelavo seminarske naloge
