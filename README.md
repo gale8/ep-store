@@ -16,6 +16,9 @@
 - Pregled vseh naročil
 - Spreminjanje statusa naročilom (potrjen, preklican?(ali gre to k stranki?), storniran)
 
+***Preverjanje z orodjem OWASP ZAP***
+- za preveriti, če je spletišče odporno proti SQL Injection in XSS
+
 ---------------------------------------------------------------------------------------------
 
 # ep-store (navodila iz učilnice)
