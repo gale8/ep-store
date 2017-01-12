@@ -16,6 +16,9 @@
 - Pregled vseh naročil
 - Spreminjanje statusa naročilom (potrjen, preklican?(ali gre to k stranki?), storniran)
 
+***Vpis za zaposlence***
+- vpis za prodajalca in admina (najbolj praktično združeno, ker je v bazi atribut, ki določa ker zaposlenec je/ni admin)
+
 ***Preverjanje z orodjem OWASP ZAP***
 - za preveriti, če je spletišče odporno proti SQL Injection in XSS
 
