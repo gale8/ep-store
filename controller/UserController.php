@@ -76,13 +76,18 @@ class UserController {
             UserDB::login($data);
             if(isset($_SESSION['user_id'])){
                 ViewHelper::redirect(BASE_URL . "artikli");
-            }
+            } else {
+                echo ViewHelper::render("view/login-form.php", [
+                "title" => "Prijava",
+                "form" => $form
+                ]);            
+            }   
                       
         } else {
 
-        echo ViewHelper::render("view/login-form.php", [
-                "title" => "Prijava",
-                "form" => $form
+            echo ViewHelper::render("view/login-form.php", [
+                    "title" => "Prijava",
+                    "form" => $form
             ]);
         }
 
@@ -94,7 +99,7 @@ class UserController {
         session_unset();
         session_destroy();
         $_SESSION = array();
-        header("Location: index.php");
+        ViewHelper::redirect(BASE_URL . "artikli");
     }
 
 
