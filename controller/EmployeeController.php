@@ -3,6 +3,7 @@
 require_once("ViewHelper.php");
 require_once("model/EmployeeDB.php");
 require_once("forms/EmployeesForm.php");
+require_once("forms/LoginFormAdmin.php");
 
 class EmployeeController {
     
@@ -63,6 +64,36 @@ class EmployeeController {
                     "form" => $editForm
   
         ]);
+    }
+    
+     public static function login() {
+         
+         if (EmployeeDB::certData() == "null" ){
+            ViewHelper::redirect(BASE_URL . "vpisStranke");    
+         }
+         
+        $form = new LoginInsertFormAdmin("add_form");
+        
+        if ($form->validate()) {
+            $data = $form->getValue();
+            EmployeeDB::login($data);
+            if(isset($_SESSION['user_id'])){
+                ViewHelper::redirect(BASE_URL . "artikli");
+            } else {
+                echo ViewHelper::render("view/login-form.php", [
+                "title" => "Prijava zaposlenca",
+                "form" => $form
+                ]);            
+            }   
+                      
+        } else {
+
+            echo ViewHelper::render("view/login-form.php", [
+                    "title" => "Prijava zaposlenca",
+                    "form" => $form
+            ]);
+        }
+
     }
     
     

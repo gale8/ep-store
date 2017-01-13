@@ -56,6 +56,7 @@ class UserDB extends AbstractDB {
     
         public static function login(array $params) {                    
         
+        $err = 'Vpisani podatki se ne ujemajo ali pa še niste aktivirani.';
         $stranke = parent::query("SELECT email_stranke, geslo_stranke, stranka_aktivirana, id_stranke"
                         . " FROM stranka"
                         . " WHERE email_stranke = :email_stranke", $params);        
@@ -66,11 +67,11 @@ class UserDB extends AbstractDB {
             if(password_verify($params['geslo_stranke'], $data['geslo_stranke']) && $data['stranka_aktivirana'] == 1){
                 $_SESSION["user_id"] = $data['id_stranke'];
             } else {
-                echo 'Vpisani podatki se ne ujemajo ali pa še niste aktivirani.';
+                echo $err;
             }
             
         } else {            
-            echo 'Vpisani podatki se ne ujemajo ali pa še niste aktivirani.';
+            echo $err;
         }
     } 
     

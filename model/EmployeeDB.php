@@ -52,4 +52,47 @@ class EmployeeDB extends AbstractDB {
         }
     } 
     
+        public static function certData() {
+            $user = 'null';
+            
+            $authorized_users = ["Osebje"];
+            $client_cert = filter_input(INPUT_SERVER, "SSL_CLIENT_CERT");
+
+            if ($client_cert == null) {
+                return $user;
+            }
+            
+            $cert_data = openssl_x509_parse($client_cert);
+            $commonname = (is_array($cert_data['subject']['OU']) ?
+                $cert_data['subject']['OU'][0] : $cert_data['subject']['OU']);
+            
+            if (in_array($commonname, $authorized_users)) {
+                $user = $cert_data['subject']['emailAddress'];
+                return $user;
+            }             
+            
+    }
+    
+        public static function login(array $params) { 
+            
+        $err = 'Vpisani podatki se ne ujemajo ali pa še niste aktivirani.';
+        $stranke = parent::query("SELECT email_zaposlenca, geslo_zaposlenca, zaposlenec_aktiviran, id_zaposlenca, je_admin"
+                        . " FROM zaposlenec"
+                        . " WHERE email_zaposlenca = :email_zaposlenca", $params);        
+        
+        if (count($stranke) == 1) {
+            $data = $stranke[0];
+
+            if(password_verify($params['geslo_zaposlenca'], $data['geslo_zaposlenca']) && $data['zaposlenec_aktiviran'] == 1){
+                $_SESSION["user_id"] = $data['id_zaposlenca'];
+                $_SESSION["user_level"] = $data['je_admin'];
+            } else {
+                echo $err;
+            }
+            
+        } else {            
+            echo $err;
+        }
+    } 
+    
 }

@@ -78,7 +78,7 @@ class UserController {
                 ViewHelper::redirect(BASE_URL . "artikli");
             } else {
                 echo ViewHelper::render("view/login-form.php", [
-                "title" => "Prijava",
+                "title" => "Prijava stranke",
                 "form" => $form
                 ]);            
             }   
@@ -86,7 +86,7 @@ class UserController {
         } else {
 
             echo ViewHelper::render("view/login-form.php", [
-                    "title" => "Prijava",
+                    "title" => "Prijava stranke",
                     "form" => $form
             ]);
         }

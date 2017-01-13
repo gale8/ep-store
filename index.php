@@ -73,6 +73,11 @@ $urls = [
         UserController::login();
         
     },            
+
+    "/^vpisAdministratorja\/?(\d+)?$/" => function () {      
+        EmployeeController::login();
+        
+    },   
             
     "/^zaposlenci\/uredi\/(\d+)$/" => function ($method, $id) {
         if ($method == "POST") {

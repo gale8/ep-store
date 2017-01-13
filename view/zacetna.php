@@ -20,7 +20,7 @@
     
     <a class="nav" href="<?= BASE_URL . "vpisStranke" ?>">Vpis stranke</a>
     
-    <a class="nav" href="<?= BASE_URL . "vpisAdministratorja" ?>">Vpis administratorja</a>
+    <a class="nav" href="<?= BASE_URL . "vpisAdministratorja" ?>">Vpis zaposlenega</a>
     
 <?php } ?>    
     <!-- IZBRISI ZGORNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->
