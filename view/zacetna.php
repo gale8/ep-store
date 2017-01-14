@@ -18,7 +18,7 @@
 <p>
     <a class="nav" href="<?= BASE_URL . "stranke/registracija" ?>">Registracija</a>
     
-    <a class="nav" href="<?= BASE_URL . "vpisStranke" ?>">Vpis stranke</a>
+    <a class="nav" href="<?= BASE_URL . "stranke/vpis" ?>">Vpis stranke</a>
     
     <a class="nav" href="<?= BASE_URL . "vpisAdministratorja" ?>">Vpis zaposlenega</a>
     

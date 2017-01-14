@@ -14,6 +14,7 @@ define("CSS_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "/static/css/");
 $path = isset($_SERVER["PATH_INFO"]) ? trim($_SERVER["PATH_INFO"], "/") : "";
 
 $urls = [
+    #ANONIMNI UPORABNIKI
     "/^artikli\/?(\d+)?$/" => function ($method, $id = null) {
         if ($id == null) {
             ItemController::index();
@@ -23,10 +24,26 @@ $urls = [
         }
     },
             
-    "/^artikli\/dodaj/" => function () {
-        ItemController::add();
+    #STRANKE  
+    "/^stranke\/registracija\/?(\d+)?$/" => function () {
+        UserController::add();
     },
             
+    "/^stranke\/vpis\/?(\d+)?$/" => function () {      
+        UserController::login();
+        
+    },
+                  
+    "/^stranke\/uredi\/(\d+)$/" => function ($method, $id) {
+        if ($method == "POST") {
+            UserController::edit($id);
+        } else {
+            UserController::editForm($id);
+        }
+    },
+            
+            
+    #PRODAJALCI 
     "/^artikli\/uredi\/(\d+)$/" => function ($method, $id) {
         if ($method == "POST") {
             ItemController::edit($id);
@@ -35,8 +52,8 @@ $urls = [
         }
     },
             
-    "/^stranke\/registracija\/?(\d+)?$/" => function () {
-        UserController::add();
+    "/^artikli\/dodaj/" => function () {
+        ItemController::add();
     },
               
             
@@ -48,14 +65,8 @@ $urls = [
         }
     },
             
-    "/^stranke\/uredi\/(\d+)$/" => function ($method, $id) {
-        if ($method == "POST") {
-            UserController::edit($id);
-        } else {
-            UserController::editForm($id);
-        }
-    },
-            
+    
+    #ADMINI 
     "/^zaposlenci\/registracija\/?(\d+)?$/" => function () {
         EmployeeController::add();
     },
@@ -67,12 +78,7 @@ $urls = [
             EmployeeController::get($id);
         }
     },
-            
-            
-    "/^vpisStranke\/?(\d+)?$/" => function () {      
-        UserController::login();
-        
-    },            
+                     
 
     "/^vpisAdministratorja\/?(\d+)?$/" => function () {      
         EmployeeController::login();
@@ -86,11 +92,9 @@ $urls = [
             EmployeeController::editForm($id);
         }
     },
-            
-    "/^$/" => function () {
-        ViewHelper::redirect(BASE_URL . "artikli");
-    },
-            
+           
+      
+    #VSI REGISTRIRANI
     "/^izpis\/?(\d+)?$/" => function () {
         UserController::logout();
     },
@@ -102,6 +106,12 @@ $urls = [
             
     "/^api\/artikli$/" => function ($method, $id = null) {
         ItemRESTController::index();
+    },
+            
+    
+    #DEFAULT
+    "/^$/" => function () {
+        ViewHelper::redirect(BASE_URL . "artikli");
     },
 ];
 

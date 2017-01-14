@@ -4,10 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/ep/NetBeansProjects/ep-store/controller/UserController.php</file>
-            <file>file:/home/ep/NetBeansProjects/ep-store/ViewHelper.php</file>
             <file>file:/home/ep/NetBeansProjects/ep-store/index.php</file>
-            <file>file:/home/ep/NetBeansProjects/ep-store/model/UserDB.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/vsi-zaposlenci.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/model/EmployeeDB.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/.htaccess</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/forms/LoginFormAdmin.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/test/zacetna-stranka.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/controller/EmployeeController.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/vse-stranke.php</file>
             <file>file:/home/ep/NetBeansProjects/ep-store/view/zacetna.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/controller/ItemController.php</file>
         </group>
     </open-files>
 </project-private>

@@ -55,7 +55,9 @@ class EmployeeDB extends AbstractDB {
         public static function certData() {
             $user = 'null';
             
-            $authorized_users = ["Osebje"];
+            #echo("<script>console.log('PHP1: ".json_encode($user)."');</script>");
+            
+            $authorized_users = ["Osebje", "Administrator", "Prodajalec"];
             $client_cert = filter_input(INPUT_SERVER, "SSL_CLIENT_CERT");
 
             if ($client_cert == null) {
@@ -63,13 +65,20 @@ class EmployeeDB extends AbstractDB {
             }
             
             $cert_data = openssl_x509_parse($client_cert);
+            
+            #echo("<script>console.log('PHP1: ".json_encode($cert_data)."');</script>");
+            
             $commonname = (is_array($cert_data['subject']['OU']) ?
                 $cert_data['subject']['OU'][0] : $cert_data['subject']['OU']);
+            
+            #echo("<script>console.log('PHP1: ".json_encode($commonname)."');</script>");
             
             if (in_array($commonname, $authorized_users)) {
                 $user = $cert_data['subject']['emailAddress'];
                 return $user;
-            }             
+            }
+            
+            #echo("<script>console.log('PHP: ".json_encode($user)."');</script>");
             
     }
     

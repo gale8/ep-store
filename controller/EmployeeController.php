@@ -69,7 +69,7 @@ class EmployeeController {
      public static function login() {
          
          if (EmployeeDB::certData() == "null" ){
-            ViewHelper::redirect(BASE_URL . "vpisStranke");    
+            ViewHelper::redirect(BASE_URL . "stranke/vpis");    
          }
          
         $form = new LoginInsertFormAdmin("add_form");

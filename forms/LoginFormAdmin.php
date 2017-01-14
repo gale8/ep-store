@@ -12,6 +12,7 @@ abstract class LoginAbstractFormAdmin extends HTML_QuickForm2 {
 
     public $email_stranke;
     public $button;
+    
 
     public function __construct($id_stranke) {
         $email = EmployeeDB::certData();
