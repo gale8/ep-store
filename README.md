@@ -9,8 +9,8 @@
 - za omejit strani, ki jih lahko vidi stranka, prodajalec, admin
 
 ***Košarica***
-- dodajanje artiklov v košarico (shranjevanje v sejo?). Gumb za dodajo pri podrobnostih artiklov
-- implementacija izvedbe nakupa/naročila
+- dodajanje artiklov v košarico (shranjevanje v sejo?). Gumb za dodajo pri podrobnostih artiklov ✓
+- implementacija izvedbe nakupa/naročila (Rok)
 
 ***Pregled naročil***
 - Pregled vseh naročil
