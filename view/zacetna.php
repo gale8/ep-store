@@ -6,23 +6,24 @@
 
 <h1>Spletna trgovina</h1>
 
-<?php if(isset($_SESSION['user_id'])){ ?>
+<p>
     <a class="nav" href="<?= BASE_URL . "zaposlenci/registracija" ?>">Registracija prodajalca</a>
     <a class="nav" href="<?= BASE_URL . "vpisProdajalca" ?>">Vpis prodajalca</a>    
     <a class="nav" href="<?= BASE_URL . "stranke" ?>">Vse stranke</a>
     <a class="nav" href="<?= BASE_URL . "zaposlenci" ?>">Vsi zaposlenci</a>
     <a class="nav" href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>
     <a class="nav" href="<?= BASE_URL . "izpis" ?>">Izpis</a>
-<?php }else { ?>
 
-<p>
+
+
     <a class="nav" href="<?= BASE_URL . "stranke/registracija" ?>">Registracija</a>
     
     <a class="nav" href="<?= BASE_URL . "stranke/vpis" ?>">Vpis stranke</a>
     
-    <a class="nav" href="<?= BASE_URL . "vpisAdministratorja" ?>">Vpis zaposlenega</a>
+    <a class="nav" href="<?= BASE_URL . "/view/cert/employee-formCert.php" ?>">Vpis zaposlenega</a>
     
-<?php } ?>    
+    
+    
     <!-- IZBRISI ZGORNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->
 </p>
 

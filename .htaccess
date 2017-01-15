@@ -7,9 +7,4 @@ RewriteRule ^(.*) index.php/$1 [L,PT,QSA]
 
 RewriteCond %{HTTPS} off
 RewriteCond %{REQUEST_URI} !(artikli|artikli\/?)
-RewriteRule "(.*)" "https://%{HTTP_HOST}%{REQUEST_URI}"
-
-SSLVerifyClient optional 
-SSLVerifyDepth 1 
-SSLOptions +ExportCertData
-            
+RewriteRule "(.*)" "https://%{HTTP_HOST}%{REQUEST_URI}"          
