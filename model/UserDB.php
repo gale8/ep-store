@@ -57,6 +57,7 @@ class UserDB extends AbstractDB {
         public static function login(array $params) {                    
         
         $err = 'Vpisani podatki se ne ujemajo ali pa še niste aktivirani.';
+        
         $stranke = parent::query("SELECT email_stranke, geslo_stranke, stranka_aktivirana, id_stranke"
                         . " FROM stranka"
                         . " WHERE email_stranke = :email_stranke", $params);        
@@ -73,6 +74,21 @@ class UserDB extends AbstractDB {
         } else {            
             echo $err;
         }
-    } 
+    }
+    
+    public static function exists(array $params){
+        $obstaja = false;
+        
+        $stranka = parent::query("SELECT email_stranke, geslo_stranke, stranka_aktivirana, id_stranke"
+                        . " FROM stranka"
+                        . " WHERE email_stranke = :email_stranke", $params); 
+        
+        if (count($stranka) != 0) {
+            $obstaja = true;
+        }
+        echo "Uporabnik s tem E-naslovom že obstaja!";
+        return $obstaja;
+        
+    }
     
 }

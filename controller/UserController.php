@@ -20,8 +20,18 @@ class UserController {
         $form = new UsersInsertForm("add_form");
         
         if ($form->validate()) {
-            $id = UserDB::insert($form->getValue());
-            ViewHelper::redirect(BASE_URL . "stranke/" . $id);
+            $data = $form->getValue();
+            
+            if(!UserDB::exists($data)){
+                UserDB::insert($data);
+                ViewHelper::redirect(BASE_URL . "artikli");
+            } else {
+                echo ViewHelper::render("view/user-form.php", [
+                "title" => "Registracija stranke",
+                "form" => $form
+            ]);
+            }
+            
         } else {
             echo ViewHelper::render("view/user-form.php", [
                 "title" => "Registracija stranke",
