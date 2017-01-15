@@ -26,12 +26,12 @@
 ***Odstrani iz admina***
 - izbris dodajanja strank iz pregleda strank (to dela samo prodajalec)
 - izbris urejanja profilov strank (to dela samo prodajalec)
-- izbris adminov iz seznama strank 
+- izbris adminov iz seznama zaposlencev ✓
 
 ***Dodaj prikaz "profil aktiviran"*** ✓
 - za prodajalca, ko pregleduje profile strank
 
-***Odstrani prikaz "je_admin"***
+***Odstrani prikaz "je_admin"*** ✓
 - iz pregleda prodajalcev, ki ga ima admin
 
 ***Preverjanje z orodjem OWASP ZAP***
