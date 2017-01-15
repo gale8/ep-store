@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <title>Ogled zaposlenca</title>
 
-<h1>Stranka: <?= $ime_zaposlenca ?></h1>
+<h1>Zaposleni: <?= $ime_zaposlenca ?></h1>
 
 <p>
-    <a class="nav" href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a><!-- IZBRISI SPODNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->
+    <a class="nav" href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a>
     <a class="nav" href="<?= BASE_URL . "zaposlenci/uredi/" . $id_zaposlenca ?>">Uredi profil</a>
 </p>
 

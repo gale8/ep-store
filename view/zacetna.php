@@ -7,21 +7,41 @@
 <h1>Spletna trgovina</h1>
 
 <p>
-    <a class="nav" href="<?= BASE_URL . "zaposlenci/registracija" ?>">Registracija prodajalca</a>
-    <a class="nav" href="<?= BASE_URL . "vpisProdajalca" ?>">Vpis prodajalca</a>    
-    <a class="nav" href="<?= BASE_URL . "stranke" ?>">Vse stranke</a>
-    <a class="nav" href="<?= BASE_URL . "zaposlenci" ?>">Vsi zaposlenci</a>
-    <a class="nav" href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>
-    <a class="nav" href="<?= BASE_URL . "izpis" ?>">Izpis</a>
-
-
-
-    <a class="nav" href="<?= BASE_URL . "stranke/registracija" ?>">Registracija</a>
+    <!--Za urejanje lastnega profila-->
+    <?php $profil = "stranke/uredi/"; ?>
     
-    <a class="nav" href="<?= BASE_URL . "stranke/vpis" ?>">Vpis stranke</a>
+    <!--Za prijavljene-->
+    <?php if(isset($_SESSION["user_id"])){?>
     
-    <a class="nav" href="<?= BASE_URL . "/view/cert/employee-formCert.php" ?>">Vpis zaposlenega</a>
+    <!--Za vse zaposlene-->
+    <?php if(isset($_SESSION["user_level"])){?>
+        
+        <a class="nav" href="<?= BASE_URL . "stranke" ?>">Pregled strank</a>        
+
+        <a class="nav" href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>
+                      
+                <!--Za admine-->
+        <?php if($_SESSION["user_level"] == 1){?>            
+
+            <a class="nav" href="<?= BASE_URL . "zaposlenci" ?>">Pregled zaposlenih</a>
+
+        <?php }?>
     
+    <?php $profil = "zaposlenci/uredi/"; }?>
+        <!--Za vse prijavljene-->
+        <a class="nav" href="<?= BASE_URL . $profil . $_SESSION["user_id"] ?>">Uredi profil</a>
+        <a class="nav" href="<?= BASE_URL . "izpis" ?>">Izpis</a>
+              
+    <!--Za neprijavljene-->
+    <?php } else {?>    
+
+        <a class="nav" href="<?= BASE_URL . "stranke/registracija" ?>">Registracija</a>
+
+        <a class="nav" href="<?= BASE_URL . "stranke/vpis" ?>">Vstop za stranke</a>
+
+        <a class="nav" href="<?= BASE_URL . "/view/cert/employee-formCert.php" ?>">Vstop za zaposlene</a>
+    
+    <?php }?>
     
     
     <!-- IZBRISI ZGORNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->

@@ -77,7 +77,7 @@ class EmployeeController {
         if ($form->validate()) {
             $data = $form->getValue();
             EmployeeDB::login($data);
-            if(isset($_SESSION['user_id'])){
+            if(isset($_SESSION['user_level'])){
                 ViewHelper::redirect(BASE_URL . "artikli");
             } else {
                 echo ViewHelper::render("view/login-form.php", [

@@ -7,14 +7,8 @@
 <h1>Vse stranke</h1>
 
 <p>
-    <a class="nav" href="<?= BASE_URL . "stranke/registracija" ?>">Registracija</a>
-    <a class="nav" href="<?= BASE_URL . "zaposlenci/registracija" ?>">Registracija prodajalca</a>
-    <a class="nav" href="<?= BASE_URL . "stranke/vpis" ?>">Vpis stranke</a>
-    <a class="nav" href="<?= BASE_URL . "vpisProdajalca" ?>">Vpis prodajalca</a>
-    <a class="nav" href="<?= BASE_URL . "vpisAdministratorja" ?>">Vpis administratorja</a>
+    <a class="nav" href="<?= BASE_URL . "stranke/registracija" ?>">Registracija nove stranke</a>
     <a class="nav" href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a>
-    <a class="nav" href="<?= BASE_URL . "zaposlenci" ?>">Vsi zaposlenci</a>
-    <a class="nav" href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>
     
     <!-- IZBRISI ZGORNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->
 </p>

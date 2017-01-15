@@ -97,18 +97,27 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
         $this->geslo_stranke2->addRule('eq', 'Gesli nista enaki.', $this->geslo_stranke);
         $this->addElement($this->geslo_stranke2);
        
+//        Onemogoci stranki urejanje s statusom profila
+        if(isset($_SESSION["user_level"])){
+            $this->stranka_aktivirana = new HTML_QuickForm2_Element_InputText('stranka_aktivirana');
+            $this->stranka_aktivirana->setAttribute('size', 1);
+            $this->stranka_aktivirana->setLabel('Status profila (1:aktiviran  0:neaktiviran)');
+            $this->stranka_aktivirana->addRule('required', 'Vpišite 0 ali 1.');
+            $this->stranka_aktivirana->addRule('gte', 'Številka mora biti => 0.', 0);
+            $this->stranka_aktivirana->addRule('lte', 'Številka mora biti <=1.', 1);
+            $this->stranka_aktivirana->addRule('callback', 'Vpišite številčno vrednost.', array(
+                'callback' => 'filter_var',
+                'arguments' => [FILTER_VALIDATE_INT]
+                    )
+            );
+//        Ce lahko ureja profil je aktivirana
+        } else {
+            $this->stranka_aktivirana = new HTML_QuickForm2_Element_InputText('stranka_aktivirana');                
+            $this->stranka_aktivirana->setAttribute('hidden');
+            $this->stranka_aktivirana->setAttribute('value', "1");            
+        }
         
-        $this->stranka_aktivirana = new HTML_QuickForm2_Element_InputText('stranka_aktivirana');
-        $this->stranka_aktivirana->setAttribute('size', 1);
-        $this->stranka_aktivirana->setLabel('Aktiviram profil? (1:aktiviran  0:neaktiviran)');
-        $this->stranka_aktivirana->addRule('required', 'Vpišite 0 ali 1.');
-        $this->stranka_aktivirana->addRule('gte', 'Številka mora biti => 0.', 0);
-        $this->stranka_aktivirana->addRule('lte', 'Številka mora biti <=1.', 1);
-        $this->stranka_aktivirana->addRule('callback', 'Vpišite številčno vrednost.', array(
-            'callback' => 'filter_var',
-            'arguments' => [FILTER_VALIDATE_INT]
-                )
-        );
+
         $this->addElement($this->stranka_aktivirana);
         
         $this->button = new HTML_QuickForm2_Element_InputSubmit(null);

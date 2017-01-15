@@ -7,8 +7,7 @@
 <h1><?= $title ?></h1>
 
 <p>
-    <a class="nav" href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a> 
-    <a class="nav" href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>
+    <a class="nav" href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a>     
 </p>
 
 <?= $form ?>

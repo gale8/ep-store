@@ -70,18 +70,26 @@ abstract class EmployeesAbstractForm extends HTML_QuickForm2 {
         $this->geslo_zaposlenca2->addRule('eq', 'Gesli nista enaki.', $this->geslo_zaposlenca);
         $this->addElement($this->geslo_zaposlenca2);
        
-        
-        $this->zaposlenec_aktiviran = new HTML_QuickForm2_Element_InputText('zaposlenec_aktiviran');
-        $this->zaposlenec_aktiviran->setAttribute('size', 1);
-        $this->zaposlenec_aktiviran->setLabel('Aktiviram profil? (1:aktiviran  0:neaktiviran)');
-        $this->zaposlenec_aktiviran->addRule('required', 'Vpišite 0 ali 1.');
-        $this->zaposlenec_aktiviran->addRule('gte', 'Številka mora biti => 0.', 0);
-        $this->zaposlenec_aktiviran->addRule('lte', 'Številka mora biti <=1.', 1);
-        $this->zaposlenec_aktiviran->addRule('callback', 'Vpišite številčno vrednost.', array(
-            'callback' => 'filter_var',
-            'arguments' => [FILTER_VALIDATE_INT]
-                )
-        );
+//        Onemogoci zaposlenemu aktivacijo profila na strani za urejanje
+        if(isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 1){
+            $this->zaposlenec_aktiviran = new HTML_QuickForm2_Element_InputText('zaposlenec_aktiviran');
+            $this->zaposlenec_aktiviran->setAttribute('size', 1);
+            $this->zaposlenec_aktiviran->setLabel('Status profila (1:aktiviran  0:neaktiviran)');
+            $this->zaposlenec_aktiviran->addRule('required', 'Vpišite 0 ali 1.');
+            $this->zaposlenec_aktiviran->addRule('gte', 'Številka mora biti => 0.', 0);
+            $this->zaposlenec_aktiviran->addRule('lte', 'Številka mora biti <=1.', 1);
+            $this->zaposlenec_aktiviran->addRule('callback', 'Vpišite številčno vrednost.', array(
+                'callback' => 'filter_var',
+                'arguments' => [FILTER_VALIDATE_INT]
+                    )
+            );
+//          Ce lahko ureja profil je aktiviran  
+        } else {
+            $this->zaposlenec_aktiviran = new HTML_QuickForm2_Element_InputText('zaposlenec_aktiviran');
+            $this->zaposlenec_aktiviran->setAttribute('hidden');
+            $this->zaposlenec_aktiviran->setAttribute('value', "1"); 
+            
+        }
         $this->addElement($this->zaposlenec_aktiviran);
         
         $this->button = new HTML_QuickForm2_Element_InputSubmit(null);

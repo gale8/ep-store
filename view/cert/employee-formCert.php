@@ -1,5 +1,5 @@
 <?php
-header("Location: " . "/netbeans/ep-store/vpisAdministratorja");
+header("Location: " . "/netbeans/ep-store/zaposlenci/vpis");
 ?>
 
 

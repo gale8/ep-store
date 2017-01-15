@@ -24,72 +24,100 @@ $urls = [
         }
     },
             
-    #STRANKE  
-    "/^stranke\/registracija\/?(\d+)?$/" => function () {
-        UserController::add();
-    },
-            
     "/^stranke\/vpis\/?(\d+)?$/" => function () {      
         UserController::login();
         
     },
-                  
+
+    "/^zaposlenci\/vpis\/?(\d+)?$/" => function () {      
+        EmployeeController::login();
+        
+    },
+            
+    "/^stranke\/registracija\/?(\d+)?$/" => function () {
+        UserController::add();
+    },             
+            
+    #STRANKE - preveri če je nastavljen user_level ali pa ce je nastavljen user_id in se ujema s trenutnim v session
     "/^stranke\/uredi\/(\d+)$/" => function ($method, $id) {
-        if ($method == "POST") {
-            UserController::edit($id);
+        if(isset($_SESSION["user_level"]) || (isset($_SESSION["user_id"]) && $_SESSION["user_id"] == $id)){
+            if ($method == "POST") {
+                UserController::edit($id);
+            } else {
+                UserController::editForm($id);
+            }
         } else {
-            UserController::editForm($id);
+            ViewHelper::redirect(BASE_URL . "artikli");
         }
     },
             
             
-    #PRODAJALCI 
+    #PRODAJALCI - za vse naslove gleda če je nastavljen user_level
     "/^artikli\/uredi\/(\d+)$/" => function ($method, $id) {
-        if ($method == "POST") {
-            ItemController::edit($id);
-        } else {
-            ItemController::editForm($id);
+        if(isset($_SESSION["user_level"])){
+            if ($method == "POST") {
+                ItemController::edit($id);
+            } else {
+                ItemController::editForm($id);
+            }
+        }else {
+            ViewHelper::redirect(BASE_URL . "artikli");
         }
     },
             
     "/^artikli\/dodaj/" => function () {
-        ItemController::add();
+        if(isset($_SESSION["user_level"])){
+            ItemController::add();
+        }else {
+            ViewHelper::redirect(BASE_URL . "artikli");
+        }
     },
               
             
     "/^stranke\/?(\d+)?$/" => function ($method, $id = null) {
-        if ($id == null) {
-            UserController::index();
-        } else {
-            UserController::get($id);
+        if(isset($_SESSION["user_level"])){
+            if ($id == null) {
+                UserController::index();
+            } else {
+                UserController::get($id);
+            }
+        }else {
+            ViewHelper::redirect(BASE_URL . "artikli");
         }
     },
             
     
-    #ADMINI 
+    #ADMINI - preveri ce je nastavljen user_level in je enak 1(admin)
     "/^zaposlenci\/registracija\/?(\d+)?$/" => function () {
-        EmployeeController::add();
+        if(isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 1){
+            EmployeeController::add();
+        } else {
+            ViewHelper::redirect(BASE_URL . "artikli");
+        }
     },
             
     "/^zaposlenci\/?(\d+)?$/" => function ($method, $id = null) {
-        if ($id == null) {
-            EmployeeController::index();
+        if(isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 1){
+            if ($id == null) {
+                EmployeeController::index();
+            } else {
+                EmployeeController::get($id);
+            }
         } else {
-            EmployeeController::get($id);
+            ViewHelper::redirect(BASE_URL . "artikli");
         }
-    },
-                     
-
-    "/^vpisAdministratorja\/?(\d+)?$/" => function () {      
-        EmployeeController::login();
-        
-    },   
-            
+    },                      
+    
+    #Admini lahko urejajo podatke vseh in vsak zaposleni zase
     "/^zaposlenci\/uredi\/(\d+)$/" => function ($method, $id) {
-        if ($method == "POST") {
-            EmployeeController::edit($id);
+        if(isset($_SESSION["user_level"]) && ($_SESSION["user_id"] == $id || $_SESSION["user_level"] == 1)){            
+            if ($method == "POST") {
+                EmployeeController::edit($id);
+            } else {
+                EmployeeController::editForm($id);
+            }
         } else {
-            EmployeeController::editForm($id);
+            ViewHelper::redirect(BASE_URL . "artikli");
         }
     },
            
