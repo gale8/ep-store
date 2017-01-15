@@ -28,7 +28,7 @@
 - izbris urejanja profilov strank (to dela samo prodajalec)
 - izbris adminov iz seznama strank 
 
-***Dodaj prikaz "profil aktiviran"***
+***Dodaj prikaz "profil aktiviran"*** ✓
 - za prodajalca, ko pregleduje profile strank
 
 ***Odstrani prikaz "je_admin" ***
