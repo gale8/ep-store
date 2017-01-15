@@ -38,9 +38,9 @@ $urls = [
         UserController::add();
     },             
             
-    #STRANKE - preveri če je nastavljen user_level ali pa ce je nastavljen user_id in se ujema s trenutnim v session
+    #STRANKE - preveri če je nastavljen user_level za prodajalca ali pa ce je nastavljen user_id in se ujema s trenutnim v session
     "/^stranke\/uredi\/(\d+)$/" => function ($method, $id) {
-        if(isset($_SESSION["user_level"]) || (isset($_SESSION["user_id"]) && $_SESSION["user_id"] == $id)){
+        if((isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0) || (isset($_SESSION["user_id"]) && $_SESSION["user_id"] == $id)){
             if ($method == "POST") {
                 UserController::edit($id);
             } else {
@@ -52,9 +52,9 @@ $urls = [
     },
             
             
-    #PRODAJALCI - za vse naslove gleda če je nastavljen user_level
+    #PRODAJALCI - za vse naslove gleda če je nastavljen user_level na prodajalca
     "/^artikli\/uredi\/(\d+)$/" => function ($method, $id) {
-        if(isset($_SESSION["user_level"])){
+        if(isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0){
             if ($method == "POST") {
                 ItemController::edit($id);
             } else {
@@ -66,7 +66,7 @@ $urls = [
     },
             
     "/^artikli\/dodaj/" => function () {
-        if(isset($_SESSION["user_level"])){
+        if(isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0){
             ItemController::add();
         }else {
             ViewHelper::redirect(BASE_URL . "artikli");
@@ -75,7 +75,7 @@ $urls = [
               
             
     "/^stranke\/?(\d+)?$/" => function ($method, $id = null) {
-        if(isset($_SESSION["user_level"])){
+        if(isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0){
             if ($id == null) {
                 UserController::index();
             } else {

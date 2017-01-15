@@ -10,7 +10,7 @@
     <a class="nav" href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a>
     
     <!--Za zaposlene-->
-    <?php if(isset($_SESSION["user_level"])){?>
+    <?php if(isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0){?>
     
         <a class="nav" href="<?= BASE_URL . "artikli/uredi/" . $id_artikla ?>">Uredi</a>
     

@@ -15,10 +15,15 @@
     
     <!--Za vse zaposlene-->
     <?php if(isset($_SESSION["user_level"])){?>
-        
+    
+    <!--Prikaz za prodajalce-->
+    <?php if($_SESSION["user_level"] == 0){?>  
+    
         <a class="nav" href="<?= BASE_URL . "stranke" ?>">Pregled strank</a>        
 
         <a class="nav" href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>
+    <?php }?>    
+
                       
                 <!--Za admine-->
         <?php if($_SESSION["user_level"] == 1){?>            
