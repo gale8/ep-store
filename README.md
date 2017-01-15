@@ -21,6 +21,14 @@
 
 ***Onemogoči podvajanje e-mailov pri registraciji*** ✓
 
+***Pri urejanju profilov naredi urejanje gesla opcijsko***
+
+***Dodaj prikaz "profil aktiviran"***
+- za prodajaleca, ko pregleduje profile strank
+
+***Odstrani prikaz "je_admin" ***
+- iz pregleda prodajalcev, ki ga ima admin
+
 ***Preverjanje z orodjem OWASP ZAP***
 - za preveriti, če je spletišče odporno proti SQL Injection in XSS
 
