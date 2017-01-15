@@ -18,7 +18,6 @@
         Email: <b><?= $email_zaposlenca ?></b><br>
         Geslo: <b><?= $geslo_zaposlenca ?></b><br>
         Profil aktiviran? <b><?= $zaposlenec_aktiviran == 1 ? 'DA' : 'NE' ?></b><br>
-        Je administrator? <b><?= $je_admin == 1 ? 'DA' : 'NE' ?></b><br>
         
 </p>
 

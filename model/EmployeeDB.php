@@ -8,6 +8,7 @@ class EmployeeDB extends AbstractDB {
     public static function getAll() {
         return parent::query("SELECT email_zaposlenca, ime_zaposlenca, priimek_zaposlenca, geslo_zaposlenca, id_zaposlenca, je_admin, zaposlenec_aktiviran"
                         . " FROM zaposlenec"
+                        . " WHERE je_admin = 0"
                         . " ORDER BY id_zaposlenca ASC");
     }
     

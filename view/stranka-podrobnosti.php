@@ -20,6 +20,7 @@
         Ulica in hišna številka: <b><?= $naslov_stevilka ?></b><br>
         Telefonska številka: <b><?= $tel_st ?></b><br>
         ID pošte: <b><?= $id_poste ?></b><br>
+        Stranka aktivirana: <b><?= $stranka_aktivirana == 1 ? 'DA' : 'NE' ?></b><br>
         
 </p>
 
