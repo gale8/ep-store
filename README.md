@@ -5,7 +5,7 @@
 - pri funkcijah na katerih delaš trenutno, v oklepaj dopiši svoje ime
 - dodaj kar se še spomniš
 
-***Avtorizacija***
+***Avtorizacija*** ✓ (mislim da je vse... Žan)
 - za omejit strani, ki jih lahko vidi stranka, prodajalec, admin
 
 ***Košarica***
@@ -18,6 +18,21 @@
 
 ***Vpis za zaposlence*** ✓
 - vpis za prodajalca in admina (najbolj praktično združeno, ker je v bazi atribut, ki določa ker zaposlenec je/ni admin)
+
+***Onemogoči podvajanje e-mailov pri registraciji*** ✓
+
+***Pri urejanju profilov naredi urejanje gesla opcijsko***
+
+***Odstrani iz admina***
+- izbris dodajanja strank iz pregleda strank (to dela samo prodajalec)
+- izbris urejanja profilov strank (to dela samo prodajalec)
+- izbris adminov iz seznama zaposlencev ✓
+
+***Dodaj prikaz "profil aktiviran"*** ✓
+- za prodajalca, ko pregleduje profile strank
+
+***Odstrani prikaz "je_admin"*** ✓
+- iz pregleda prodajalcev, ki ga ima admin
 
 ***Preverjanje z orodjem OWASP ZAP***
 - za preveriti, če je spletišče odporno proti SQL Injection in XSS
