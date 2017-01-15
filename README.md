@@ -23,6 +23,11 @@
 
 ***Pri urejanju profilov naredi urejanje gesla opcijsko***
 
+*** Odstrani iz admina ***
+- izbris dodajanja strank iz pregleda strank (to dela samo prodajalec)
+- izbris urejanja profilov strank (to dela samo prodajalec)
+- izbris adminov iz seznama strank 
+
 ***Dodaj prikaz "profil aktiviran"***
 - za prodajaleca, ko pregleduje profile strank
 
