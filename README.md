@@ -5,7 +5,7 @@
 - pri funkcijah na katerih delaš trenutno, v oklepaj dopiši svoje ime
 - dodaj kar se še spomniš
 
-***Avtorizacija***
+***Avtorizacija*** ✓ (mislim da je vse... Žan)
 - za omejit strani, ki jih lahko vidi stranka, prodajalec, admin
 
 ***Košarica***
@@ -19,7 +19,7 @@
 ***Vpis za zaposlence*** ✓
 - vpis za prodajalca in admina (najbolj praktično združeno, ker je v bazi atribut, ki določa ker zaposlenec je/ni admin)
 
-***Onemogoči podvajanje e-mailov pri registraciji***
+***Onemogoči podvajanje e-mailov pri registraciji*** ✓
 
 ***Preverjanje z orodjem OWASP ZAP***
 - za preveriti, če je spletišče odporno proti SQL Injection in XSS
