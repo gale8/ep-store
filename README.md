@@ -19,6 +19,8 @@
 ***Vpis za zaposlence*** ✓
 - vpis za prodajalca in admina (najbolj praktično združeno, ker je v bazi atribut, ki določa ker zaposlenec je/ni admin)
 
+***Onemogoči podvajanje e-mailov pri registraciji***
+
 ***Preverjanje z orodjem OWASP ZAP***
 - za preveriti, če je spletišče odporno proti SQL Injection in XSS
 
