@@ -31,7 +31,7 @@
 ***Dodaj prikaz "profil aktiviran"*** ✓
 - za prodajalca, ko pregleduje profile strank
 
-***Odstrani prikaz "je_admin" ***
+***Odstrani prikaz "je_admin"***
 - iz pregleda prodajalcev, ki ga ima admin
 
 ***Preverjanje z orodjem OWASP ZAP***
