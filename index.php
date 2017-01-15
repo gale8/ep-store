@@ -65,6 +65,23 @@ $urls = [
         }
     },
             
+            "/^artikli\/?(\d+)?$/" => function ($method, $id = null) {
+        if ($id == null) {
+            ItemController::index();
+            
+        } else {
+            ItemController::get($id);
+        }
+    },
+            
+    "/^artikli\/neaktivni\/?(\d+)?$/" => function ($method, $id = null) {
+        if($id == null && isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0){
+            ItemController::indexInactive();
+        }else {
+            ItemController::get($id);
+        }
+    },
+            
     "/^artikli\/dodaj/" => function () {
         if(isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0){
             ItemController::add();

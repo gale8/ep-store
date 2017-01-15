@@ -9,7 +9,14 @@ class ItemDB extends AbstractDB {
     public static function getAll() {
         return parent::query("SELECT id_artikla, ime_artikla, cena, opis_artikla, artikel_aktiviran"
                         . " FROM artikel"
-                        . " WHERE artikel_aktiviran = 1 OR artikel_aktiviran = 0"
+                        . " WHERE artikel_aktiviran = 1"
+                        . " ORDER BY id_artikla ASC");
+    }
+    
+    public static function getAllInactive() {
+        return parent::query("SELECT id_artikla, ime_artikla, cena, opis_artikla, artikel_aktiviran"
+                        . " FROM artikel"
+                        . " WHERE artikel_aktiviran = 0"
                         . " ORDER BY id_artikla ASC");
     }
     

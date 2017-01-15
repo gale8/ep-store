@@ -12,6 +12,12 @@ class ItemController {
         ]);
     }
     
+    public static function indexInactive() {
+        echo ViewHelper::render("view/neaktivirani-artikli.php", [
+           "artikli" => ItemDB::getAllInactive() 
+        ]);
+    }
+    
     #public static function addForm($values = [
     #    "ime_artikla" => "",
     #    "cena" => "",

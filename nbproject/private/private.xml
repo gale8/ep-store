@@ -5,7 +5,23 @@
         <group>
             <file>file:/home/ep/NetBeansProjects/ep-store/.htaccess</file>
             <file>file:/home/ep/NetBeansProjects/ep-store/forms/LoginFormAdmin.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/controller/ItemRESTController.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/model/PostaDB.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/forms/LoginForm.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/forms/.htaccess</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/zaposlenec-podrobnosti.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/controller/UserController.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/index.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/model/EmployeeDB.php</file>
             <file>file:/home/ep/NetBeansProjects/ep-store/controller/EmployeeController.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/vse-stranke.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/login-form.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/.htaccess</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/model/UserDB.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/zacetna.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/controller/ItemController.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/model/DB.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/model/ItemDB.php</file>
         </group>
     </open-files>
 </project-private>

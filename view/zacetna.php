@@ -23,6 +23,8 @@
         <a class="nav" href="<?= BASE_URL . "stranke" ?>">Pregled strank</a>        
 
         <a class="nav" href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>
+        
+        <a class="nav" href="<?= BASE_URL . "artikli/neaktivni" ?>">Neaktivirani artikli</a>
     <?php }?>    
 
                       
