@@ -5,7 +5,7 @@
 - pri funkcijah na katerih delaš trenutno, v oklepaj dopiši svoje ime
 - dodaj kar se še spomniš
 
-***Avtorizacija*** ✓ (mislim da je vse... Žan)
+***Avtorizacija*** ✓
 - za omejit strani, ki jih lahko vidi stranka, prodajalec, admin
 
 ***Košarica***
@@ -23,9 +23,9 @@
 
 ***Pri urejanju profilov naredi urejanje gesla opcijsko***
 
-***Odstrani iz admina***
-- izbris dodajanja strank iz pregleda strank (to dela samo prodajalec)
-- izbris urejanja profilov strank (to dela samo prodajalec)
+***Odstrani iz admina*** ✓
+- izbris dodajanja strank iz pregleda strank (to dela samo prodajalec) ✓
+- izbris urejanja profilov strank (to dela samo prodajalec) ✓
 - izbris adminov iz seznama zaposlencev ✓
 
 ***Dodaj prikaz "profil aktiviran"*** ✓
