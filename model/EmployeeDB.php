@@ -77,7 +77,7 @@ class EmployeeDB extends AbstractDB {
         public static function login(array $params) { 
             
         $err = 'Vpisani podatki se ne ujemajo ali pa še niste aktivirani.';
-        $stranke = parent::query("SELECT email_zaposlenca, geslo_zaposlenca, zaposlenec_aktiviran, id_zaposlenca, je_admin"
+        $stranke = parent::query("SELECT ime_zaposlenca, email_zaposlenca, geslo_zaposlenca, zaposlenec_aktiviran, id_zaposlenca, je_admin"
                         . " FROM zaposlenec"
                         . " WHERE email_zaposlenca = :email_zaposlenca", $params);        
         
@@ -86,6 +86,7 @@ class EmployeeDB extends AbstractDB {
 
             if(password_verify($params['geslo_zaposlenca'], $data['geslo_zaposlenca']) && $data['zaposlenec_aktiviran'] == 1){
                 $_SESSION["user_id"] = $data['id_zaposlenca'];
+                $_SESSION["ime"] = $data['ime_zaposlenca'];
                 $_SESSION["user_level"] = $data['je_admin'];
             } else {
                 echo $err;

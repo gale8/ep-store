@@ -5,10 +5,11 @@
 <title>Spletna trgovina</title>
 
 <h1>Spletna trgovina</h1>
+<?php if(isset($_SESSION["user_id"])){?> <h2>Pozdravljen/a <?php if(isset($_SESSION["ime"])){ echo $_SESSION["ime"];}?>! <?php if(isset($_SESSION["user_level"])){ echo $_SESSION["user_level"] == 1 ? "(Vloga: Administrator)" : "(Vloga: Prodajalec)";}?></h2><?php }?>
 
 <p>
     <!--Za urejanje lastnega profila-->
-    <?php $profil = "stranke/uredi/"; ?>
+    <?php $profil = "stranke/uredi/";?>
     
     <!--Za prijavljene-->
     <?php if(isset($_SESSION["user_id"])){?>
