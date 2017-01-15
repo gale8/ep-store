@@ -97,4 +97,19 @@ class EmployeeDB extends AbstractDB {
         }
     }
     
+    public static function exists(array $params){
+        $obstaja = false;
+        
+        $zaposlenec = parent::query("SELECT email_zaposlenca, geslo_zaposlenca, zaposlenec_aktiviran, id_zaposlenca"
+                        . " FROM zaposlenec"
+                        . " WHERE email_zaposlenca = :email_zaposlenca", $params); 
+        
+        if (count($zaposlenec) != 0) {
+            $obstaja = true;
+        }
+        echo "Zaposlenec s tem e-naslovom že obstaja!";
+        return $obstaja;
+        
+    }
+    
 }

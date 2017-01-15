@@ -18,8 +18,17 @@ class EmployeeController {
         $form = new EmployeesInsertForm("add_form");
         
         if ($form->validate()) {
-            $id = EmployeeDB::insert($form->getValue());
-            ViewHelper::redirect(BASE_URL . "zaposlenci/" . $id);
+            $data = $form->getValue();
+            if(!EmployeeDB::exists($data)) {
+                $id = EmployeeDB::insert($data);
+                ViewHelper::redirect(BASE_URL . "zaposlenci/" . $id);
+            } else {
+                echo ViewHelper::render("view/employee-form.php", [
+                    "title" => "Registracija prodajalca",
+                    "form" => $form
+                ]);
+        }
+            
         } else {
             echo ViewHelper::render("view/employee-form.php", [
                 "title" => "Registracija prodajalca",
