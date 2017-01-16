@@ -16,6 +16,11 @@ $path = isset($_SERVER["PATH_INFO"]) ? trim($_SERVER["PATH_INFO"], "/") : "";
 $urls = [
     #ANONIMNI UPORABNIKI
     "/^artikli\/?(\d+)?$/" => function ($method, $id = null) {
+        #echo("<script>console.log('PHP: ".json_encode($aad)."');</script>");
+        if((empty($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] !== "on") && isset($_SESSION["user_id"])){
+            header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+            exit();
+        }
         if ($id == null) {
             ItemController::index();
             
@@ -30,7 +35,8 @@ $urls = [
         
     },
             
-    "/^stranke\/vpis\/?(\d+)?$/" => function () {      
+    "/^stranke\/vpis\/?(\d+)?$/" => function () {
+        
         UserController::login();
         
     },
@@ -70,15 +76,7 @@ $urls = [
             ViewHelper::redirect(BASE_URL . "artikli");
         }
     },
-            
-            "/^artikli\/?(\d+)?$/" => function ($method, $id = null) {
-        if ($id == null) {
-            ItemController::index();
-            
-        } else {
-            ItemController::get($id);
-        }
-    },
+           
             
     "/^artikli\/neaktivni\/?(\d+)?$/" => function ($method, $id = null) {
         if($id == null && isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0){

@@ -4,8 +4,6 @@
 /*==============================================================*/
 
 
-drop table if exists administrator;
-
 drop table if exists artikel;
 
 drop table if exists narocilo;
@@ -13,8 +11,6 @@ drop table if exists narocilo;
 drop table if exists narocilo_artikel;
 
 drop table if exists posta;
-
-drop table if exists prodajalec;
 
 drop table if exists stranka;
 
@@ -33,19 +29,6 @@ create table zaposlenec
    zaposlenec_aktiviran    bool not null default 1,
    je_admin                bool not null default 0,
    primary key (id_zaposlenca)
-);
-
-/*==============================================================*/
-/* Table: administrator                                         */
-/*==============================================================*/
-create table administrator
-(
-   email_admina         varchar(45) not null,
-   ime_admina           varchar(45) not null,
-   priimek_admina       varchar(45) not null,
-   geslo_admina         varchar(160) not null,
-   id_admina            int not null AUTO_INCREMENT,
-   primary key (id_admina)
 );
 
 /*==============================================================*/
@@ -93,20 +76,6 @@ create table posta
    ime_poste            varchar(45) not null,
    id_poste             int not null AUTO_INCREMENT,
    primary key (id_poste)
-);
-
-/*==============================================================*/
-/* Table: prodajalec                                            */
-/*==============================================================*/
-create table prodajalec
-(
-   email_prodajalca     varchar(45) not null,
-   prodajalec_aktiviran bool not null default 1,
-   ime_prodajalca       varchar(45) not null,
-   priimek_prodajalca   varchar(45) not null,
-   geslo_prodjalca      varchar(160) not null,
-   id_prodajalca        int not null AUTO_INCREMENT,
-   primary key (id_prodajalca)
 );
 
 /*==============================================================*/
