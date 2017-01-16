@@ -62,7 +62,8 @@
             <div class="table">
                 <div class="table-cell">
                     
-                    <a href="<?= BASE_URL . "artikli/" . $artikel["id_artikla"] ?>"> <b><span style="text-transform: uppercase"><?= $artikel["ime_artikla"] ?></span></b>
+                    <a title="Ime: <?=$artikel["ime_artikla"]?>&#013;Cena: <?=$artikel["cena"]?>€&#013;Opis: <?=$artikel["opis_artikla"]?>" href="<?= BASE_URL . "artikli/" . $artikel["id_artikla"] ?>">
+                        <b><span style="text-transform: uppercase"><?php echo strlen($artikel["ime_artikla"]) < 10 ? $artikel["ime_artikla"] : substr($artikel["ime_artikla"], 0, 7) . "...";?></span></b>
                         <br>cena: <?= $artikel["cena"] ?> € </a>
                     
                 </div> 
