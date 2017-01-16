@@ -123,6 +123,8 @@ create table stranka
    id_poste             int,
    naslov_stevilka      varchar(80) not null,
    tel_st               varchar(45) not null,
+   mailHash_stranke     varchar(60) not null,
+   mailHash_porabljen   bool not null default 0,
    primary key (id_stranke)
 );
 
