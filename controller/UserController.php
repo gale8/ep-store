@@ -24,12 +24,17 @@ class UserController {
             
             if(!UserDB::exists($data)){
                 UserDB::insert($data);
-                ViewHelper::redirect(BASE_URL . "artikli");
+                echo ViewHelper::render("view/potrditevReg.php", [
+                "response" => "Registracija uspešna! Za aktivacijo sledite povezavi, ki ste jo prejeli na vpisani elektronski naslov.",
+                "title" => "Potrditev registracije"
+            ]);
+
             } else {
                 echo ViewHelper::render("view/user-form.php", [
-                "title" => "Registracija stranke",
+                "title" => "Elektronski naslov je že v uporabi!",
                 "form" => $form
             ]);
+                
             }
             
         } else {
@@ -103,6 +108,14 @@ class UserController {
 
     }
     
+    public static function activate(){
+        
+        echo ViewHelper::render("view/potrditevReg.php", [
+            "response" => userDB::activate(),
+            "title" => "Potrditev registracije"
+            ]);
+    }
+
     public static function logout(){
         session_start();
         setcookie(session_name(), '', 100);

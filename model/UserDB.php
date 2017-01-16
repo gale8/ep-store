@@ -17,16 +17,24 @@ class UserDB extends AbstractDB {
         
         $params = self::hashPassword($params);
         
-        return parent::modify("INSERT INTO stranka (email_stranke, ime_stranke, priimek_stranke, geslo_stranke, naslov_stevilka, id_poste, stranka_aktivirana, tel_st) "
-                        . " VALUES (:email_stranke, :ime_stranke, :priimek_stranke, :geslo_stranke, :naslov_stevilka, :id_poste, :stranka_aktivirana, :tel_st)", $params);
+        $to = $params["email_stranke"];
+        $subject = "Potrditveni mail";
+        $message = "Za uspešno registracijo prosimo sledite povezavi: https://localhost/netbeans/ep-store/verifyReg.php?mail=".$to."&hash=".$params["mailHash_stranke"];
+        $header = "From: noreply@eptrgovina.com";                    
+        
+        parent::modify("INSERT INTO stranka (email_stranke, mailHash_stranke, ime_stranke, priimek_stranke, geslo_stranke, naslov_stevilka, id_poste, stranka_aktivirana, tel_st) "
+                        . " VALUES (:email_stranke, :mailHash_stranke, :ime_stranke, :priimek_stranke, :geslo_stranke, :naslov_stevilka, :id_poste, :stranka_aktivirana, :tel_st)", $params);
+    
+        mail($to, $subject, $message, $header);
     }
     
     public static function hashPassword(array $params) {
-        #echo("<script>console.log('PHP: ".json_encode($params)."');</script>");
-        #za hashiranje gesla - preverjanje se izvaja s funkcijo password_verify($password, $hash)
+        
+        $mailHash = md5( rand(0,1000) );                
         $geslo = $params["geslo_stranke"];
         $hash = password_hash($geslo, PASSWORD_DEFAULT);
         $params["geslo_stranke"] = $hash;
+        $params["mailHash_stranke"] = $mailHash;
         return $params;
     }
     
@@ -77,7 +85,7 @@ class UserDB extends AbstractDB {
         }
     }
     
-    public static function exists(array $params){
+    public static function exists(array $params){        
         $obstaja = false;
         
         $stranka = parent::query("SELECT email_stranke, geslo_stranke, stranka_aktivirana, id_stranke"
@@ -86,10 +94,32 @@ class UserDB extends AbstractDB {
         
         if (count($stranka) != 0) {
             $obstaja = true;
-        }
-        echo "Uporabnik s tem E-naslovom že obstaja!";
-        return $obstaja;
+        }      
+        return $obstaja;        
+    }
+    
+    public static function activate(){
+        $msg= "Napačni podatki ali pa je račun že bil aktiviran";
+        $msg2= "Neveljaven dostop. Prosimo uporabite mail, ki ste ga prejeli po E-mailu.";
+        $params;
         
+        if(isset($_GET['mail']) && !empty($_GET['mail']) AND isset($_GET['hash']) && !empty($_GET['hash'])){
+            $params = array("mail" => $_GET['mail'], "hash" => $_GET['hash']);            
+        }  else {
+            return $msg2;
+        }
+        
+        $stranka = parent::query("SELECT email_stranke, mailHash_stranke, mailHash_porabljen, stranka_aktivirana"
+                        . " FROM stranka"
+                        . " WHERE email_stranke = :mail AND mailHash_stranke = :hash AND mailHash_porabljen = 0 AND stranka_aktivirana = 0", $params);
+        
+        if (count($stranka) == 1) {
+            parent::modify("UPDATE stranka SET stranka_aktivirana = 1, mailHash_porabljen = 1"                        
+                        . " WHERE email_stranke = :mail AND mailHash_stranke = :hash", $params);
+            $msg = "Račun uspešno aktiviran";
+        }
+            return $msg;
+                
     }
     
 }
