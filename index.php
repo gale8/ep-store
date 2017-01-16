@@ -22,6 +22,12 @@ $urls = [
         } else {
             ItemController::get($id);
         }
+    },                
+            
+    "/^verifyReg.*/" => function () { 
+   
+     UserController::activate();
+        
     },
             
     "/^stranke\/vpis\/?(\d+)?$/" => function () {      

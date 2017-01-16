@@ -114,7 +114,7 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
         } else {
             $this->stranka_aktivirana = new HTML_QuickForm2_Element_InputText('stranka_aktivirana');                
             $this->stranka_aktivirana->setAttribute('hidden');
-            $this->stranka_aktivirana->setAttribute('value', "1");            
+            $this->stranka_aktivirana->setAttribute('value', "0");            
         }
         
 
