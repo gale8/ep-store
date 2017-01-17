@@ -51,9 +51,9 @@ create table narocilo
 (
    id_narocila          int not null AUTO_INCREMENT,
    id_stranke           int not null,
-   narocilo_potrjeno    bool not null default 1,
-   narocilo_preklicano  bool not null default 1,
-   narocilo_stornirano  bool not null default 1,
+   narocilo_potrjeno    bool not null default 0,
+   narocilo_preklicano  bool not null default 0,
+   narocilo_stornirano  bool not null default 0,
    primary key (id_narocila)
 );
 
@@ -87,7 +87,7 @@ create table stranka
    ime_stranke          varchar(45) not null,
    priimek_stranke      varchar(45) not null,
    geslo_stranke        varchar(160) not null,
-   stranka_aktivirana   bool not null default 1,
+   stranka_aktivirana   bool not null default 0,
    id_stranke           int not null AUTO_INCREMENT,
    id_poste             int,
    naslov_stevilka      varchar(80) not null,
