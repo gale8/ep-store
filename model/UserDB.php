@@ -16,16 +16,11 @@ class UserDB extends AbstractDB {
     public static function insert(array $params) {
         
         $params = self::hashPassword($params);
-        
-        $to = $params["email_stranke"];
-        $subject = "Potrditveni mail";
-        $message = "Za uspešno registracijo prosimo sledite povezavi: https://localhost/netbeans/ep-store/verifyReg.php?mail=".$to."&hash=".$params["mailHash_stranke"];
-        $header = "From: noreply@eptrgovina.com";                    
-        
+                                 
         parent::modify("INSERT INTO stranka (email_stranke, mailHash_stranke, ime_stranke, priimek_stranke, geslo_stranke, naslov_stevilka, id_poste, stranka_aktivirana, tel_st) "
                         . " VALUES (:email_stranke, :mailHash_stranke, :ime_stranke, :priimek_stranke, :geslo_stranke, :naslov_stevilka, :id_poste, :stranka_aktivirana, :tel_st)", $params);
     
-        mail($to, $subject, $message, $header);
+        self::sendConfMail($params);
     }
     
     public static function hashPassword(array $params) {
@@ -36,8 +31,7 @@ class UserDB extends AbstractDB {
         $params["geslo_stranke"] = $hash;
         $params["mailHash_stranke"] = $mailHash;
         return $params;
-    }
-    
+    }    
     
     public static function update(array $params) {
         
@@ -47,6 +41,8 @@ class UserDB extends AbstractDB {
                         . "geslo_stranke = :geslo_stranke, naslov_stevilka = :naslov_stevilka, id_poste = :id_poste, "
                         . "stranka_aktivirana = :stranka_aktivirana, tel_st = :tel_st"
                         . " WHERE id_stranke = :id_stranke", $params);
+        
+        
     }
 
 
@@ -122,4 +118,13 @@ class UserDB extends AbstractDB {
                 
     }
     
+    public static function sendConfMail(array $params){
+
+        $to = $params["email_stranke"];
+        $subject = "Potrditveni mail";
+        $message = "Za uspešno registracijo prosimo sledite povezavi: https://localhost/netbeans/ep-store/verifyReg.php?mail=".$to."&hash=".$params["mailHash_stranke"];
+        $header = "From: noreply";
+
+        mail($to, $subject, $message, $header);
+    }
 }
