@@ -10,10 +10,10 @@
 
 ***Košarica***
 - dodajanje artiklov v košarico (shranjevanje v sejo?). Gumb za dodajo pri podrobnostih artiklov ✓
-- implementacija izvedbe nakupa/naročila (Rok)
+- implementacija izvedbe nakupa/naročila ✓
 
 ***Pregled naročil***
-- Pregled vseh naročil
+- Pregled vseh naročil (Rok)
 - Spreminjanje statusa naročilom (potrjen, preklican?(ali gre to k stranki?), storniran)
 
 ***Vpis za zaposlence*** ✓
