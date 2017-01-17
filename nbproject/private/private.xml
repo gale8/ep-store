@@ -6,8 +6,11 @@
             <file>file:/home/ep/NetBeansProjects/ep-store/controller/UserController.php</file>
             <file>file:/home/ep/NetBeansProjects/ep-store/sql/epStore2.sql</file>
             <file>file:/home/ep/NetBeansProjects/ep-store/index.php</file>
-            <file>file:/home/ep/NetBeansProjects/ep-store/static/css/style.css</file>
-            <file>file:/home/ep/NetBeansProjects/ep-store/forms/UsersForm.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/model/EmployeeDB.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/test/izpisKosare.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/controller/EmployeeController.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/model/UserDB.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/nakupovalna.php</file>
             <file>file:/home/ep/NetBeansProjects/ep-store/view/zacetna.php</file>
         </group>
     </open-files>

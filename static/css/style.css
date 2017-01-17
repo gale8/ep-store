@@ -98,3 +98,15 @@ ul {
     vertical-align: middle;
     text-align: center;
 }
+
+.dodaj, a.dodaj{
+    border: none;
+    font-size: inherit;
+    border-radius: 15px 50px;
+    padding: 5px;
+    color: white;
+    background-color: cornflowerblue;
+    min-width: 5%;
+    font-weight: bold;
+    
+}

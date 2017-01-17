@@ -124,6 +124,14 @@ class UserController {
         $_SESSION = array();
         ViewHelper::redirect(BASE_URL . "artikli");
     }
+    
+    public static function izpisKosara() {
+            echo ViewHelper::render("view/nakupovalna.php", ["title" => "Nakupovalna košarica"]);
+    }
+    
+    public static function checkout() {
+            echo ViewHelper::render("view/oddaja-narocila.php", ["title" => "Predračun"]);
+    }
 
 
 

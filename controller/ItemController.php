@@ -3,6 +3,7 @@
 require_once("ViewHelper.php");
 require_once("model/ItemDB.php");
 require_once("forms/ItemsForm.php");
+require_once("model/NarociloDB.php");
 
 class ItemController {
     
