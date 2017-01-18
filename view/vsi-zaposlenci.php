@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<link rel="stylesheet" type="text/css" href="<?= CSS_URL . "style.css" ?>">
+<link rel="stylesheet" type="text/css" href="<?= CSS_URL . "style.css?version=51" ?>">
 <meta charset="UTF-8" />
 <title>Vsi zaposlenci</title>
 
@@ -18,9 +18,9 @@
             <div class="table">
                 <div class="table-cell">
                     
-                    <a href="<?= BASE_URL . "zaposlenci/" . $zaposlenec["id_zaposlenca"] ?>"> <b><span style="text-transform: uppercase"><?= $zaposlenec["email_zaposlenca"] ?></span></b>
-                        <br>Ime in priimek: <br><?= $zaposlenec["ime_zaposlenca"] . ' ' . $zaposlenec["priimek_zaposlenca"]?> 
-                        <br><?= $zaposlenec["je_admin"] == 1 ? 'ADMIN' : 'PRODAJALEC' ?></a>
+                    <a href="<?= BASE_URL . "zaposlenci/" . $zaposlenec["id_zaposlenca"] ?>"> <b><span style="text-transform: uppercase; font-size: small;"><?= $zaposlenec["email_zaposlenca"] ?></span></b>
+                        <br>Ime in priimek: <br><?= $zaposlenec["ime_zaposlenca"] . ' ' . $zaposlenec["priimek_zaposlenca"]?>
+                        <br><span style="color: red; font-weight: bold; background-color: white; opacity: 0.78;"><?= $zaposlenec["zaposlenec_aktiviran"] == 1 ? '' : 'NEAKTIVIRAN' ?></span></a>
                     
                 </div> 
             </div>

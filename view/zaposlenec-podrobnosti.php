@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<link rel="stylesheet" type="text/css" href="<?= CSS_URL . "style.css" ?>">
+<link rel="stylesheet" type="text/css" href="<?= CSS_URL . "style.css?version=51" ?>">
 <meta charset="UTF-8" />
 <title>Ogled zaposlenca</title>
 
@@ -16,7 +16,6 @@
         Ime: <b><?= $ime_zaposlenca ?></b><br>
         Priimek: <b><?= $priimek_zaposlenca ?></b><br>
         Email: <b><?= $email_zaposlenca ?></b><br>
-        Geslo: <b><?= $geslo_zaposlenca ?></b><br>
         Profil aktiviran? <b><?= $zaposlenec_aktiviran == 1 ? 'DA' : 'NE' ?></b><br>
         
 </p>
