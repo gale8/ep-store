@@ -8,12 +8,13 @@
 ***Avtorizacija*** ✓
 - za omejit strani, ki jih lahko vidi stranka, prodajalec, admin
 
-***Košarica***
+***Košarica*** ✓
 - dodajanje artiklov v košarico (shranjevanje v sejo?). Gumb za dodajo pri podrobnostih artiklov ✓
 - implementacija izvedbe nakupa/naročila ✓
+- dodajanje artiklov v košarico pri opisu artikla (Rok)
 
 ***Pregled naročil***
-- Pregled vseh naročil (Rok)
+- Pregled vseh naročil ✓
 - Spreminjanje statusa naročilom (potrjen, preklican?(ali gre to k stranki?), storniran)
 
 ***Vpis za zaposlence*** ✓
