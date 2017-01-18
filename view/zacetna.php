@@ -38,6 +38,7 @@
     <?php $profil = "zaposlenci/uredi/"; }?>
         <!--Za vse prijavljene-->
         <a class="nav" href="<?= BASE_URL . $profil . $_SESSION["user_id"] ?>">Uredi profil</a>
+        <a class="nav" href="<?= BASE_URL . "artikli" ?>">Pregled preteklih naročil</a>
         <a class="nav" href="<?= BASE_URL . "izpis" ?>">Izpis</a>
         <a class="nav" href="<?= BASE_URL . "kosara" ?>">Košarica</a>
               
