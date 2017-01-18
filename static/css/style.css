@@ -112,3 +112,7 @@ ul {
     background-color: #c0f751;
     color: black;
 }
+
+.g-recaptcha {
+    display: inline-block;
+}

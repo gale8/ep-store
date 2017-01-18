@@ -47,8 +47,16 @@ $urls = [
     },
             
     "/^stranke\/registracija\/?(\d+)?$/" => function () {
-        UserController::add();
-    },             
+        if(!isset($_SESSION["ni_robot"])){           
+            UserController::captcha();
+        } else {
+            UserController::add();            
+        }
+        
+            
+        
+        
+    },            
             
     #STRANKE - preveri če je nastavljen user_level za prodajalca ali pa ce je nastavljen user_id in se ujema s trenutnim v session
     "/^stranke\/uredi\/(\d+)$/" => function ($method, $id) {
@@ -62,7 +70,7 @@ $urls = [
             ViewHelper::redirect(BASE_URL . "artikli");
         }
     },
-    
+            
     //nakupovalna kosarica, ce je stranka in ne admin
     "/^kosara\/?(\d+)?$/" => function () {
         UserController::izpisKosara();

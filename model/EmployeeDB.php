@@ -85,6 +85,7 @@ class EmployeeDB extends AbstractDB {
             $data = $stranke[0];
 
             if(password_verify($params['geslo_zaposlenca'], $data['geslo_zaposlenca']) && $data['zaposlenec_aktiviran'] == 1){
+                session_regenerate_id();
                 $_SESSION["user_id"] = $data['id_zaposlenca'];
                 $_SESSION["ime"] = $data['ime_zaposlenca'];
                 $_SESSION["user_level"] = $data['je_admin'];
