@@ -62,6 +62,16 @@ $urls = [
             ViewHelper::redirect(BASE_URL . "artikli");
         }
     },
+    
+    //nakupovalna kosarica, ce je stranka in ne admin
+    "/^kosara\/?(\d+)?$/" => function () {
+        UserController::izpisKosara();
+    },
+            
+    "/^oddaja-narocila\/?(\d+)?$/" => function () {
+        UserController::checkout();
+        
+   },
             
             
     #PRODAJALCI - za vse naslove gleda če je nastavljen user_level na prodajalca
