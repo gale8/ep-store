@@ -117,6 +117,7 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
 
         $this->addElement($this->stranka_aktivirana);
         
+        
         $this->button = new HTML_QuickForm2_Element_InputSubmit(null);
         $this->addElement($this->button);
 

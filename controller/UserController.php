@@ -70,6 +70,8 @@ class UserController {
     
     public static function editForm($params) {
         $stranka = UserDB::get(["id_stranke" => $params]);
+        #izbriše vrednost hashanega gesla, da se ta ne doda v form
+        unset($stranka["geslo_stranke"]);
         $editForm = new UsersEditForm("edit_form");
         
         $dataSource = new HTML_QuickForm2_DataSource_Array($stranka);

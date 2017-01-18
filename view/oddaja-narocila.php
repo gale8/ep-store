@@ -50,7 +50,7 @@ switch ($data["do"]) {
                
             }
             unset($_SESSION["cart"]);
-            echo "Spotštovani/a godpod/a " . $_SESSION["ime"] . " zahvaljujemo se vam za vaš nakup!";
+            echo "Spoštovani/a gospod/gospa " . $_SESSION["ime"] . ", zahvaljujemo se vam za vaš nakup!";
             echo " V 5 sekundah boste preusmerjeni na začetno stran...";
             $location =  BASE_URL . "artikli" ;
             header("Refresh: 5; URL=".$location); 

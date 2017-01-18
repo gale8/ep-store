@@ -5,12 +5,11 @@
 <title>Nakupovalna košarica</title>
 <?php require_once 'Artikel.php'; ?>
 <h1>Nakupovalna košarica</h1>
-<?php $profil = "zaposlenci/uredi/"; ?>
+<?php $profil = "stranke/uredi/"; ?>
 <p>
     <a class="nav" href="<?= BASE_URL . $profil . $_SESSION["user_id"] ?>">Uredi profil</a>
     <a class="nav" href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a>
     <a class="nav" href="<?= BASE_URL . "izpis" ?>">Izpis</a>
-    <a class="nav" href="<?= BASE_URL . "kosara" ?>">Košarica</a>
     
     <!-- IZBRISI ZGORNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->
 </p>

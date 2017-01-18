@@ -62,7 +62,10 @@ class EmployeeController {
     
     public static function editForm($params) {
         $zaposlenec = EmployeeDB::get(["id_zaposlenca" => $params]);
+        #izbriše vrednost hashanega gesla, da se ta ne doda v form
+        unset($zaposlenec["geslo_zaposlenca"]);
         $editForm = new EmployeesEditForm("edit_form");
+        echo("<script>console.log('PHP: ".json_encode($zaposlenec)."');</script>");
         
         $dataSource = new HTML_QuickForm2_DataSource_Array($zaposlenec);
         
