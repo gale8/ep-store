@@ -1,6 +1,7 @@
 <?php
 
 require_once 'model/AbstractDB.php';
+require_once 'view/Artikel.php';
 
 class NarociloDB extends AbstractDB {
     

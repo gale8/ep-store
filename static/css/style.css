@@ -99,7 +99,7 @@ ul {
 .dodaj, a.dodaj{
     border: none;
     font-size: inherit;
-    border-radius: 15px 50px;
+    border-radius: 45px 45px;
     padding: 5px;
     color: white;
     background-color: cornflowerblue;
@@ -107,4 +107,8 @@ ul {
     font-weight: bold;
     
 }
+
+.dodaj:hover {
+    background-color: #c0f751;
+    color: black;
 }
