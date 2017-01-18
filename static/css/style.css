@@ -5,13 +5,10 @@
     
 }
 
+
 html { 
-  background: url(../images/wall.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  opacity: 0.89;
+  background: url(../images/b1.png);
+  opacity: 0.75;
   font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
 }
 
@@ -20,36 +17,36 @@ html {
 }
 
 a:link, a:visited {
-    background-color: #f44336;
+    background-color: #8498CC;
     color: white;
     padding: 45px 55px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    border-radius: 15px 50px;
+    border-radius: 45px 45px;
 }
 
 a:hover {
-    color: #000000;
-    background-color: #f44336;
+    color:black;
+    background-color: #4BDDFF;
     opacity:1;
     
 }
 
 a.nav:link, a.nav:visited{
-    color: cornflowerblue;
-    background-color: #999999;
+    background-color: #CCA299;
     color: white;
+    font-weight: bold;
     padding: 15px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    border-radius: 15px 50px;
+    border-radius: 45px 45px;
 }
 
 a.nav:hover {
-    color: red;
-    background-color: #999999;
+    color: black;
+    background-color: #FFC2A4;
     opacity:1;
     
 }
@@ -109,4 +106,5 @@ ul {
     min-width: 5%;
     font-weight: bold;
     
+}
 }

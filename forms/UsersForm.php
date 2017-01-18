@@ -105,11 +105,8 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
             $this->stranka_aktivirana->addRule('required', 'Vpišite 0 ali 1.');
             $this->stranka_aktivirana->addRule('gte', 'Številka mora biti => 0.', 0);
             $this->stranka_aktivirana->addRule('lte', 'Številka mora biti <=1.', 1);
-            $this->stranka_aktivirana->addRule('callback', 'Vpišite številčno vrednost.', array(
-                'callback' => 'filter_var',
-                'arguments' => [FILTER_VALIDATE_INT]
-                    )
-            );
+            $this->stranka_aktivirana->addRule('regex', 'Samo 0 ali 1!', '/^(0|1)$/');
+            
 //        Ce lahko ureja profil je aktivirana
         } else {
             $this->stranka_aktivirana = new HTML_QuickForm2_Element_InputText('stranka_aktivirana');                

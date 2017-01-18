@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<link rel="stylesheet" type="text/css" href="<?= CSS_URL . "style.css" ?>">
+<link rel="stylesheet" type="text/css" href="<?= CSS_URL . "style.css?version=51" ?>">
 <meta charset="UTF-8" />
 <title>Potrditev registracije</title>
 <h1> <?= $title ?> </h1>

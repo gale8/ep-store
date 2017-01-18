@@ -78,11 +78,8 @@ abstract class EmployeesAbstractForm extends HTML_QuickForm2 {
             $this->zaposlenec_aktiviran->addRule('required', 'Vpišite 0 ali 1.');
             $this->zaposlenec_aktiviran->addRule('gte', 'Številka mora biti => 0.', 0);
             $this->zaposlenec_aktiviran->addRule('lte', 'Številka mora biti <=1.', 1);
-            $this->zaposlenec_aktiviran->addRule('callback', 'Vpišite številčno vrednost.', array(
-                'callback' => 'filter_var',
-                'arguments' => [FILTER_VALIDATE_INT]
-                    )
-            );
+            $this->zaposlenec_aktiviran->addRule('regex', 'Samo 0 ali 1!', '/^(0|1)$/');
+            
 //          Ce lahko ureja profil je aktiviran  
         } else {
             $this->zaposlenec_aktiviran = new HTML_QuickForm2_Element_InputText('zaposlenec_aktiviran');

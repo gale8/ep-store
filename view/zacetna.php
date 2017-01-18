@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<link rel="stylesheet" type="text/css" href="<?= CSS_URL . "style.css" ?>">
+<link rel="stylesheet" type="text/css" href="<?= CSS_URL . "style.css?version=51" ?>">
 <meta charset="UTF-8" />
 <title>Spletna trgovina</title>
-<?php require_once 'Artikel.php'; ?>
-<h1>Spletna trgovina</h1>
-<?php if(isset($_SESSION["user_id"])){?> <h2>Pozdravljen/a <?php if(isset($_SESSION["ime"])){ echo $_SESSION["ime"];}?>! <?php if(isset($_SESSION["user_level"])){ echo $_SESSION["user_level"] == 1 ? "(Vloga: Administrator)" : "(Vloga: Prodajalec)";}?></h2><?php }?>
+
+<h1>EP-Store</h1>
+<?php if(isset($_SESSION["user_id"])){?> <h2 class="pozdrav">Pozdravljen/a <?php if(isset($_SESSION["ime"])){ echo $_SESSION["ime"];}?>! <?php if(isset($_SESSION["user_level"])){ echo $_SESSION["user_level"] == 1 ? "(Status: Administrator)" : "(Status: Prodajalec)";}?></h2><?php }?>
 
 <p>
     <!--Za urejanje lastnega profila-->
