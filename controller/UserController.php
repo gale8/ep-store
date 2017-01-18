@@ -139,6 +139,15 @@ class UserController {
     public static function checkout() {
             echo ViewHelper::render("view/oddaja-narocila.php", ["title" => "Predračun"]);
     }
+    
+    //za izpis vseh naročil stranke
+    public static function izpisNarocil() {
+        echo ViewHelper::render("view/pregled-narocila-stranka.php" , ["title" => "Pregled naročil", "narocila" => NarociloDB::getAll() ]);
+    }
+    
+    public static function izpisPodrobnostiNarocila($id) {
+        echo ViewHelper::render("view/opis-narocila.php", ["title" => "Pregled naročila" , "narocilo" => NarociloDB::getNarocilo($id) ]);
+    }
 
 
 

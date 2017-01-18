@@ -38,7 +38,7 @@
     <?php $profil = "zaposlenci/uredi/"; }?>
         <!--Za vse prijavljene-->
         <a class="nav" href="<?= BASE_URL . $profil . $_SESSION["user_id"] ?>">Uredi profil</a>
-        <a class="nav" href="<?= BASE_URL . "artikli" ?>">Pregled preteklih naročil</a>
+        <a class="nav" href="<?= BASE_URL . "stranke/pregled/" . $_SESSION["user_id"] ?>">Pregled preteklih naročil</a>
         <a class="nav" href="<?= BASE_URL . "izpis" ?>">Izpis</a>
         <a class="nav" href="<?= BASE_URL . "kosara" ?>">Košarica</a>
               
@@ -123,11 +123,7 @@ switch ($data["do"]) {
                 $knjiga = NarociloDB::getOne($id); //pridobi $id artikla;
                 //INSERT INTO artikel_narocilo
                 $temp_idArtikla = $knjiga->id_artikla;
-                $temp_kolicinaArtikla = (string)$kolicina;
-                echo("<script>console.log('PHP: ".json_encode($knjiga->id_artikla)."');</script>");
-                echo("<script>console.log('PHP: ".json_encode($knjiga->ime_artikla)."');</script>");
-                 echo("<script>console.log('PHP: ".json_encode($temp_kolicinaArtikla)."');</script>");
-                echo("<script>console.log('PHP: ".json_encode("-----")."');</script>");
+                $temp_kolicinaArtikla = (string)$kolicina; 
                 NarociloDB::dodajArtikelNarocilo($bla, $temp_idArtikla, $temp_kolicinaArtikla);
                 
                

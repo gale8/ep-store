@@ -9,6 +9,7 @@
 <p>
     <a class="nav" href="<?= BASE_URL . $profil . $_SESSION["user_id"] ?>">Uredi profil</a>
     <a class="nav" href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a>
+    <a class="nav" href="<?= BASE_URL . "stranke/pregled/" . $_SESSION["user_id"] ?>">Pregled preteklih naročil</a>
     <a class="nav" href="<?= BASE_URL . "izpis" ?>">Izpis</a>
     
     <!-- IZBRISI ZGORNJO VRSTICO!! | to vrstico se doda v pregled-artikla-zaposleni.php -->

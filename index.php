@@ -80,6 +80,23 @@ $urls = [
         UserController::checkout();
         
    },
+    
+           //za pregledovanje preteklih naročil stranke
+    "/^stranke\/pregled\/(\d+)$/" => function ($id) {
+        if( isset($_SESSION["user_id"])){
+             UserController::izpisNarocil();
+        }
+        else {
+            UserController::index();
+        }
+    },
+    
+    "/^stranke\/pregled\/narocilo\/(\d+)$/" => function ($method, $id) {
+        if( isset($_SESSION["user_id"])){
+             UserController::izpisPodrobnostiNarocila($id);
+        }
+        
+    },
             
             
     #PRODAJALCI - za vse naslove gleda če je nastavljen user_level na prodajalca
