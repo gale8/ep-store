@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<link rel="stylesheet" type="text/css" href="<?= CSS_URL . "style.css?version=51" ?>">
+<link rel="stylesheet" type="text/css" href="<?= CSS_URL . "style.css" ?>">
 <meta charset="UTF-8" />
 <title>Potrditev registracije</title>
 <h1> <?= $title ?> </h1>
@@ -11,4 +11,5 @@
     <a class="nav" href="<?= BASE_URL . "artikli" ?>">Domov</a>        
 </p>
 
+<?php session_unset(); ?>
 

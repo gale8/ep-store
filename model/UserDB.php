@@ -70,6 +70,7 @@ class UserDB extends AbstractDB {
             $data = $stranke[0];
 
             if(password_verify($params['geslo_stranke'], $data['geslo_stranke']) && $data['stranka_aktivirana'] == 1){
+                session_regenerate_id();
                 $_SESSION["user_id"] = $data['id_stranke'];
                 $_SESSION["ime"] = $data['ime_stranke'];
 

@@ -15,13 +15,18 @@ class UserController {
         ]);
         #ViewHelper::redirect(BASE_URL . "artikli");
     }
+    
+    public static function captcha() {
+        echo ViewHelper::render("view/captcha.php", []);
+    }
 
-    public static function add() {
-        $form = new UsersInsertForm("add_form");
+    public static function add() {             
         
+        $form = new UsersInsertForm("add_form");
+
         if ($form->validate()) {
             $data = $form->getValue();
-            
+
             if(!UserDB::exists($data)){
                 UserDB::insert($data);
                 echo ViewHelper::render("view/potrditevReg.php", [
@@ -34,9 +39,9 @@ class UserController {
                 "title" => "Elektronski naslov je že v uporabi!",
                 "form" => $form
             ]);
-                
+
             }
-            
+
         } else {
             echo ViewHelper::render("view/user-form.php", [
                 "title" => "Registracija stranke",
@@ -91,7 +96,7 @@ class UserController {
         if ($form->validate()) {
             $data = $form->getValue();
             UserDB::login($data);
-            if(isset($_SESSION['user_id'])){
+            if(isset($_SESSION['user_id'])){                
                 ViewHelper::redirect(BASE_URL . "artikli");
             } else {
                 echo ViewHelper::render("view/login-form.php", [
@@ -126,11 +131,11 @@ class UserController {
         $_SESSION = array();
         ViewHelper::redirect(BASE_URL . "artikli");
     }
-    
+
     public static function izpisKosara() {
             echo ViewHelper::render("view/nakupovalna.php", ["title" => "Nakupovalna košarica"]);
     }
-    
+
     public static function checkout() {
             echo ViewHelper::render("view/oddaja-narocila.php", ["title" => "Predračun"]);
     }

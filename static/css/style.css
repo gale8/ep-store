@@ -7,7 +7,7 @@
 
 
 html { 
-  background: url(../images/b1.png);
+  background: url(../images/bg1.jpg);
   opacity: 0.75;
   font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
 }
@@ -111,4 +111,8 @@ ul {
 .dodaj:hover {
     background-color: #c0f751;
     color: black;
+}
+
+.g-recaptcha {
+    display: inline-block;
 }
