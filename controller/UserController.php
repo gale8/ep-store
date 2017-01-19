@@ -136,9 +136,7 @@ class UserController {
             echo ViewHelper::render("view/nakupovalna.php", ["title" => "Nakupovalna košarica"]);
     }
 
-    public static function checkout() {
-            echo ViewHelper::render("view/oddaja-narocila.php", ["title" => "Predračun"]);
-    }
+    
     
     //za izpis vseh naročil stranke
     public static function izpisNarocil() {
@@ -147,6 +145,12 @@ class UserController {
     
     public static function izpisPodrobnostiNarocila($id) {
         echo ViewHelper::render("view/opis-narocila.php", ["title" => "Pregled naročila" , "narocilo" => NarociloDB::getNarocilo($id) ]);
+    }
+    
+    //za dodajanje podatkov o stranki, ki se odloči za nakup izdelkov
+    //podatki se prikažejo po kliku oddaj naročilo v košarici
+    public static function getStrankaInfo() {
+        echo ViewHelper::render("view/oddaja-narocila.php", ["stranka" => UserDB::getStranka($_SESSION["user_id"])]);
     }
 
 

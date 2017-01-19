@@ -68,6 +68,12 @@ switch ($data["do"]) {
     <div class="buyer_cart">
         <?php if(isset($_SESSION["user_id"])) : ?>
         
+   
+        <h3>Naročnikovi podatki:</h3>
+        Ime in priimek: <b><?= $stranka[0]["ime_stranke"] . " " . $stranka[0]["priimek_stranke"] ?> </b><br/>
+        Telefonska številka: <b><?= $stranka[0]["tel_st"] ?> </b><br/>
+            Naslov: <b><?= $stranka[0]["naslov_stevilka"] ?> </b><br/>
+            Pošta: <b><?= $stranka[0]["postna_st"] . " " . $stranka[0]["ime_poste"] ?> </b><br/>
         
         <?php if(isset($_SESSION["cart"])) :?>
     <h3>Vaš predračun:</h3>

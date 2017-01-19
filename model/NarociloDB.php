@@ -101,5 +101,7 @@ class NarociloDB extends AbstractDB {
         return parent::query("SELECT narocilo.id_narocila, narocilo.id_stranke, SUM(narocilo_artikel.kolicina) AS kolicina FROM narocilo INNER JOIN narocilo_artikel ON narocilo.id_narocila = narocilo_artikel.id_narocila GROUP BY narocilo.id_narocila");
     }
     
+    
+    
 }
 

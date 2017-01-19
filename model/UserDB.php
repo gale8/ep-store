@@ -129,4 +129,10 @@ class UserDB extends AbstractDB {
 
         mail($to, $subject, $message, $header);
     }
+    public static function getStranka($id) {
+        return parent::query("SELECT stranka.ime_stranke, stranka.priimek_stranke, stranka.tel_st, stranka.naslov_stevilka, posta.postna_st, posta.ime_poste "
+                            . "FROM stranka "
+                            . "INNER JOIN posta ON stranka.id_poste = posta.id_poste "
+                            . "WHERE stranka.id_stranke = $id");
+    }
 }
