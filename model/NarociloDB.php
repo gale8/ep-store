@@ -7,9 +7,15 @@ class NarociloDB extends AbstractDB {
     
     
     #getAll vrne samo aktivirane artikle (pogled za kupce) IZBRIŠI OR artikel_aktiviran = 2 (sam za test)
-    public static function getAll() {
-        return parent::query("SELECT narocilo.id_narocila, narocilo.id_stranke, SUM(narocilo_artikel.kolicina) AS kolicina FROM narocilo INNER JOIN narocilo_artikel ON narocilo.id_narocila = narocilo_artikel.id_narocila GROUP BY narocilo.id_narocila");
-    }
+         public static function getAll() {
+         return parent::query("SELECT id_artikla, ime_artikla, cena, opis_artikla, artikel_aktiviran"
+                        . " FROM artikel"
+                         . " WHERE artikel_aktiviran = 1 OR artikel_aktiviran = 0"
+                         . " ORDER BY id_artikla ASC");
+       
+      }
+    
+    
     
         public static function insert(array $params) {
         return parent::modify("INSERT INTO artikel (ime_artikla, cena, opis_artikla, artikel_aktiviran) "
@@ -89,6 +95,10 @@ class NarociloDB extends AbstractDB {
                             . "from narocilo_artikel "
                             . "inner join artikel on narocilo_artikel.id_artikla = artikel.id_artikla "
                             . "where narocilo_artikel.id_narocila = $id ");
+    }
+    
+    public static function getAllIzpisNarocil() {
+        return parent::query("SELECT narocilo.id_narocila, narocilo.id_stranke, SUM(narocilo_artikel.kolicina) AS kolicina FROM narocilo INNER JOIN narocilo_artikel ON narocilo.id_narocila = narocilo_artikel.id_narocila GROUP BY narocilo.id_narocila");
     }
     
 }

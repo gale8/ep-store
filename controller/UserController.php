@@ -142,7 +142,7 @@ class UserController {
     
     //za izpis vseh naročil stranke
     public static function izpisNarocil() {
-        echo ViewHelper::render("view/pregled-narocila-stranka.php" , ["title" => "Pregled naročil", "narocila" => NarociloDB::getAll() ]);
+        echo ViewHelper::render("view/pregled-narocila-stranka.php" , ["title" => "Pregled naročil", "narocila" => NarociloDB::getAllIzpisNarocil() ]);
     }
     
     public static function izpisPodrobnostiNarocila($id) {
