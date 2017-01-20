@@ -72,9 +72,9 @@ class NarociloDB extends AbstractDB {
         return $artikli;
     }
     //generira novo narocilo
-    public static function dodajNarocilo($id_stranke) {
-       parent::modify("INSERT INTO narocilo (id_stranke) "
-                        . " VALUES ($id_stranke)");
+    public static function dodajNarocilo(array $params) {
+        parent::modify("INSERT INTO narocilo (id_stranke) "
+                        . " VALUES (:id_stranke)", $params);
     }
     
     //pridobitev zadnje id_narocila
@@ -84,9 +84,9 @@ class NarociloDB extends AbstractDB {
     
     //za dodajanje posameznega narocila artikla v narocilo_artikel
     //querry gre cez foreach loop
-    public static function dodajArtikelNarocilo($id_narocila, $id_artikla, $kolicina) {
+    public static function dodajArtikelNarocilo(array $params) {
         parent::modify("INSERT INTO narocilo_artikel (id_narocila, id_artikla, kolicina) "
-                . " VALUES ($id_narocila, $id_artikla, $kolicina)");
+                . " VALUES (:id_narocila, :id_artikla, :kolicina)", $params);
     }
     
     //pridobi celotno narocilo za podan id_narocilo

@@ -31,7 +31,8 @@ switch ($data["do"]) {
         if(isset($_SESSION["cart"])) {
             //dodamo narocilo, da potem lahko dobimo ID Narocila vn
             $temp_idStranke = $_SESSION["user_id"];
-            NarociloDB::dodajNarocilo($temp_idStranke);
+            echo("<script>console.log('PHP: ".json_encode(array($temp_idStranke))."');</script>");
+            NarociloDB::dodajNarocilo(["id_stranke"=>$temp_idStranke]);
             
             //iz baze prebremo zadnji ID narocilo
             $temp_idNarocila = NarociloDB::getIDnarocila();
@@ -45,7 +46,7 @@ switch ($data["do"]) {
                 $temp_idArtikla = $knjiga->id_artikla;
                 $temp_kolicinaArtikla = (string)$kolicina;
                 
-                NarociloDB::dodajArtikelNarocilo($bla, $temp_idArtikla, $temp_kolicinaArtikla);
+                NarociloDB::dodajArtikelNarocilo(["id_narocila"=>$bla, "id_artikla"=>$temp_idArtikla, "kolicina"=>$temp_kolicinaArtikla]);
                 
                
             }
