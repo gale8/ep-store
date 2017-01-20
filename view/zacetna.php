@@ -92,53 +92,6 @@ switch ($data["do"]) {
             die($exc->getMessage());
         }
         break;
-    case "update_cart":
-        
-        if (isset($_SESSION["cart"][$data["id"]])) {
-             if(isset($_POST["pop"])) {
-                $data["kolicina"] = 0; 
-            }
-            if ($data["kolicina"] > 0) {
-                $_SESSION["cart"][$data["id"]] = $data["kolicina"];
-            } 
-            
-            else {
-                unset($_SESSION["cart"][$data["id"]]);
-            }
-        }
-        break;
-    case "send_cart":
-        if(isset($_SESSION["cart"])) {
-            //dodamo narocilo, da potem lahko dobimo ID Narocila vn
-            $temp_idStranke = $_SESSION["user_id"];
-            NarociloDB::dodajNarocilo($temp_idStranke);
-            
-            //iz baze prebremo zadnji ID narocilo
-            $temp_idNarocila = NarociloDB::getIDnarocila();
-            $var_temp = $temp_idNarocila[0];
-            $bla = $var_temp["id_narocila"];
-            
-             echo("<script>console.log('PHP: ".json_encode($var_temp["id_narocila"])."');</script>");
-           foreach ($_SESSION["cart"] as $id => $kolicina) {
-                $knjiga = NarociloDB::getOne($id); //pridobi $id artikla;
-                //INSERT INTO artikel_narocilo
-                $temp_idArtikla = $knjiga->id_artikla;
-                $temp_kolicinaArtikla = (string)$kolicina; 
-                NarociloDB::dodajArtikelNarocilo($bla, $temp_idArtikla, $temp_kolicinaArtikla);
-                
-               
-            }
-            unset($_SESSION["cart"]);
-            echo('<p> Zahvaljujemo se vam za vaš nakup! </p>');
-           
-        
-            
-        }  
-        break;
-    
-    case "purge_cart":
-        unset($_SESSION["cart"]);
-        break;
     default:
         break;
 }

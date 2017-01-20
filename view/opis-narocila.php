@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="<?= CSS_URL . "style.css?version=51" ?>">
 <meta charset="UTF-8" />
 <title>Pregled artikla</title>
-
+<h1>Pregled artiklov naročila</h1>
 
 <?php $profil = "stranke/uredi/"; ?>
 <p>

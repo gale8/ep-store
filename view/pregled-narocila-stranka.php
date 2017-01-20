@@ -1,10 +1,12 @@
+<!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="<?= CSS_URL . "style.css?version=51" ?>">
 <meta charset="UTF-8" />
 <title>Pregled naročil</title>
-
 <h1>Pregled naročil</h1>
 
+
 <p>
+    
       <?php $profil = "stranke/uredi/";?>
     
     <!--Za prijavljene-->
