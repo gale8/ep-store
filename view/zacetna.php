@@ -65,7 +65,7 @@
     $validationRules = ['do' => [
         'filter' => FILTER_VALIDATE_REGEXP,
         'options' => [
-            "regexp" => "/^(add_into_cart|update_cart|send_cart|purge_cart)$/"
+            "regexp" => "/^(add_into_cart)$/"
         ]
     ],
     'id' => [
@@ -82,6 +82,7 @@
 switch ($data["do"]) {
     case "add_into_cart":
         try {
+        
             $knjiga = NarociloDB::getOne($data["id"]);
 
             if (isset($_SESSION["cart"][$knjiga->id_artikla])) {

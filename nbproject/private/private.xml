@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/ep/NetBeansProjects/ep-store/view/pregled-artikla-kupec.php</file>
             <file>file:/home/ep/NetBeansProjects/ep-store/controller/UserController.php</file>
-            <file>file:/home/ep/NetBeansProjects/ep-store/view/opis-narocila.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/oddaja-narocila.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/index.php</file>
             <file>file:/home/ep/NetBeansProjects/ep-store/model/NarociloDB.php</file>
-            <file>file:/home/ep/NetBeansProjects/ep-store/view/pregled-narocila-stranka.php</file>
-            <file>file:/home/ep/NetBeansProjects/ep-store/view/nakupovalna.php</file>
-            <file>file:/home/ep/NetBeansProjects/ep-store/controller/ItemController.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/model/UserDB.php</file>
+            <file>file:/home/ep/NetBeansProjects/ep-store/view/zacetna.php</file>
         </group>
     </open-files>
 </project-private>
