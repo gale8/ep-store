@@ -35,13 +35,14 @@
 
         <?php }?>
     
-    <?php $profil = "zaposlenci/uredi/"; }?>
+    <?php $profil = "zaposlenci/uredi/"; } else {?>
+            <!--Za stranke-->
+            <a class="nav" href="<?= BASE_URL . "stranke/pregled/" . $_SESSION["user_id"] ?>">Pregled preteklih naročil</a>
+            <a class="nav" href="<?= BASE_URL . "kosara" ?>">Košarica</a>
+    <?php }?>
         <!--Za vse prijavljene-->
-        <a class="nav" href="<?= BASE_URL . $profil . $_SESSION["user_id"] ?>">Uredi profil</a>
-        <a class="nav" href="<?= BASE_URL . "stranke/pregled/" . $_SESSION["user_id"] ?>">Pregled preteklih naročil</a>
-        <a class="nav" href="<?= BASE_URL . "izpis" ?>">Izpis</a>
-        <a class="nav" href="<?= BASE_URL . "kosara" ?>">Košarica</a>
-              
+        <a class="nav" href="<?= BASE_URL . $profil . $_SESSION["user_id"] ?>">Uredi profil</a>        
+        <a class="nav" href="<?= BASE_URL . "izpis" ?>">Izpis</a>                
     <!--Za neprijavljene-->
     <?php } else {?>    
 
@@ -111,7 +112,7 @@ switch ($data["do"]) {
                          <br/>
                         <?php if(isset($_SESSION["user_id"]) && !isset($_SESSION["user_level"])): ?>
                         <button class="dodaj" type="submit">Dodaj!</button>
-                        <?php                            endif;?>
+                        <?php endif;?>
                 </form>
                 </div> 
             </div>

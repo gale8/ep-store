@@ -26,7 +26,6 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
 
     public function __construct($id_stranke) {
         parent::__construct($id_stranke);
-
         
         $this->ime_stranke = new HTML_QuickForm2_Element_InputText('ime_stranke');
         $this->ime_stranke->setAttribute('size', 45);
@@ -96,28 +95,33 @@ abstract class UsersAbstractForm extends HTML_QuickForm2 {
         $this->geslo_stranke2->addRule('required', 'Ponovno vpišite izbrano geslo.');
         $this->geslo_stranke2->addRule('eq', 'Gesli nista enaki.', $this->geslo_stranke);
         $this->addElement($this->geslo_stranke2);
-       
+              
+        $this->stranka_aktivirana = new HTML_QuickForm2_Element_InputText('stranka_aktivirana');
+        $this->stranka_aktivirana->setAttribute('size', 1);                
+        $this->stranka_aktivirana->addRule('gte', 'Številka mora biti => 0.', 0);
+        $this->stranka_aktivirana->addRule('lte', 'Številka mora biti <=1.', 1);       
+            
 //        Onemogoci stranki urejanje s statusom profila
-        if(isset($_SESSION["user_level"])){
-            $this->stranka_aktivirana = new HTML_QuickForm2_Element_InputText('stranka_aktivirana');
-            $this->stranka_aktivirana->setAttribute('size', 1);
+        if(isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0){
             $this->stranka_aktivirana->setLabel('Status profila (1:aktiviran  0:neaktiviran)');
             $this->stranka_aktivirana->addRule('required', 'Vpišite 0 ali 1.');
-            $this->stranka_aktivirana->addRule('gte', 'Številka mora biti => 0.', 0);
-            $this->stranka_aktivirana->addRule('lte', 'Številka mora biti <=1.', 1);
             $this->stranka_aktivirana->addRule('regex', 'Samo 0 ali 1!', '/^(0|1)$/');
             
-//        Ce lahko ureja profil je aktivirana
-        } else {
-            $this->stranka_aktivirana = new HTML_QuickForm2_Element_InputText('stranka_aktivirana');                
+//        Ce lahko ureja profil se vpiše vrednost iz baze, ob registraciji je 0
+        } else {                          
             $this->stranka_aktivirana->setAttribute('hidden');
-            $this->stranka_aktivirana->setAttribute('value', "0");            
+            $this->stranka_aktivirana->setAttribute('value', "0");
+            if(isset($_SESSION["user_id"])){
+                $this->stranka_aktivirana->addRule('regex', 'Samo 0 ali 1!', '/^(0|1)$/');
+            } else {
+                $this->stranka_aktivirana->addRule('regex', 'Samo 0 je veljavna vrednost.', '/^0$/');
+            }
+                        
         }
         
 
         $this->addElement($this->stranka_aktivirana);
-        
-        
+               
         $this->button = new HTML_QuickForm2_Element_InputSubmit(null);
         $this->addElement($this->button);
 
