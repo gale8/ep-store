@@ -49,8 +49,16 @@ class EmployeeController {
         if ($editForm->isSubmitted()) {
             if ($editForm->validate()) {
                 $data = $editForm->getValue();
-                EmployeeDB::update($data);
-                ViewHelper::redirect(BASE_URL . "zaposlenci/" . $data["id_zaposlenca"]);
+                    if((isset($_SESSION["user_id"]) && $_SESSION["user_id"] == $data["id_zaposlenca"]) || (isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 1 )){
+                        EmployeeDB::update($data);
+                        ViewHelper::redirect(BASE_URL . "zaposlenci/" . $data["id_zaposlenca"]);
+                    } else {
+                        echo ViewHelper::render("view/employee-form.php", [
+                        "title" => "Urejanje profila prodajalca",
+                        "form" => $editForm
+                        ]);
+                    }
+
             } else {
                 echo ViewHelper::render("view/employee-form.php", [
                     "title" => "Urejanje profila prodajalca",
