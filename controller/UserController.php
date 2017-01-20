@@ -62,8 +62,16 @@ class UserController {
         if ($editForm->isSubmitted()) {
             if ($editForm->validate()) {
                 $data = $editForm->getValue();
-                UserDB::update($data);
-                ViewHelper::redirect(BASE_URL . "stranke/" . $data["id_stranke"]);
+                
+                if((isset($_SESSION["user_id"]) && $_SESSION["user_id"] == $data["id_stranke"]) || (isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0 )){
+                    UserDB::update($data);
+                    ViewHelper::redirect(BASE_URL . "stranke/" . $data["id_stranke"]);
+                } else {
+                    echo ViewHelper::render("view/user-form.php", [
+                    "title" => "Urejanje profila stranke",
+                    "form" => $editForm
+                    ]);
+                }
             } else {
                 echo ViewHelper::render("view/user-form.php", [
                     "title" => "Urejanje profila stranke",

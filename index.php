@@ -133,7 +133,7 @@ $urls = [
               
             
     "/^stranke\/?(\d+)?$/" => function ($method, $id = null) {
-        if(isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0){
+        if(isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0 || (isset($_SESSION["user_id"]) && $_SESSION["user_id"] == $id)){
             if ($id == null) {
                 UserController::index();
             } else {
