@@ -21,6 +21,12 @@ class EmployeeController {
             $data = $form->getValue();
             if(!EmployeeDB::exists($data)) {
                 $id = EmployeeDB::insert($data);
+                
+                EmployeeDB::dnevnik(["timestamp" => date('Y-m-d H:i:s', time()),
+                        "dnevnik_id_aktivnosti" => 3,
+                        "dnevnik_id_zaposlenca" => $_SESSION["user_id"]
+                        ]);
+                
                 ViewHelper::redirect(BASE_URL . "zaposlenci/" . $id);
             } else {
                 echo ViewHelper::render("view/employee-form.php", [
@@ -50,7 +56,14 @@ class EmployeeController {
             if ($editForm->validate()) {
                 $data = $editForm->getValue();
                     if((isset($_SESSION["user_id"]) && $_SESSION["user_id"] == $data["id_zaposlenca"]) || (isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 1 )){
+                        
                         EmployeeDB::update($data);
+                        
+                        EmployeeDB::dnevnik(["timestamp" => date('Y-m-d H:i:s', time()),
+                        "dnevnik_id_aktivnosti" => 5,
+                        "dnevnik_id_zaposlenca" => $_SESSION["user_id"]
+                        ]);
+                                                
                         ViewHelper::redirect(BASE_URL . "zaposlenci/" . $data["id_zaposlenca"]);
                     } else {
                         echo ViewHelper::render("view/employee-form.php", [
@@ -98,6 +111,10 @@ class EmployeeController {
             $data = $form->getValue();
             EmployeeDB::login($data);
             if(isset($_SESSION['user_level'])){
+                EmployeeDB::dnevnik(["timestamp" => date('Y-m-d H:i:s', time()),
+                        "dnevnik_id_aktivnosti" => 1,
+                        "dnevnik_id_zaposlenca" => $_SESSION["user_id"]
+                        ]);
                 ViewHelper::redirect(BASE_URL . "artikli");
             } else {
                 echo ViewHelper::render("view/login-form.php", [

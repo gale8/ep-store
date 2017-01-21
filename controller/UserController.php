@@ -4,7 +4,7 @@ require_once("ViewHelper.php");
 require_once("model/UserDB.php");
 require_once("forms/UsersForm.php");
 require_once("forms/LoginForm.php");
-
+require_once("model/EmployeeDB.php");
 
 
 class UserController {
@@ -30,6 +30,10 @@ class UserController {
             if(!UserDB::exists($data)){
                 UserDB::insert($data);
                 if (isset($_SESSION) && $_SESSION["user_level"] == 0) {
+                    EmployeeDB::dnevnik(["timestamp" => date('Y-m-d H:i:s', time()),
+                        "dnevnik_id_aktivnosti" => 4,
+                        "dnevnik_id_zaposlenca" => $_SESSION["user_id"]
+                        ]);
                     echo ViewHelper::render("view/vse-stranke.php", ["stranke" => UserDB::getAll()]);
                 } else{
                     echo ViewHelper::render("view/potrditevReg.php", [
@@ -68,6 +72,12 @@ class UserController {
                 
                 if((isset($_SESSION["user_id"]) && $_SESSION["user_id"] == $data["id_stranke"]) || (isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0 )){
                     UserDB::update($data);
+                    
+                    EmployeeDB::dnevnik(["timestamp" => date('Y-m-d H:i:s', time()),
+                        "dnevnik_id_aktivnosti" => 6,
+                        "dnevnik_id_zaposlenca" => $_SESSION["user_id"]
+                        ]);
+                    
                     ViewHelper::redirect(BASE_URL . "stranke/" . $data["id_stranke"]);
                 } else {
                     echo ViewHelper::render("view/user-form.php", [
@@ -135,6 +145,12 @@ class UserController {
     }
 
     public static function logout(){
+        
+        EmployeeDB::dnevnik(["timestamp" => date('Y-m-d H:i:s', time()),
+                        "dnevnik_id_aktivnosti" => 2,
+                        "dnevnik_id_zaposlenca" => $_SESSION["user_id"]
+                        ]);
+        
         session_start();
         setcookie(session_name(), '', 100);
         session_unset();

@@ -111,7 +111,10 @@ class EmployeeDB extends AbstractDB {
         }
         echo "Zaposlenec s tem e-naslovom že obstaja!";
         return $obstaja;
-        
     }
     
+    public static function dnevnik(array $params){
+        return parent::modify("INSERT INTO dnevnik (timestamp, dnevnik_id_aktivnosti, dnevnik_id_zaposlenca)"
+        . " VALUES (:timestamp, :dnevnik_id_aktivnosti, :dnevnik_id_zaposlenca)", $params);
+    }
 }

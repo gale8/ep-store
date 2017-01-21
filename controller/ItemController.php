@@ -32,6 +32,12 @@ class ItemController {
 
         if ($form->validate()) {
             $id = ItemDB::insert($form->getValue());
+            
+            EmployeeDB::dnevnik(["timestamp" => date('Y-m-d H:i:s', time()),
+                        "dnevnik_id_aktivnosti" => 7,
+                        "dnevnik_id_zaposlenca" => $_SESSION["user_id"]
+                        ]);
+            
             ViewHelper::redirect(BASE_URL . "artikli/" . $id);
         } else {
             echo ViewHelper::render("view/artikel-form.php", [
@@ -54,6 +60,12 @@ class ItemController {
             if ($editForm->validate()) {
                 $data = $editForm->getValue();
                 ItemDB::update($data);
+                
+                EmployeeDB::dnevnik(["timestamp" => date('Y-m-d H:i:s', time()),
+                        "dnevnik_id_aktivnosti" => 8,
+                        "dnevnik_id_zaposlenca" => $_SESSION["user_id"]
+                        ]);
+                
                 ViewHelper::redirect(BASE_URL . "artikli/" . $data["id_artikla"]);
             } else {
                 echo ViewHelper::render("view/artikel-form.php", [
