@@ -89,6 +89,7 @@ class EmployeeDB extends AbstractDB {
                 $_SESSION["user_id"] = $data['id_zaposlenca'];
                 $_SESSION["ime"] = $data['ime_zaposlenca'];
                 $_SESSION["user_level"] = $data['je_admin'];
+                $_SESSION["ni_robot"]= "OK";
             } else {
                 echo $err;
             }

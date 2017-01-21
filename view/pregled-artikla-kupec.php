@@ -76,7 +76,7 @@ switch ($data["do"]) {
 <form action="<?= $url ?>" method="post">
     <input type="hidden" name="do" value="add_into_cart" />
     <input type="hidden" name="id" value="<?= $id_artikla ?>" />
-    <?php if(!isset($_SESSION["user_level"])){?>
+    <?php if(isset($_SESSION["user_id"]) && !isset($_SESSION["user_level"])){?>
     <button class="dodaj" type="submit">Dodaj!</button>
     <?php }?>
 </form>

@@ -29,11 +29,14 @@ class UserController {
 
             if(!UserDB::exists($data)){
                 UserDB::insert($data);
-                echo ViewHelper::render("view/potrditevReg.php", [
-                "response" => "Registracija uspešna! Za aktivacijo sledite povezavi, ki ste jo prejeli na vpisani elektronski naslov.",
-                "title" => "Potrditev registracije"
-            ]);
-
+                if (isset($_SESSION) && $_SESSION["user_level"] == 0) {
+                    echo ViewHelper::render("view/vse-stranke.php", ["stranke" => UserDB::getAll()]);
+                } else{
+                    echo ViewHelper::render("view/potrditevReg.php", [
+                    "response" => "Registracija uspešna! Za aktivacijo sledite povezavi, ki ste jo prejeli na vpisani elektronski naslov.",
+                    "title" => "Potrditev registracije"
+                    ]);
+                }               
             } else {
                 echo ViewHelper::render("view/user-form.php", [
                 "title" => "Elektronski naslov je že v uporabi!",
