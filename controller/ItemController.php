@@ -91,28 +91,7 @@ class ItemController {
         ]);
     }
     
-    //edit form za izpis in urejanje narocilo
-    // Potrjeno = 0
-    // Preklicano = 1
-    //Stornirano = 2
-    public static function narociloForm($id) {
-        $narocilo = NarociloDB::izpisiStatusNarocila(["id_narocila" => $id]);
-        $narociloForm = new NarociloEditForm("narocilo_form");
-        if($narocilo["narocilo_potrjeno"] == 1) {
-            $status = 0;
-        }
-        if($narocilo["narocilo_preklicano"] == 1){
-            $status = 1;
-        }
-        if($narocilo["narocilo_stornirano"] == 1) {
-            $status = 2;
-        }
-        
-        $dataSource = new HTML_QuickForm2_DataSource_Array([$status]);
-        $narociloForm->addDataSource($dataSouce);
-        
-        echo ViewHelper::render("view/aktivacija-narocila-uredi.php", ["title" => "Uredi status naročila", "form" => $narociloForm]);
-    }
+
     
     #public static function delete($id) {
     #    $data = filter_input_array(INPUT_POST, [

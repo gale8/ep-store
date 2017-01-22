@@ -133,11 +133,7 @@ class EmployeeController {
 
     }
     
-    //za izpis vseh narocila prodajalca, da jih lahko ureja
-    public static function urediNarocila() {
-        echo ViewHelper::render("view/aktivacija-narocila.php", ["title" => "Uredi naročila", "narocila" => NarociloDB::getAllIzpisNarocil()]);
-    }
-    
+
     
     /**
      * Returns an array of filtering rules for manipulation books

@@ -6,7 +6,7 @@
 
 
 <p>
-    <?php echo "Dela"?>
+    
     
     <!--Za prijavljene-->
     
@@ -46,7 +46,7 @@
             <div class="table">
                 <div class="table-cell">
                     
-                    <a href="<?= BASE_URL . "narocilo/uredi/"  . $narocilo["id_narocila"] ?>"> Številka naročila:<b><?= $narocilo["id_narocila"] ?></b>
+                    <a href="<?= BASE_URL . "narocila/uredi/"  . $narocilo["id_narocila"] ?>"> Številka naročila:<b><?= $narocilo["id_narocila"] ?></b>
                         <br>Status naročila :<b> <?= $temp_status ?></b> </a>
                     
                 </div> 

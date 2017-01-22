@@ -6,6 +6,7 @@ require_once("controller/ItemController.php");
 require_once("controller/UserController.php");
 require_once("controller/EmployeeController.php");
 require_once("controller/ItemRESTController.php");
+require_once("controller/NarociloController.php");
 
 define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php"));
 define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "/static/images/");
@@ -100,22 +101,27 @@ $urls = [
         
     },
      
-            //za urejanje narocil
+ 
+            
+            
+    #PRODAJALCI - za vse naslove gleda če je nastavljen user_level na prodajalca
+      //za urejanje narocil
      "/^narocila$/" => function () {
-        EmployeeController::urediNarocila();
+        if((isset($_SESSION["user_level"])) && $_SESSION["user_level"] == 0) {
+        NarociloController::urediNarocila();
+        }
              
 
     },
      
             //klic edit forma za urejanje statusa narocila
      "/^narocila\/uredi\/(\d+)$/" => function ($method, $id) {
-        UserController::narociloForm($id);
-             
+        if((isset($_SESSION["user_level"])) && $_SESSION["user_level"] == 0) {
+        NarociloController::narociloForm($id);
+        }
 
     },
             
-            
-    #PRODAJALCI - za vse naslove gleda če je nastavljen user_level na prodajalca
     "/^artikli\/uredi\/(\d+)$/" => function ($method, $id) {
         if(isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0){
             if ($method == "POST") {
