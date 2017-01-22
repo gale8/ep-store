@@ -11,7 +11,7 @@ require_once 'HTML/QuickForm2/Element/InputPassword.php';
 
 require_once 'model/NarociloDB.php';
 
-abstract class NarociloAbstractForm extends HTML_QuickForm2 {
+abstract class NarociloAbstractFormStor extends HTML_QuickForm2 {
 
     public $status;
     public $id_narocila;
@@ -30,9 +30,9 @@ abstract class NarociloAbstractForm extends HTML_QuickForm2 {
             
 //        Onemogoci stranki urejanje s statusom profila
         if(isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0){
-            $this->status->setLabel('Status naročila (0: nepotrjeno, 1:potrjeno, 2:preklicano)');
-            $this->status->addRule('required', 'Vpišite 1 ali 2');
-            $this->status->addRule('regex', 'Samo 1 ali 2', '/^(1|2)$/');
+            $this->status->setLabel('Status naročila (1:potrjeno, 3:stornirano)');
+            $this->status->addRule('required', 'Vpišite 1 ali 3.');
+            $this->status->addRule('regex', 'Samo 1 ali 3!', '/^(1|3)$/');
             
 
        }
@@ -49,7 +49,7 @@ abstract class NarociloAbstractForm extends HTML_QuickForm2 {
     }
 }
 
-class NarociloInsertForm extends NarociloAbstractForm {
+class NarociloInsertFormStor extends NarociloAbstractFormStor {
     public function __construct($id_narocila) {
         parent::__construct($id_narocila);
 
@@ -58,7 +58,7 @@ class NarociloInsertForm extends NarociloAbstractForm {
 
 }
 
-class NarociloEditForm extends NarociloAbstractForm {
+class NarociloEditFormStor extends NarociloAbstractFormStor {
     public $id_narocila;
 
     public function __construct($id_narocila) {
