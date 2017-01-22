@@ -25,6 +25,8 @@
         <a class="nav" href="<?= BASE_URL . "artikli/dodaj" ?>">Dodaj nov artikel</a>
         
         <a class="nav" href="<?= BASE_URL . "artikli/neaktivni" ?>">Neaktivirani artikli</a>
+        
+        <a class="nav" href="<?= BASE_URL . "narocila" ?>">Pregled narocil</a>
     <?php }?>    
 
                       

@@ -99,6 +99,20 @@ $urls = [
         }
         
     },
+     
+            //za urejanje narocil
+     "/^narocila\/?(\d+)$/" => function () {
+        EmployeeController::urediNarocila();
+             
+
+    },
+     
+            //klic edit forma za urejanje statusa narocila
+     "/^narocila\uredi\/?(\d+)$/" => function ($method, $id) {
+        UserController::narociloForm($id);
+             
+
+    },
             
             
     #PRODAJALCI - za vse naslove gleda če je nastavljen user_level na prodajalca

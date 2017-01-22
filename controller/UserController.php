@@ -182,6 +182,10 @@ class UserController {
     public static function getStrankaInfo() {
         echo ViewHelper::render("view/oddaja-narocila.php", ["stranka" => UserDB::getStranka($_SESSION["user_id"])]);
     }
+    
+    public static function urediNarocila() {
+        echo ViewHelper::render("view/aktivacija-narocila.php", ["title" => "Uredi naročila", "narocila" => NarociloDB::gelAllIzpisNarocil()]);
+    }
 
 
 

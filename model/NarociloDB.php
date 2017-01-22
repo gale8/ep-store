@@ -24,9 +24,8 @@ class NarociloDB extends AbstractDB {
     
     
     public static function update(array $params) {
-        return parent::modify("UPDATE artikel SET ime_artikla = :ime_artikla, cena = :cena, "
-                        . "opis_artikla = :opis_artikla, artikel_aktiviran = :artikel_aktiviran"
-                        . " WHERE id_artikla = :id_artikla", $params);
+        return parent::modify("UPDATE narocilo SET narocilo_potrjeno = :potrjeno, narocilo_preklicano = :preklicano, narocilo_stornirano = :stornirano "
+                        . " WHERE id_narocila = :id_narocila", $params);
     }
     
 
@@ -98,8 +97,17 @@ class NarociloDB extends AbstractDB {
     }
     
     public static function getAllIzpisNarocil() {
-        return parent::query("SELECT narocilo.id_narocila, narocilo.id_stranke, SUM(narocilo_artikel.kolicina) AS kolicina FROM narocilo INNER JOIN narocilo_artikel ON narocilo.id_narocila = narocilo_artikel.id_narocila GROUP BY narocilo.id_narocila");
+        return parent::query("SELECT narocilo.id_narocila, narocilo.id_stranke, SUM(narocilo_artikel.kolicina) AS kolicina, narocilo.narocilo_potrjeno, narocilo.narocilo_preklicano, narocilo.narocilo_stornirano FROM narocilo INNER JOIN narocilo_artikel ON narocilo.id_narocila = narocilo_artikel.id_narocila GROUP BY narocilo.id_narocila");
     }
+    //za izpis narocila pri prodajalcu, da mu zlista vsa narocila strank
+    public static function izpisiStatusNarocila($id) {
+        return parent::query("SELECT id_narocila, id_stranke, narocilo_potrjeno, narocilo_preklicano, narocilo_stornirano "
+                            . "FROM narocilo "
+                            . "WHERE id_narocila = $id");
+        
+    }
+    
+   
     
     
     
