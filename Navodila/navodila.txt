@@ -1,0 +1,24 @@
+https://github.com/tilgo/ep-store
+https://github.com/tilgo/store-app
+
+ANDROID: VM Network settings -> port forwarding -> protocol TCP, host port: 8080, guest port: 80; 
+							protocol TCP, host port: 8443, guest port: 443
+
+PEAR: sudo pear install -Z HTML_QuickForm2
+
+CONF:  sudo a2enmod rewrite          
+	sudo service apache2 restart
+	sudo cp Source_Folder Destination_Folder
+	
+	sudo apt-get install ssmtp
+	
+	sudo nano /etc/ssmtp/ssmtp.conf
+	
+	Root=eptrgovina@gmail.com
+	Mailhub=smtp.gmail.com:465
+	RewriteDomain=gmail.com
+	AuthUser=eptrgovina
+	AuthPass=eptrgovina123
+	FromLineOverride=Yes
+	UseTLS=Yes
+	
