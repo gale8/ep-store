@@ -36,26 +36,30 @@ class NarociloController {
     // Preklicano = 2
     //Stornirano = 3
     public static function narociloForm($id) {
-        $narocilo = NarociloDB::izpisiStatusNarocila(["id_narocila" => $id]);
-        
+        $narocilo = NarociloDB::izpisiStatusNarocila(["id_narocila" => $id])[0];
+
         $narociloForm = new NarociloEditForm("narocilo_form");
         if($narocilo["narocilo_potrjeno"] == 1) {
-            $status = 1;
+            $narocilo['status'] = 1;
         }
         if($narocilo["narocilo_preklicano"] == 1){
-            $status = 2;
+            $narocilo['status'] = 2;
         }
         if($narocilo["narocilo_stornirano"] == 1) {
-            $status = 3;
+            $narocilo['status'] = 3;
         }
         else {
-            $status = 0;
+            $narocilo['status'] = 0;
         }
         
-        $dataSource = new HTML_QuickForm2_DataSource_Array([$status]);
+        
+        $dataSource = new HTML_QuickForm2_DataSource_Array($narocilo);
         $narociloForm->addDataSource($dataSource);
         
-        echo ViewHelper::render("view/aktivacija-narocila-uredi.php", ["title" => "Uredi status naročila", "form" => $narociloForm]);
+        echo ViewHelper::render("view/aktivacija-narocila-uredi.php", [
+                                    "title" => "Uredi status naročila", 
+                                    "form" => $narociloForm
+        ]);
     }
     
         //za izpis vseh narocila prodajalca, da jih lahko ureja
