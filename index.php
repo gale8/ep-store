@@ -108,7 +108,7 @@ $urls = [
     },
      
             //klic edit forma za urejanje statusa narocila
-     "/^narocila\uredi\/?(\d+)$/" => function ($method, $id) {
+     "/^narocila\/uredi\/(\d+)$/" => function ($method, $id) {
         UserController::narociloForm($id);
              
 
