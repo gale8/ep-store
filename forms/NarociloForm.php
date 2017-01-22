@@ -59,7 +59,7 @@ class NarociloEditForm extends NarociloAbstractForm {
     public function __construct($status) {
         parent::__construct($status);
 
-        $this->button->setAttribute('value', 'Uredi artikel');
+        $this->button->setAttribute('value', 'Uredi narocilo');
         $this->status = new HTML_QuickForm2_Element_InputHidden("status");
         $this->addElement($this->status);
     }
