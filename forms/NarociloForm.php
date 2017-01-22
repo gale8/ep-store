@@ -19,7 +19,7 @@ abstract class NarociloAbstractForm extends HTML_QuickForm2 {
         parent::__construct($status);
         
               
-        $this->status = new HTML_QuickForm2_Element_InputText('stranka_aktivirana');
+        $this->status = new HTML_QuickForm2_Element_InputText('status');
         $this->status->setAttribute('size', 1);                
        // $this->status->addRule('gte', 'Številka mora biti => 0.', 0);
        // $this->status->addRule('lte', 'Številka mora biti <=1.', 1);       
@@ -54,14 +54,14 @@ class NarociloInsertForm extends NarociloAbstractForm {
 }
 
 class NarociloEditForm extends NarociloAbstractForm {
-    public $status;
+    public $id_artikla;
 
     public function __construct($status) {
         parent::__construct($status);
 
         $this->button->setAttribute('value', 'Uredi artikel');
-        $this->status = new HTML_QuickForm2_Element_InputHidden("status");
-        $this->addElement($this->status);
+        $this->id_artikla = new HTML_QuickForm2_Element_InputHidden("id_artikla");
+        $this->addElement($this->id_artikla);
     }
 
 
