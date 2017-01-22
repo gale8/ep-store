@@ -52,8 +52,10 @@ class NarociloController {
         else {
             $status = 0;
         }
+        $new_ar = array("status" => $status);
+        $narocilo = array_merge($narocilo,$new_ar);
         
-        $dataSource = new HTML_QuickForm2_DataSource_Array([$status]);
+        $dataSource = new HTML_QuickForm2_DataSource_Array($narocilo);
         $narociloForm->addDataSource($dataSource);
         
         echo ViewHelper::render("view/aktivacija-narocila-uredi.php", ["title" => "Uredi status naročila", "form" => $narociloForm, "narocilo"=>$narocilo, "status" => $status]);

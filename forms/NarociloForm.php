@@ -15,8 +15,8 @@ abstract class NarociloAbstractForm extends HTML_QuickForm2 {
 
     public $status;
 
-    public function __construct($status) {
-        parent::__construct($status);
+    public function __construct($id_narocila) {
+        parent::__construct($id_narocila);
         
               
         $this->status = new HTML_QuickForm2_Element_InputText('stranka_aktivirana');
@@ -45,8 +45,8 @@ abstract class NarociloAbstractForm extends HTML_QuickForm2 {
 }
 
 class NarociloInsertForm extends NarociloAbstractForm {
-    public function __construct($status) {
-        parent::__construct($status);
+    public function __construct($id_narocila) {
+        parent::__construct($id_narocila);
 
         $this->button->setAttribute('value', 'Potrdi');
     }
@@ -54,14 +54,14 @@ class NarociloInsertForm extends NarociloAbstractForm {
 }
 
 class NarociloEditForm extends NarociloAbstractForm {
-    public $status;
+    public $id_narocila;
 
-    public function __construct($status) {
-        parent::__construct($status);
+    public function __construct($id_narocila) {
+        parent::__construct($id_narocila);
 
         $this->button->setAttribute('value', 'Uredi narocilo');
-        $this->status = new HTML_QuickForm2_Element_InputHidden("status");
-        $this->addElement($this->status);
+        $this->id_narocila = new HTML_QuickForm2_Element_InputHidden("id_narocila");
+        $this->addElement($this->id_narocila);
     }
 
 
