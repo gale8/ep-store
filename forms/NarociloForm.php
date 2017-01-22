@@ -9,7 +9,7 @@ require_once 'HTML/QuickForm2/Element/Select.php';
 require_once 'HTML/QuickForm2/Element/InputCheckbox.php';
 require_once 'HTML/QuickForm2/Element/InputPassword.php';
 
-require_once 'model/PostaDB.php';
+require_once 'model/NarociloDB.php';
 
 abstract class NarociloAbstractForm extends HTML_QuickForm2 {
 
@@ -19,7 +19,7 @@ abstract class NarociloAbstractForm extends HTML_QuickForm2 {
         parent::__construct($id_narocila);
         
               
-        $this->status = new HTML_QuickForm2_Element_InputText('stranka_aktivirana');
+        $this->status = new HTML_QuickForm2_Element_InputText('Status naročila');
         $this->status->setAttribute('size', 1);                
        // $this->status->addRule('gte', 'Številka mora biti => 0.', 0);
        // $this->status->addRule('lte', 'Številka mora biti <=1.', 1);       
@@ -30,8 +30,8 @@ abstract class NarociloAbstractForm extends HTML_QuickForm2 {
             $this->status->addRule('required', 'Vpišite 1 ali 2 ali 3.');
             $this->status->addRule('regex', 'Samo 1 ali 2 ali 3!', '/^(1|2|3)$/');
             
-//        Ce lahko ureja profil se vpiše vrednost iz baze, ob registraciji je 0
-        }
+
+       }
         
 
         $this->addElement($this->status);
