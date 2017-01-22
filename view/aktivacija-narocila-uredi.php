@@ -10,5 +10,5 @@
     <a class="nav" href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a>     
 </p>
 
-<?php $form ?>
+<?= $form ?>
 
