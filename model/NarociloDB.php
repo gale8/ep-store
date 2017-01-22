@@ -100,10 +100,10 @@ class NarociloDB extends AbstractDB {
         return parent::query("SELECT narocilo.id_narocila, narocilo.id_stranke, SUM(narocilo_artikel.kolicina) AS kolicina, narocilo.narocilo_potrjeno, narocilo.narocilo_preklicano, narocilo.narocilo_stornirano FROM narocilo INNER JOIN narocilo_artikel ON narocilo.id_narocila = narocilo_artikel.id_narocila GROUP BY narocilo.id_narocila");
     }
     //za izpis narocila pri prodajalcu, da mu zlista vsa narocila strank
-    public static function izpisiStatusNarocila($id) {
+    public static function izpisiStatusNarocila(array $params) {
         return parent::query("SELECT id_narocila, id_stranke, narocilo_potrjeno, narocilo_preklicano, narocilo_stornirano "
                             . "FROM narocilo "
-                            . "WHERE id_narocila = $id");
+                            . "WHERE id_narocila = :id_narocila", $params);
         
     }
     

@@ -108,7 +108,8 @@ $urls = [
       //za urejanje narocil
      "/^narocila$/" => function () {
         if((isset($_SESSION["user_level"])) && $_SESSION["user_level"] == 0) {
-        NarociloController::urediNarocila();
+        
+            NarociloController::urediNarocila();
         }
              
 
@@ -117,7 +118,12 @@ $urls = [
             //klic edit forma za urejanje statusa narocila
      "/^narocila\/uredi\/(\d+)$/" => function ($method, $id) {
         if((isset($_SESSION["user_level"])) && $_SESSION["user_level"] == 0) {
+            if($method == "POST") {
+                NarociloController::edit($id);
+            }
+            else {
         NarociloController::narociloForm($id);
+            }
         }
 
     },

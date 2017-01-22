@@ -26,9 +26,9 @@ abstract class NarociloAbstractForm extends HTML_QuickForm2 {
             
 //        Onemogoci stranki urejanje s statusom profila
         if(isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0){
-            $this->status->setLabel('Status naročila (0:potrjeno, 1:preklicano, 2:stornirano)');
-            $this->status->addRule('required', 'Vpišite 0 ali 1 ali 2.');
-            $this->status->addRule('regex', 'Samo 0 ali 1 ali 2!', '/^(0|1|2)$/');
+            $this->status->setLabel('Status naročila (0: nepotrjeno, 1:potrjeno, 2:preklicano, 3:stornirano)');
+            $this->status->addRule('required', 'Vpišite 1 ali 2 ali 3.');
+            $this->status->addRule('regex', 'Samo 1 ali 2 ali 3!', '/^(1|2|3)$/');
             
 //        Ce lahko ureja profil se vpiše vrednost iz baze, ob registraciji je 0
         }
