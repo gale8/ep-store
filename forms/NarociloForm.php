@@ -9,15 +9,15 @@ require_once 'HTML/QuickForm2/Element/Select.php';
 require_once 'HTML/QuickForm2/Element/InputCheckbox.php';
 require_once 'HTML/QuickForm2/Element/InputPassword.php';
 
-require_once 'model/PostaDB.php';
+require_once 'model/NarociloDB.php';
 
 abstract class NarociloAbstractForm extends HTML_QuickForm2 {
 
     public $status;
 
-    public function __construct($status) {
-        parent::__construct($status);
-        
+    public function __construct($id_narocila) {
+        parent::__construct($id_narocila);
+       
               
         $this->status = new HTML_QuickForm2_Element_InputText('status');
         $this->status->setAttribute('size', 1);                
@@ -30,12 +30,12 @@ abstract class NarociloAbstractForm extends HTML_QuickForm2 {
             $this->status->addRule('required', 'Vpišite 1 ali 2 ali 3.');
             $this->status->addRule('regex', 'Samo 1 ali 2 ali 3!', '/^(1|2|3)$/');
             
-//        Ce lahko ureja profil se vpiše vrednost iz baze, ob registraciji je 0
-        }
+
+       }
         
 
         $this->addElement($this->status);
-               
+                
         $this->button = new HTML_QuickForm2_Element_InputSubmit(null);
         $this->addElement($this->button);
 
@@ -45,8 +45,8 @@ abstract class NarociloAbstractForm extends HTML_QuickForm2 {
 }
 
 class NarociloInsertForm extends NarociloAbstractForm {
-    public function __construct($status) {
-        parent::__construct($status);
+    public function __construct($id_narocila) {
+        parent::__construct($id_narocila);
 
         $this->button->setAttribute('value', 'Potrdi');
     }
@@ -56,8 +56,8 @@ class NarociloInsertForm extends NarociloAbstractForm {
 class NarociloEditForm extends NarociloAbstractForm {
     public $id_artikla;
 
-    public function __construct($status) {
-        parent::__construct($status);
+    public function __construct($id_narocila) {
+        parent::__construct($id_narocila);
 
         $this->button->setAttribute('value', 'Uredi artikel');
         $this->id_artikla = new HTML_QuickForm2_Element_InputHidden("id_artikla");
