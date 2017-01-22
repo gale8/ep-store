@@ -1,9 +1,7 @@
 <?php
 
 require_once("ViewHelper.php");
-require_once("model/EmployeeDB.php");
-require_once("forms/EmployeesForm.php");
-require_once("forms/LoginFormAdmin.php");
+require_once("model/NarociloDB.php");
 require_once("forms/NarociloForm.php");
 
 class NarociloController {
@@ -56,7 +54,7 @@ class NarociloController {
         $narocilo = array_merge($narocilo,$new_ar);
         
         $dataSource = new HTML_QuickForm2_DataSource_Array($narocilo);
-        print_r($dataSource);
+        
         $narociloForm->addDataSource($dataSource);
         
         echo ViewHelper::render("view/aktivacija-narocila-uredi.php", ["title" => "Uredi status naročila", "form" => $narociloForm, "narocilo"=>$narocilo, "status" => $status]);

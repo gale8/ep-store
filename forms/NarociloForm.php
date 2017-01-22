@@ -17,7 +17,7 @@ abstract class NarociloAbstractForm extends HTML_QuickForm2 {
 
     public function __construct($id_narocila) {
         parent::__construct($id_narocila);
-        
+       
               
         $this->status = new HTML_QuickForm2_Element_InputText('Status naročila');
         $this->status->setAttribute('size', 1);                
@@ -35,7 +35,7 @@ abstract class NarociloAbstractForm extends HTML_QuickForm2 {
         
 
         $this->addElement($this->status);
-               
+                
         $this->button = new HTML_QuickForm2_Element_InputSubmit(null);
         $this->addElement($this->button);
 
