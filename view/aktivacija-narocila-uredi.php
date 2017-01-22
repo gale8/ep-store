@@ -9,7 +9,5 @@
 <p>
     <a class="nav" href="<?= BASE_URL . "artikli" ?>">Vsi artikli</a>     
 </p>
-<?php 
-    switch ($status) {
 
 <?= $form ?>
