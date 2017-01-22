@@ -101,7 +101,7 @@ $urls = [
     },
      
             //za urejanje narocil
-     "/^narocila\/?(\d+)$/" => function () {
+     "/^narocila$/" => function () {
         EmployeeController::urediNarocila();
              
 

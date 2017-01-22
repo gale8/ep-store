@@ -27,6 +27,7 @@
 <?php
     $temp_status = "";
     foreach($narocila as $narocilo) :
+    
     if($narocilo["narocilo_potrjeno"] == 1) {
         $temp_status = "Potrjeno";
     }
@@ -35,6 +36,9 @@
     }
     if($narocilo["narocilo_stornirano"] == 1) {
         $temp_status = "Stornirano";
+    }
+    else {
+        $temp_status = "Nepotrjeno";
     }
     ?>
         <div class="square">
