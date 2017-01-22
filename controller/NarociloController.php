@@ -5,8 +5,8 @@ require_once("model/NarociloDB.php");
 require_once("forms/NarociloForm.php");
 
 class NarociloController {
-        public static function edit() {
-        
+        public static function edit($id) {
+       
         $narociloForm = new NarociloEditForm("narocilo_form");
 
         if ($narociloForm->isSubmitted()) {
@@ -28,7 +28,7 @@ class NarociloController {
                     $narocilo_stornirano = 1;
                 }
                 
-                $ar = array("potrjeno"=>$narocilo_potrjeno,"preklicano"=>$narocilo_preklicano,"stornirano"=>$narocilo_stornirano, "id_narocila"=>2);
+                $ar = array("potrjeno"=>$narocilo_potrjeno,"preklicano"=>$narocilo_preklicano,"stornirano"=>$narocilo_stornirano, "id_narocila"=>$id);
                 
                 NarociloDB::update($ar);
                
