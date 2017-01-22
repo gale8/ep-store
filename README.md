@@ -1,5 +1,11 @@
 gesla: 123Abc
 
+User: roksilic.net@gmail.com, Password: Test123
+Prodajalec: prodajalec@epca.si, Password: Test123
+Administrator: administrator@epca.si, Password Test123
+
+Certifikati: prodajalec-> geslo:prodajalec, administrator->geslo: administrator
+
 https://techknight.eu/2014/12/09/send-mail-witg-google-smtp-ubuntu-14-04/
 
 ---------------------------------------------------------------------------------------------
