@@ -12,14 +12,32 @@ class NarociloController {
         if ($narociloForm->isSubmitted()) {
             if ($narociloForm->validate()) {
                 $data = $narociloForm->getValue();
-                NarociloDB::update($data);
+                if($data["status"] == 1 ){
+                    $narocilo_potrjeno = 1;
+                    $narocilo_preklicano = 0;
+                    $narocilo_stornirano = 0;
+                }
+                elseif($data["status"] == 2 ){
+                    $narocilo_potrjeno = 0;
+                    $narocilo_preklicano = 1;
+                    $narocilo_stornirano = 0;
+                }
+                elseif($data["status"] == 3 ){
+                    $narocilo_potrjeno = 0;
+                    $narocilo_preklicano = 0;
+                    $narocilo_stornirano = 1;
+                }
                 
+                $ar = array("potrjeno"=>$narocilo_potrjeno,"preklicano"=>$narocilo_preklicano,"stornirano"=>$narocilo_stornirano, "id_narocila"=>2);
+                
+                NarociloDB::update($ar);
+               
                 EmployeeDB::dnevnik(["timestamp" => date('Y-m-d H:i:s', time()),
                         "dnevnik_id_aktivnosti" => 8,
                         "dnevnik_id_zaposlenca" => $_SESSION["user_id"]
                         ]);
                 
-                ViewHelper::redirect(BASE_URL . "artikli/" . $data["id_artikla"]);
+                ViewHelper::redirect(BASE_URL . "narocila");
             } else {
                 echo ViewHelper::render("view/aktivacija-narocila-uredi.php", [
                     "title" => "Uredi status naročila",

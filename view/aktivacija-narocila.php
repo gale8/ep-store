@@ -31,10 +31,10 @@
     if($narocilo["narocilo_potrjeno"] == 1) {
         $temp_status = "Potrjeno";
     }
-    if($narocilo["narocilo_preklicano"] == 1) {
+   elseif($narocilo["narocilo_preklicano"] == 1) {
         $temp_status = "Preklicano";
     }
-    if($narocilo["narocilo_stornirano"] == 1) {
+    elseif($narocilo["narocilo_stornirano"] == 1) {
         $temp_status = "Stornirano";
     }
     else {

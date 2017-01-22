@@ -14,9 +14,13 @@ require_once 'model/NarociloDB.php';
 abstract class NarociloAbstractForm extends HTML_QuickForm2 {
 
     public $status;
+    public $id_narocila;
 
     public function __construct($id_narocila) {
         parent::__construct($id_narocila);
+       
+        $this->id_narocila = $id_narocila;
+        
        
               
         $this->status = new HTML_QuickForm2_Element_InputText('status');
@@ -35,6 +39,7 @@ abstract class NarociloAbstractForm extends HTML_QuickForm2 {
         
 
         $this->addElement($this->status);
+        
                 
         $this->button = new HTML_QuickForm2_Element_InputSubmit(null);
         $this->addElement($this->button);
@@ -54,14 +59,14 @@ class NarociloInsertForm extends NarociloAbstractForm {
 }
 
 class NarociloEditForm extends NarociloAbstractForm {
-    public $id_artikla;
+    public $id_narocila;
 
     public function __construct($id_narocila) {
         parent::__construct($id_narocila);
 
         $this->button->setAttribute('value', 'Uredi artikel');
-        $this->id_artikla = new HTML_QuickForm2_Element_InputHidden("id_artikla");
-        $this->addElement($this->id_artikla);
+        $this->id_narocila = new HTML_QuickForm2_Element_InputHidden("id_narocila");
+        $this->addElement($this->id_narocila);
     }
 
 
