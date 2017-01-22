@@ -27,7 +27,19 @@
 </p>
 
 
-<?php foreach ($narocila as $narocilo):?>
+<?php foreach ($narocila as $narocilo):
+       if($narocilo["narocilo_potrjeno"] == 1) {
+        $temp_status = "Potrjeno";
+    }
+    if($narocilo["narocilo_preklicano"] == 1) {
+        $temp_status = "Preklicano";
+    }
+    if($narocilo["narocilo_stornirano"] == 1) {
+        $temp_status = "Stornirano";
+    }
+    else {
+        $temp_status = "Nepotrjeno";
+    }?>
 <?php if($_SESSION["user_id"] == $narocilo["id_stranke"]) :?>
     <div class="square">
         <div class="content">
@@ -35,7 +47,8 @@
                 <div class="table-cell">
                     
                     <a href="<?= BASE_URL . "stranke/pregled/narocilo/"  . $narocilo["id_narocila"] ?>"> Številka naročila:<b><?= $narocilo["id_narocila"] ?></b>
-                        <br>Število izdelkov:<b> <?= $narocilo["kolicina"] ?></b> </a>
+                        <br>Število izdelkov:<b> <?= $narocilo["kolicina"] ?></b><br/>
+                        <b>Status narolila: <?= $temp_status ?> </b></a>
                     
                 </div> 
             </div>
