@@ -48,7 +48,7 @@
                     
                     <a href="<?= BASE_URL . "stranke/pregled/narocilo/"  . $narocilo["id_narocila"] ?>"> Številka naročila:<b><?= $narocilo["id_narocila"] ?></b>
                         <br>Število izdelkov:<b> <?= $narocilo["kolicina"] ?></b><br/>
-                        <b>Status narolila: <?= $temp_status ?> </b></a>
+                        <b>Status naročila: <?= $temp_status ?> </b></a>
                     
                 </div> 
             </div>
