@@ -1,5 +1,7 @@
 gesla: 123Abc
 
+https://techknight.eu/2014/12/09/send-mail-witg-google-smtp-ubuntu-14-04/
+
 ---------------------------------------------------------------------------------------------
 
 # ep-store (navodila iz učilnice)
