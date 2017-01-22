@@ -29,7 +29,7 @@ class UserController {
 
             if(!UserDB::exists($data)){
                 UserDB::insert($data);
-                if (isset($_SESSION) && $_SESSION["user_level"] == 0) {
+                if (isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0) {
                     EmployeeDB::dnevnik(["timestamp" => date('Y-m-d H:i:s', time()),
                         "dnevnik_id_aktivnosti" => 4,
                         "dnevnik_id_zaposlenca" => $_SESSION["user_id"]
@@ -72,11 +72,12 @@ class UserController {
                 
                 if((isset($_SESSION["user_id"]) && $_SESSION["user_id"] == $data["id_stranke"]) || (isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0 )){
                     UserDB::update($data);
-                    
-                    EmployeeDB::dnevnik(["timestamp" => date('Y-m-d H:i:s', time()),
+                    if (isset($_SESSION["user_level"]) && $_SESSION["user_level"] == 0 ) {
+                        EmployeeDB::dnevnik(["timestamp" => date('Y-m-d H:i:s', time()),
                         "dnevnik_id_aktivnosti" => 6,
                         "dnevnik_id_zaposlenca" => $_SESSION["user_id"]
                         ]);
+                    }                    
                     
                     ViewHelper::redirect(BASE_URL . "stranke/" . $data["id_stranke"]);
                 } else {
@@ -146,10 +147,12 @@ class UserController {
 
     public static function logout(){
         
-        EmployeeDB::dnevnik(["timestamp" => date('Y-m-d H:i:s', time()),
+        if (isset($_SESSION["user_level"])) {
+            EmployeeDB::dnevnik(["timestamp" => date('Y-m-d H:i:s', time()),
                         "dnevnik_id_aktivnosti" => 2,
                         "dnevnik_id_zaposlenca" => $_SESSION["user_id"]
                         ]);
+        }
         
         session_start();
         setcookie(session_name(), '', 100);
